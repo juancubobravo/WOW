@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cuenta_Referencia extends Cuenta {
@@ -18,6 +19,9 @@ public class Cuenta_Referencia extends Cuenta {
 	private Date fecha_apertura;
 	@Column (nullable = true)
 	private String Estado;
+	
+	@ManyToOne
+	private Divisa abreviatura;
 	
 	public Cuenta_Referencia(String iBAN,String nombreBanco, double saldo) {
 		super(iBAN);

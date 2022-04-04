@@ -15,6 +15,12 @@ public class Divisa implements Serializable {
 	@Column (nullable = true)
 	private String simbolo;
 	private double cambioEuro;
+	
+	@ManyToOne
+	private Transaccion id_unico;
+	
+	@ManyToOne
+	private Transaccion id_unico2;
 
 	public Divisa() {
 		super();

@@ -20,6 +20,13 @@ public class Transaccion implements Serializable {
 	private String tipo;
 	private String comision;
 	private String internacional;
+	
+	@ManyToOne
+	private Cuenta IBAN;
+	
+	@ManyToOne
+	private Cuenta IBAN2;
+	
 
 	public Transaccion() {
 		super();

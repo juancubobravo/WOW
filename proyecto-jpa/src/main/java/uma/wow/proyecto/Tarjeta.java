@@ -22,6 +22,8 @@ public class Tarjeta implements Serializable{
 	@Column @Temporal(TemporalType.DATE)
 	private Date fechaActivacion;
 
+	@ManyToOne
+	private Cuenta_Referencia iban;
 	
 	
 	public Tarjeta() {
