@@ -25,6 +25,9 @@ public class Cliente implements Serializable{
 	private String CodigoPostal;
 	private String Pais;
 	
+	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)
+	private List<Cuenta_Fintech> cuentas;
+	
 	public Cliente(String iD, String identificacion, String tipo_cliente, String estado, Date fecha_Alta,
 			String direccion, String ciudad, String codigoPostal, String pais) {
 		super();

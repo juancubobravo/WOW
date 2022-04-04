@@ -1,9 +1,13 @@
 package uma.wow.proyecto;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cuenta_Fintech extends Cuenta {
@@ -14,6 +18,7 @@ public class Cuenta_Fintech extends Cuenta {
 	private Date fecha_cierre;
 	@Column (nullable = true)
 	private String clasificacion;
+	
 	
 	public Cuenta_Fintech(String iBAN) {
 		super(iBAN);
