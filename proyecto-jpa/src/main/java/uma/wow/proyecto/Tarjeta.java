@@ -9,6 +9,8 @@ import javax.persistence.*;
 @Entity
 public class Tarjeta implements Serializable{
 
+	
+	
 	@Id @GeneratedValue
 	private String numero_tarjeta;
 
@@ -23,7 +25,7 @@ public class Tarjeta implements Serializable{
 	private Date fechaActivacion;
 
 	@ManyToOne
-	private Cuenta_Referencia iban;
+	private Cuenta iban;
 	
 	
 	public Tarjeta() {
