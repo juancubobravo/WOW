@@ -8,10 +8,11 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class EMPRESA implements Serializable{
+public class EMPRESA extends Cliente implements Serializable{
 	private String Razon_Social;
 
-	
+	@OneToOne
+	private Cliente id1;
 	
 	public EMPRESA(String razon_Social) {
 		super();

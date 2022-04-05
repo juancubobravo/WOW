@@ -28,6 +28,9 @@ public class Cliente implements Serializable{
 	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)
 	private List<Cuenta_Fintech> cuentas;
 	
+	
+	
+	
 	public Cliente(String iD, String identificacion, String tipo_cliente, String estado, Date fecha_Alta,
 			String direccion, String ciudad, String codigoPostal, String pais) {
 		super();
@@ -41,6 +44,10 @@ public class Cliente implements Serializable{
 		Ciudad = ciudad;
 		CodigoPostal = codigoPostal;
 		Pais = pais;
+	}
+
+	public Cliente() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getID() {

@@ -8,12 +8,15 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class INDIVIDUAL implements Serializable{
+public class INDIVIDUAL extends Cliente implements Serializable  {
 	private String nombre;
 	private String apellido;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
 	private java.util.Date fecha_nacimiento;
+	
+	@OneToOne
+	private Cliente id1;
 	
 	public INDIVIDUAL(String nombre, String apellido, Date fecha_nacimiento) {
 		super();

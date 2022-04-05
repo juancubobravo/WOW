@@ -13,6 +13,12 @@ public class Autorizacion implements Serializable{
 	private String ID;
 	private String ID1;
 	
+	@ManyToOne
+	private EMPRESA id1;
+	
+	@ManyToOne
+	private Persona_autorizada id2;
+	
 	public Autorizacion(String tipo, String iD, String iD1) {
 		super();
 		this.tipo = tipo;

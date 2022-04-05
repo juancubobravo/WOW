@@ -13,6 +13,12 @@ public class DEPOSITADA_EN implements Serializable{
 	private String IBAN;
 	private String IBAN1;
 	
+	@ManyToOne
+	private Cuenta_Referencia id1;
+	
+	@ManyToOne
+	private Pooled_Account id2;
+	
 	public DEPOSITADA_EN(float saldo, String iBAN, String iBAN1) {
 		super();
 		Saldo = saldo;
