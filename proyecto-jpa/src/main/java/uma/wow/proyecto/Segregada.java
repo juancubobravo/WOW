@@ -2,12 +2,16 @@ package uma.wow.proyecto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Segregada extends Cuenta_Fintech {
 
 	@Column (nullable = true)
 	private String comision;
+	
+	@OneToOne
+	private Cuenta_Referencia IBAN;
 	
 
 	public String getComision() {

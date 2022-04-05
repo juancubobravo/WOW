@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,15 +18,17 @@ public class Movimiento implements Serializable{
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private String ID;
 	@Column @Temporal(TemporalType.DATE)
-	private Date Fecha;
-	@Column 
+	private Date Fecha; 
 	private String Concepto;
-	@Column
 	private String Emisor;
-	@Column
 	private double Cantidad;
-	@Column
 	private String Modo_Operacion;
+	
+	@ManyToOne
+	private Tarjeta numero_tarjeta;
+	
+	@ManyToOne
+	private Divisa abreviatura;
 	
 	public Movimiento(String iD, Date fecha, String concepto, String emisor, double cantidad, String modo_Operación) {
 		super();

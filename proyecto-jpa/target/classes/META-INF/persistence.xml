@@ -12,7 +12,10 @@
 		<class>uma.wow.proyecto.</class>
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e1aa52735618772e759f45862816500a3e052d95
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test"/>
 			<property name="javax.persistence.jdbc.user" value=""/>
