@@ -9,7 +9,14 @@
 		<class>uma.wow.proyecto.DEPOSITADA_EN</class>
 		<class>uma.wow.proyecto.Divisa</class>
 		<class>uma.wow.proyecto.EMPRESA</class>
-		<class>uma.wow.proyecto.</class>
+		<class>uma.wow.proyecto.Persona_Autorizada</class>
+		<class>uma.wow.proyecto.Pooled_Acount</class>
+		<class>uma.wow.proyecto.Transaccion</class>
+		<class>uma.wow.proyecto.EMPRESA</class>
+		<class>uma.wow.proyecto.Tarjeta</class>
+		<class>uma.wow.proyecto.Movimiento</class>
+		<class>uma.wow.proyecto.INDIVIDUAL</class>
+
 
 
 		<properties>
