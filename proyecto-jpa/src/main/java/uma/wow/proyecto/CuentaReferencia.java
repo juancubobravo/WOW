@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Cuenta_Referencia extends Cuenta {
+public class CuentaReferencia extends Cuenta {
 
 	private String NombreBanco;
 	@Column (nullable = true)
@@ -23,7 +23,7 @@ public class Cuenta_Referencia extends Cuenta {
 	@ManyToOne
 	private Divisa abreviatura;
 	
-	public Cuenta_Referencia(String iBAN,String nombreBanco, double saldo) {
+	public CuentaReferencia(String iBAN,String nombreBanco, double saldo) {
 		super(iBAN);
 		NombreBanco = nombreBanco;
 		Saldo = saldo;

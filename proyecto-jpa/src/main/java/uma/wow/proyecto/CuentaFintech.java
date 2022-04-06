@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Cuenta_Fintech extends Cuenta {
+public class CuentaFintech extends Cuenta {
 
 	private String estado;
 	private  Date fecha_apertura;

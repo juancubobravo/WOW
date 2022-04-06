@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Persona_autorizada implements Serializable{
+public class PersonaAutorizada implements Serializable{
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private String ID;
@@ -28,7 +28,7 @@ public class Persona_autorizada implements Serializable{
 	@Column (nullable = true)
 	private Date FechaFin;
 	
-	public Persona_autorizada(String iD, String identificacion, String nombre, String apellidos, String direccion) {
+	public PersonaAutorizada(String iD, String identificacion, String nombre, String apellidos, String direccion) {
 		super();
 		ID = iD;
 		Identificacion = identificacion;

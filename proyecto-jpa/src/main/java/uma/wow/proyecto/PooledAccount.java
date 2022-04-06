@@ -5,15 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Pooled_Account extends Cuenta_Fintech {
+public class PooledAccount extends CuentaFintech {
 
 	
 	@OneToOne
-	private Cuenta_Referencia IBAN;
+	private CuentaReferencia IBAN;
 	
 
 
-	public Pooled_Account(String iBAN) {
+	public PooledAccount(String iBAN) {
 		super(iBAN);
 		// TODO Auto-generated constructor stub
 	}

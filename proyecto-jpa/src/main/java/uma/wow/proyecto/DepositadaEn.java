@@ -8,7 +8,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class DEPOSITADA_EN implements Serializable{
+public class DepositadaEn implements Serializable{
 	private float Saldo;
 	private String IBAN;
 	private String IBAN1;
@@ -19,7 +19,7 @@ public class DEPOSITADA_EN implements Serializable{
 	@ManyToOne
 	private Pooled_Account id2;
 	
-	public DEPOSITADA_EN(float saldo, String iBAN, String iBAN1) {
+	public DepositadaEn(float saldo, String iBAN, String iBAN1) {
 		super();
 		Saldo = saldo;
 		IBAN = iBAN;

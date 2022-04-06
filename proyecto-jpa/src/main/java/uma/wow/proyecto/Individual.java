@@ -8,7 +8,7 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
-public class INDIVIDUAL extends Cliente implements Serializable  {
+public class Individual extends Cliente implements Serializable  {
 	private String nombre;
 	private String apellido;
 	@Column (nullable=true)
@@ -18,7 +18,7 @@ public class INDIVIDUAL extends Cliente implements Serializable  {
 	@OneToOne
 	private Cliente id1;
 	
-	public INDIVIDUAL(String nombre, String apellido, Date fecha_nacimiento) {
+	public Individual(String nombre, String apellido, Date fecha_nacimiento) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
