@@ -7,12 +7,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class PooledAccount extends CuentaFintech {
 
-	
-<<<<<<< HEAD
 	@OneToOne
 	private String iban1;
-=======
->>>>>>> ca8b39432d27cee3a9b6f277d149be5477b06dde
 
 
 	public PooledAccount(String iban) {
