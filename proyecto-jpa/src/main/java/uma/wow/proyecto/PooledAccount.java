@@ -8,9 +8,6 @@ import javax.persistence.OneToOne;
 public class PooledAccount extends CuentaFintech {
 
 	
-	@OneToOne
-	private CuentaReferencia IBAN;
-	
 
 
 	public PooledAccount(String iBAN) {
