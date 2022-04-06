@@ -11,8 +11,6 @@ import javax.persistence.*;
 public class Empresa extends Cliente implements Serializable{
 	private String razonSocial;
 
-	@OneToOne
-	private Cliente id1;
 	
 	public Empresa(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
 			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String razonSocial) {

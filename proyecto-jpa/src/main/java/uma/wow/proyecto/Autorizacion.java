@@ -15,6 +15,21 @@ public class Autorizacion implements Serializable{
 	@Id
 	private String id1;
 	
+<<<<<<< HEAD
+=======
+	@ManyToOne
+	private Empresa id1;
+	
+	@ManyToOne
+	private PersonaAutorizada id2;
+	
+	public Autorizacion(String tipo, String iD, String iD1) {
+		super();
+		this.tipo = tipo;
+		ID = iD;
+		ID1 = iD1;
+	}
+>>>>>>> ca8b39432d27cee3a9b6f277d149be5477b06dde
 	
 	public String getTipo() {
 		return tipo;

@@ -15,8 +15,6 @@ public class Individual extends Cliente implements Serializable  {
 	@Temporal(TemporalType.DATE)
 	private java.util.Date fechaNacimiento;
 	
-	@OneToOne
-	private Cliente id1;
 	
 	public Individual(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
 			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String nombre, String apellido, Date fechaNacimiento) {
