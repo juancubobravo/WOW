@@ -11,7 +11,7 @@ public class Transaccion implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private String IDunico;
+	private String idUnico;
 	@Column @Temporal(TemporalType.DATE)
 	private Date fechaInstruccion;
 	private double cantidad;
@@ -22,10 +22,10 @@ public class Transaccion implements Serializable {
 	private String internacional;
 	
 	@ManyToOne
-	private Cuenta IBAN;
+	private Cuenta iban;
 	
 	@ManyToOne
-	private Cuenta IBAN2;
+	private Cuenta iban1;
 	
 
 	public Transaccion() {
@@ -34,15 +34,15 @@ public class Transaccion implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Transaccion [IDunico=" + IDunico + ", fechaInstruccion=" + fechaInstruccion + ", cantidad=" + cantidad
+		return "Transaccion [idUnico=" + idUnico + ", fechaInstruccion=" + fechaInstruccion + ", cantidad=" + cantidad
 				+ ", fechaEjecucion=" + fechaEjecucion + ", tipo=" + tipo + ", comision=" + comision
 				+ ", internacional=" + internacional + "]";
 	}
 
-	public Transaccion(String iDunico, Date fechaInstruccion, double cantidad, String tipo, String comision,
+	public Transaccion(String idUnico, Date fechaInstruccion, double cantidad, String tipo, String comision,
 			String internacional) {
 		super();
-		IDunico = iDunico;
+		this.idUnico = idUnico;
 		this.fechaInstruccion = fechaInstruccion;
 		this.cantidad = cantidad;
 		this.tipo = tipo;
@@ -53,7 +53,7 @@ public class Transaccion implements Serializable {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(IDunico);
+		return Objects.hash(idUnico);
 	}
 
 	@Override
@@ -65,16 +65,16 @@ public class Transaccion implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Transaccion other = (Transaccion) obj;
-		if (IDunico == null) {
-			if (other.IDunico != null)
+		if (idUnico == null) {
+			if (other.idUnico != null)
 				return false;
-		} else if (!IDunico.equals(other.IDunico))
+		} else if (!idUnico.equals(other.idUnico))
 			return false;
 		return true;
 	}
 
 	public String getIDunico() {
-		return IDunico;
+		return idUnico;
 	}
 
 	public Date getFechaInstruccion() {
@@ -101,8 +101,8 @@ public class Transaccion implements Serializable {
 		return internacional;
 	}
 
-	public void setIDunico(String iDunico) {
-		IDunico = iDunico;
+	public void setIDunico(String idUnico) {
+		this.idUnico = idUnico;
 	}
 
 	public void setFechaInstruccion(Date fechaInstruccion) {

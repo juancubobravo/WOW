@@ -2,6 +2,7 @@ package uma.wow.proyecto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,47 +14,47 @@ import javax.persistence.Id;
 public class PersonaAutorizada implements Serializable{
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
-	private String ID;
+	private String id;
 	@Column (unique = true)
-	private String Identificacion;
+	private String identificacion;
 	private String nombre;
 	private String apellidos;
 	private String direccion;
 	@Column (nullable = true)
-	private Date fecha_nacimiento;
+	private Date fechaNacimiento;
 	@Column (nullable = true)
-	private String Estado;
+	private String estado;
 	@Column (nullable = true)
-	private Date FechaInicio;
+	private Date fechaInicio;
 	@Column (nullable = true)
-	private Date FechaFin;
+	private Date fechaFin;
 	
-	public PersonaAutorizada(String iD, String identificacion, String nombre, String apellidos, String direccion) {
+	public PersonaAutorizada(String id, String identificacion, String nombre, String apellidos, String direccion) {
 		super();
-		ID = iD;
-		Identificacion = identificacion;
+		this.id = id;
+		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.direccion = direccion;
-		Estado = null;
-		FechaInicio = null;
-		FechaFin = null;
+		estado = null;
+		fechaInicio = null;
+		fechaFin = null;
 	}
 
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
 
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getIdentificacion() {
-		return Identificacion;
+		return identificacion;
 	}
 
 	public void setIdentificacion(String identificacion) {
-		Identificacion = identificacion;
+		this.identificacion = identificacion;
 	}
 
 	public String getNombre() {
@@ -80,42 +81,41 @@ public class PersonaAutorizada implements Serializable{
 		this.direccion = direccion;
 	}
 
-	public Date getFecha_nacimiento() {
-		return fecha_nacimiento;
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 
-	public void setFecha_nacimiento(Date fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public String getEstado() {
-		return Estado;
+		return estado;
 	}
 
 	public void setEstado(String estado) {
-		Estado = estado;
+		this.estado = estado;
 	}
 
 	public Date getFechaInicio() {
-		return FechaInicio;
+		return fechaInicio;
 	}
 
 	public void setFechaInicio(Date fechaInicio) {
-		FechaInicio = fechaInicio;
+		this.fechaInicio = fechaInicio;
 	}
 
 	public Date getFechaFin() {
-		return FechaFin;
+		return fechaFin;
 	}
 
 	public void setFechaFin(Date fechaFin) {
-		FechaFin = fechaFin;
+		this.fechaFin = fechaFin;
 	}
 
 	@Override
 	public int hashCode() {
-
-		return ID.hashCode();
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -126,21 +126,17 @@ public class PersonaAutorizada implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Persona_autorizada other = (Persona_autorizada) obj;
-		if (ID == null) {
-			if (other.ID != null)
-				return false;
-		} else if (!ID.equals(other.ID))
-			return false;
-		return true;
+		PersonaAutorizada other = (PersonaAutorizada) obj;
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Persona_autorizada [ID=" + ID + ", Identificacion=" + Identificacion + ", nombre=" + nombre
-				+ ", apellidos=" + apellidos + ", direccion=" + direccion + ", fecha_nacimiento=" + fecha_nacimiento
-				+ ", Estado=" + Estado + ", FechaInicio=" + FechaInicio + ", FechaFin=" + FechaFin + "]";
+		return "PersonaAutorizada [id=" + id + ", identificacion=" + identificacion + ", nombre=" + nombre
+				+ ", apellidos=" + apellidos + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento
+				+ ", estado=" + estado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}
+
 	
 	
 

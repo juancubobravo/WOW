@@ -13,16 +13,17 @@ public class Individual extends Cliente implements Serializable  {
 	private String apellido;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
-	private java.util.Date fecha_nacimiento;
+	private java.util.Date fechaNacimiento;
 	
 	@OneToOne
 	private Cliente id1;
 	
-	public Individual(String nombre, String apellido, Date fecha_nacimiento) {
-		super();
+	public Individual(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
+			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String nombre, String apellido, Date fechaNacimiento) {
+		super(id, identificacion, tipoCliente, estado, fechaAlta, direccion, ciudad, codigoPostal, pais, cuentas);
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.fecha_nacimiento = fecha_nacimiento;
+		this.fechaNacimiento = fechaNacimiento;
 	}
 	
 	public String getNombre() {
@@ -37,11 +38,24 @@ public class Individual extends Cliente implements Serializable  {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public java.util.Date getFecha_nacimiento() {
-		return fecha_nacimiento;
+	public java.util.Date getFechaNacimiento() {
+		return fechaNacimiento;
 	}
 	public void setFecha_nacimiento(java.util.Date fecha_nacimiento) {
-		this.fecha_nacimiento = fecha_nacimiento;
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	
+	
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
 	
 }

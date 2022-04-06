@@ -5,13 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Segregada extends Cuenta_Fintech {
+public class Segregada extends CuentaFintech {
 
 	@Column (nullable = true)
 	private String comision;
 	
 	@OneToOne
-	private Cuenta_Referencia IBAN;
+	private CuentaReferencia iban;
 	
 
 	public String getComision() {
@@ -24,41 +24,18 @@ public class Segregada extends Cuenta_Fintech {
 	}
 
 
-	public Segregada(String iBAN) {
-		super(iBAN);
-		// TODO Auto-generated constructor stub
+	public Segregada(String iban) {
+		super(iban);
 	}
-
-
+	
 	@Override
 	public int hashCode() {
 		return super.hashCode();
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Segregada other = (Segregada) obj;
-		if (comision == null) {
-			if (other.comision != null)
-				return false;
-		} else if (!comision.equals(other.comision))
-			return false;
-		return true;
+		return super.equals(obj);
 	}
-
-
-	@Override
-	public String toString() {
-		return super.toString()+ "Segregada [comision=" + comision + "]";
-	}
-	
-	
 
 }

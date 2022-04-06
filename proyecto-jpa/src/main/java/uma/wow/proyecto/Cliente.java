@@ -10,68 +10,62 @@ import javax.persistence.*;
 @Entity
 public class Cliente implements Serializable{
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
-	private String ID;
+	private String id;
 	@Column (unique=true)
-	private String Identificacion;
-	private String tipo_cliente;
+	private String identificacion;
+	private String tipoCliente;
 	private String estado;
 	@Temporal (TemporalType.DATE)
-	private java.util.Date Fecha_Alta;
+	private java.util.Date fechaAlta;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
-	private java.util.Date Fecha_Baja;
-	private String Direccion;
-	private String Ciudad;
-	private String CodigoPostal;
-	private String Pais;
+	private java.util.Date fechaBaja;
+	private String direccion;
+	private String ciudad;
+	private String codigoPostal;
+	private String pais;
 	
 	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)
-	private List<Cuenta_Fintech> cuentas;
-	
-	
-	
-	
-	public Cliente(String iD, String identificacion, String tipo_cliente, String estado, Date fecha_Alta,
-			String direccion, String ciudad, String codigoPostal, String pais) {
+	private List<CuentaFintech> cuentas;
+
+	public Cliente(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
+			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas) {
 		super();
-		ID = iD;
-		Identificacion = identificacion;
-		this.tipo_cliente = tipo_cliente;
+		this.id = id;
+		this.identificacion = identificacion;
+		this.tipoCliente = tipoCliente;
 		this.estado = estado;
-		Fecha_Alta = fecha_Alta;
-		Fecha_Baja = null;
-		Direccion = direccion;
-		Ciudad = ciudad;
-		CodigoPostal = codigoPostal;
-		Pais = pais;
+		this.fechaAlta = fechaAlta;
+		this.fechaBaja = null;
+		this.direccion = direccion;
+		this.ciudad = ciudad;
+		this.codigoPostal = codigoPostal;
+		this.pais = pais;
+		this.cuentas = cuentas;
+	}
+	
+	public String getId() {
+		return id;
 	}
 
-	public Cliente() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getIdentificacion() {
-		return Identificacion;
+		return identificacion;
 	}
 
 	public void setIdentificacion(String identificacion) {
-		Identificacion = identificacion;
+		this.identificacion = identificacion;
 	}
 
-	public String getTipo_cliente() {
-		return tipo_cliente;
+	public String getTipoCliente() {
+		return tipoCliente;
 	}
 
-	public void setTipo_cliente(String tipo_cliente) {
-		this.tipo_cliente = tipo_cliente;
+	public void setTipoCliente(String tipoCliente) {
+		this.tipoCliente = tipoCliente;
 	}
 
 	public String getEstado() {
@@ -82,57 +76,66 @@ public class Cliente implements Serializable{
 		this.estado = estado;
 	}
 
-	public java.util.Date getFecha_Alta() {
-		return Fecha_Alta;
+	public java.util.Date getFechaAlta() {
+		return fechaAlta;
 	}
 
-	public void setFecha_Alta(java.util.Date fecha_Alta) {
-		Fecha_Alta = fecha_Alta;
+	public void setFechaAlta(java.util.Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 
-	public java.util.Date getFecha_Baja() {
-		return Fecha_Baja;
+	public java.util.Date getFechaBaja() {
+		return fechaBaja;
 	}
 
-	public void setFecha_Baja(java.util.Date fecha_Baja) {
-		Fecha_Baja = fecha_Baja;
+	public void setFechaBaja(java.util.Date fechaBaja) {
+		this.fechaBaja = fechaBaja;
 	}
 
 	public String getDireccion() {
-		return Direccion;
+		return direccion;
 	}
 
 	public void setDireccion(String direccion) {
-		Direccion = direccion;
+		this.direccion = direccion;
 	}
 
 	public String getCiudad() {
-		return Ciudad;
+		return ciudad;
 	}
 
 	public void setCiudad(String ciudad) {
-		Ciudad = ciudad;
+		this.ciudad = ciudad;
 	}
 
 	public String getCodigoPostal() {
-		return CodigoPostal;
+		return codigoPostal;
 	}
 
 	public void setCodigoPostal(String codigoPostal) {
-		CodigoPostal = codigoPostal;
+		this.codigoPostal = codigoPostal;
 	}
 
 	public String getPais() {
-		return Pais;
+		return pais;
 	}
 
 	public void setPais(String pais) {
-		Pais = pais;
+		this.pais = pais;
 	}
+
+	public List<CuentaFintech> getCuentas() {
+		return cuentas;
+	}
+
+	public void setCuentas(List<CuentaFintech> cuentas) {
+		this.cuentas = cuentas;
+	}
+
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(Identificacion);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -144,14 +147,16 @@ public class Cliente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(Identificacion, other.Identificacion);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [ID=" + ID + ", Identificacion=" + Identificacion + ", tipo_cliente=" + tipo_cliente
-				+ ", estado=" + estado + ", Fecha_Alta=" + Fecha_Alta + ", Fecha_Baja=" + Fecha_Baja + ", Direccion="
-				+ Direccion + ", Ciudad=" + Ciudad + ", CodigoPostal=" + CodigoPostal + ", Pais=" + Pais + "]";
+		return "Cliente [id=" + id + ", identificacion=" + identificacion + ", tipoCliente=" + tipoCliente + ", estado="
+				+ estado + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", direccion=" + direccion
+				+ ", ciudad=" + ciudad + ", codigoPostal=" + codigoPostal + ", pais=" + pais + ", cuentas=" + cuentas
+				+ "]";
 	}
+	
 	
 }

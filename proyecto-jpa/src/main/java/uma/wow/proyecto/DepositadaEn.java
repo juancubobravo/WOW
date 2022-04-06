@@ -9,47 +9,68 @@ import javax.persistence.*;
 
 @Entity
 public class DepositadaEn implements Serializable{
-	private float Saldo;
-	private String IBAN;
-	private String IBAN1;
+	private float saldo;
+	private String iban;
+	private String iban1;
 	
 	@ManyToOne
-	private Cuenta_Referencia id1;
+	private CuentaReferencia id1;
 	
 	@ManyToOne
-	private Pooled_Account id2;
+	private PooledAccount id2;
 	
-	public DepositadaEn(float saldo, String iBAN, String iBAN1) {
+	public DepositadaEn(float saldo, String iban, String iban1) {
 		super();
-		Saldo = saldo;
-		IBAN = iBAN;
-		IBAN1 = iBAN1;
+		this.saldo = saldo;
+		this.iban = iban;
+		this.iban1 = iban1;
 	}
-	
+
 	public float getSaldo() {
-		return Saldo;
+		return saldo;
 	}
+
 	public void setSaldo(float saldo) {
-		Saldo = saldo;
+		this.saldo = saldo;
 	}
-	public String getIBAN() {
-		return IBAN;
+
+	public String getIban() {
+		return iban;
 	}
-	public void setIBAN(String iBAN) {
-		IBAN = iBAN;
+
+	public void setIban(String iban) {
+		this.iban = iban;
 	}
-	public String getIBAN1() {
-		return IBAN1;
+
+	public String getIban1() {
+		return iban1;
 	}
-	public void setIBAN1(String iBAN1) {
-		IBAN1 = iBAN1;
+
+	public void setIban1(String iban1) {
+		this.iban1 = iban1;
 	}
-	
+
+	public CuentaReferencia getId1() {
+		return id1;
+	}
+
+	public void setId1(CuentaReferencia id1) {
+		this.id1 = id1;
+	}
+
+	public PooledAccount getId2() {
+		return id2;
+	}
+
+	public void setId2(PooledAccount id2) {
+		this.id2 = id2;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(IBAN, IBAN1);
+		return Objects.hash(id1, id2);
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -58,13 +79,16 @@ public class DepositadaEn implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		DEPOSITADA_EN other = (DEPOSITADA_EN) obj;
-		return Objects.equals(IBAN, other.IBAN) && Objects.equals(IBAN1, other.IBAN1);
+		DepositadaEn other = (DepositadaEn) obj;
+		return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
 	}
-	
+
 	@Override
 	public String toString() {
-		return "DEPOSITADA_EN [Saldo=" + Saldo + ", IBAN=" + IBAN + ", IBAN1=" + IBAN1 + "]";
+		return "DepositadaEn [saldo=" + saldo + ", iban=" + iban + ", iban1=" + iban1 + ", id1=" + id1 + ", id2=" + id2
+				+ "]";
 	}
+	
+	
 	
 }

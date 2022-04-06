@@ -1,6 +1,7 @@
 package uma.wow.proyecto;
 
 import java.util.Date;
+import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,77 +10,84 @@ import javax.persistence.ManyToOne;
 @Entity
 public class CuentaReferencia extends Cuenta {
 
-	private String NombreBanco;
+	private String nombreBanco;
 	@Column (nullable = true)
-	private String Sucursal;
+	private String sucursal;
 	@Column (nullable = true)
-	private String Pais;
-	private double Saldo;
+	private String pais;
+	private double saldo;
 	@Column (nullable = true)
-	private Date fecha_apertura;
+	private Date fechaApertura;
 	@Column (nullable = true)
-	private String Estado;
+	private String estado;
 	
 	@ManyToOne
 	private Divisa abreviatura;
 	
-	public CuentaReferencia(String iBAN,String nombreBanco, double saldo) {
-		super(iBAN);
-		NombreBanco = nombreBanco;
-		Saldo = saldo;
-		Sucursal = null;
-		Pais = null;
-		fecha_apertura = null;
-		Estado = null;
-		
+	public CuentaReferencia(String iban,String nombreBanco, double saldo) {
+		super(iban);
+		this.nombreBanco = nombreBanco;
+		this.saldo = saldo;
+		this.sucursal = null;
+		this.pais = null;
+		this.fechaApertura = null;
+		this.estado = null;		
 	}
 
 	public String getNombreBanco() {
-		return NombreBanco;
+		return nombreBanco;
 	}
 
 	public void setNombreBanco(String nombreBanco) {
-		NombreBanco = nombreBanco;
+		this.nombreBanco = nombreBanco;
 	}
 
 	public String getSucursal() {
-		return Sucursal;
+		return sucursal;
 	}
 
 	public void setSucursal(String sucursal) {
-		Sucursal = sucursal;
+		this.sucursal = sucursal;
 	}
 
 	public String getPais() {
-		return Pais;
+		return pais;
 	}
 
 	public void setPais(String pais) {
-		Pais = pais;
+		this.pais = pais;
 	}
 
 	public double getSaldo() {
-		return Saldo;
+		return saldo;
 	}
 
 	public void setSaldo(double saldo) {
-		Saldo = saldo;
+		this.saldo = saldo;
 	}
 
-	public Date getFecha_apertura() {
-		return fecha_apertura;
+	public Date getFechaApertura() {
+		return fechaApertura;
 	}
 
-	public void setFecha_apertura(Date fecha_apertura) {
-		this.fecha_apertura = fecha_apertura;
+	public void setFechaApertura(Date fechaApertura) {
+		this.fechaApertura = fechaApertura;
 	}
 
 	public String getEstado() {
-		return Estado;
+		return estado;
 	}
 
 	public void setEstado(String estado) {
-		Estado = estado;
+		this.estado = estado;
+	}
+
+	public Divisa getAbreviatura() {
+		return abreviatura;
+	}
+
+	public void setAbreviatura(Divisa abreviatura) {
+		this.abreviatura = abreviatura;
 	}
 
 	@Override
@@ -89,31 +97,15 @@ public class CuentaReferencia extends Cuenta {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cuenta_Referencia other = (Cuenta_Referencia) obj;
-		if (NombreBanco == null) {
-			if (other.NombreBanco != null)
-				return false;
-		} else if (!NombreBanco.equals(other.NombreBanco))
-			return false;
-		if (Double.doubleToLongBits(Saldo) != Double.doubleToLongBits(other.Saldo))
-			return false;
-		return true;
+		return super.equals(obj);
 	}
 
 	@Override
 	public String toString() {
-		return super.toString()+" Cuenta_Referencia [NombreBanco=" + NombreBanco + ", Sucursal=" + Sucursal + ", Pais=" + Pais
-				+ ", Saldo=" + Saldo + ", fecha_apertura=" + fecha_apertura + ", Estado=" + Estado + "]";
+		return "CuentaReferencia [nombreBanco=" + nombreBanco + ", sucursal=" + sucursal + ", pais=" + pais + ", saldo="
+				+ saldo + ", fechaApertura=" + fechaApertura + ", estado=" + estado + ", abreviatura=" + abreviatura
+				+ "]";
 	}
-	
-	
-	
 	
 
 }

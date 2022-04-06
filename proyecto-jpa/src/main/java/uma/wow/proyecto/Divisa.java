@@ -17,24 +17,13 @@ public class Divisa implements Serializable {
 	private double cambioEuro;
 	
 	@ManyToOne
-	private Transaccion id_unico;
+	private Transaccion idUnico;
 	
 	@ManyToOne
-	private Transaccion id_unico2;
+	private Transaccion idUnico2;
 
 	public Divisa() {
 		super();
-	}
-
-	@Override
-	public String toString() {
-		return "Divisa [abreviatura=" + abreviatura + ", nombre=" + nombre + ", simbolo=" + simbolo + ", cambioEuro="
-				+ cambioEuro + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(abreviatura);
 	}
 
 	public Divisa(String abreviatura, String nombre, double cambioEuro) {
@@ -43,7 +32,12 @@ public class Divisa implements Serializable {
 		this.nombre = nombre;
 		this.cambioEuro = cambioEuro;
 		this.simbolo = null;
-
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(abreviatura);
 	}
 
 	@Override
@@ -55,13 +49,11 @@ public class Divisa implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Divisa other = (Divisa) obj;
-		if (abreviatura == null) {
-			if (other.abreviatura != null)
-				return false;
-		} else if (!abreviatura.equals(other.abreviatura))
-			return false;
-		return true;
+		return Objects.equals(abreviatura, other.abreviatura);
 	}
+	
+	
+	
 
 	public String getAbreviatura() {
 		return abreviatura;

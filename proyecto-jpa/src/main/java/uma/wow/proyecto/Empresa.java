@@ -9,28 +9,41 @@ import javax.persistence.*;
 
 @Entity
 public class Empresa extends Cliente implements Serializable{
-	private String Razon_Social;
+	private String razonSocial;
 
 	@OneToOne
 	private Cliente id1;
 	
-	public Empresa(String razon_Social) {
-		super();
-		Razon_Social = razon_Social;
+	public Empresa(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
+			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String razonSocial) {
+		super(id, identificacion, tipoCliente, estado, fechaAlta, direccion, ciudad, codigoPostal, pais, cuentas);
+		this.razonSocial = razonSocial;
 	}
 
 	public String getRazon_Social() {
-		return Razon_Social;
+		return razonSocial;
 	}
 
-	public void setRazon_Social(String razon_Social) {
-		Razon_Social = razon_Social;
+	public void setRazon_Social(String razonSocial) {
+		this.razonSocial = razonSocial;
 	}
 
 	@Override
 	public String toString() {
-		return "EMPRESA [Razon_Social=" + Razon_Social + "]";
+		return "Empresa [razonSocial=" + razonSocial + "]";
 	}
 	
+	
+	
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
 	
 }

@@ -10,21 +10,11 @@ import javax.persistence.*;
 @Entity
 public class Autorizacion implements Serializable{
 	private String tipo;
-	private String ID;
-	private String ID1;
+	@Id 
+	private String id;
+	@Id
+	private String id1;
 	
-	@ManyToOne
-	private EMPRESA id1;
-	
-	@ManyToOne
-	private Persona_autorizada id2;
-	
-	public Autorizacion(String tipo, String iD, String iD1) {
-		super();
-		this.tipo = tipo;
-		ID = iD;
-		ID1 = iD1;
-	}
 	
 	public String getTipo() {
 		return tipo;
@@ -32,29 +22,32 @@ public class Autorizacion implements Serializable{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public String getID() {
-		return ID;
+	public String getId() {
+		return id;
 	}
-	public void setID(String iD) {
-		ID = iD;
+	public void setId(String id) {
+		this.id = id;
 	}
-	public String getID1() {
-		return ID1;
+	public String getId1() {
+		return id1;
 	}
-	public void setID1(String iD1) {
-		ID1 = iD1;
+	public void setId1(String id1) {
+		this.id1 = id1;
 	}
 	
-	@Override
-	public String toString() {
-		return "Autorizacion [tipo=" + tipo + ", ID=" + ID + ", ID1=" + ID1 + "]";
+	
+	public Autorizacion(String tipo, String id, String id1) {
+		super();
+		this.tipo = tipo;
+		this.id = id;
+		this.id1 = id1;
 	}
+	
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(ID, ID1);
+		return Objects.hash(id, id1);
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -64,7 +57,15 @@ public class Autorizacion implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Autorizacion other = (Autorizacion) obj;
-		return Objects.equals(ID, other.ID) && Objects.equals(ID1, other.ID1);
+		return Objects.equals(id, other.id) && Objects.equals(id1, other.id1);
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "Autorizacion [tipo=" + tipo + ", id=" + id + ", id1=" + id1 + "]";
+	}
+	
+	
 	
 }
