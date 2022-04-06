@@ -25,6 +25,10 @@ public class DepositadaEn implements Serializable{
 		this.iban = iban;
 		this.iban1 = iban1;
 	}
+	
+	public DepositadaEn() {
+		
+	}
 
 	public float getSaldo() {
 		return saldo;

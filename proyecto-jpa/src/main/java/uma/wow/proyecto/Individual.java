@@ -24,6 +24,10 @@ public class Individual extends Cliente implements Serializable  {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
+	public Individual() {
+		
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

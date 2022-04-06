@@ -9,17 +9,19 @@ import javax.persistence.*;
 
 @Entity
 public class Autorizacion implements Serializable{
-	private String tipo;
-	@Id 
-	private String id;
-	@Id
-	private String id1;
-
-	@ManyToOne
-	private Empresa id2;
 	
+	@Id
 	@ManyToOne
-	private PersonaAutorizada id3;
+	@JoinColumn
+	private Empresa id;
+	
+	@Id
+	@ManyToOne
+	@JoinColumn
+	private PersonaAutorizada idAutorizada;
+	
+	
+	private String tipo;
 	
 	
 	public String getTipo() {
@@ -28,31 +30,35 @@ public class Autorizacion implements Serializable{
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public String getId() {
+	
+	public Autorizacion() {
+		
+	}
+	
+	
+	public Empresa getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(Empresa id) {
 		this.id = id;
 	}
-	public String getId1() {
-		return id1;
+	public PersonaAutorizada getIdAutorizada() {
+		return idAutorizada;
 	}
-	public void setId1(String id1) {
-		this.id1 = id1;
+	public void setIdAutorizada(PersonaAutorizada id_autorizada) {
+		this.idAutorizada = id_autorizada;
 	}
-	
-	
-	public Autorizacion(String tipo, String id, String id1) {
+	public Autorizacion(String tipo, Empresa id, PersonaAutorizada id1) {
 		super();
 		this.tipo = tipo;
 		this.id = id;
-		this.id1 = id1;
+		this.idAutorizada = id1;
 	}
 	
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, id1);
+		return Objects.hash(id, idAutorizada);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -63,13 +69,13 @@ public class Autorizacion implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Autorizacion other = (Autorizacion) obj;
-		return Objects.equals(id, other.id) && Objects.equals(id1, other.id1);
+		return Objects.equals(id, other.id) && Objects.equals(idAutorizada, other.idAutorizada);
 	}
 	
 	
 	@Override
 	public String toString() {
-		return "Autorizacion [tipo=" + tipo + ", id=" + id + ", id1=" + id1 + "]";
+		return "Autorizacion [tipo=" + tipo + ", id=" + id + ", id1=" + idAutorizada + "]";
 	}
 	
 	

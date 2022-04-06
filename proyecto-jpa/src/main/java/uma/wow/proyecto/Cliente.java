@@ -44,6 +44,10 @@ public class Cliente implements Serializable{
 		this.cuentas = cuentas;
 	}
 	
+	public Cliente() {
+		
+	}
+	
 	public String getId() {
 		return id;
 	}

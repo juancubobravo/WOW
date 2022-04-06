@@ -1,11 +1,13 @@
 package uma.wow.proyecto;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class PooledAccount extends CuentaFintech {
+public class PooledAccount extends CuentaFintech implements Serializable {
 
 	@OneToOne
 	private String iban1;
@@ -13,6 +15,10 @@ public class PooledAccount extends CuentaFintech {
 
 	public PooledAccount(String iban) {
 		super(iban);
+	}
+	
+	public PooledAccount() {
+		
 	}
 
 	@Override

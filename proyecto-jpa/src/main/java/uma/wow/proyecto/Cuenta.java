@@ -22,6 +22,10 @@ public class Cuenta implements Serializable{
 		this.iban = iban;
 		swift = null;
 	}
+	
+	public Cuenta() {
+		
+	}
 
 
 	public String getIban() {

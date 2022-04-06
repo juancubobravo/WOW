@@ -14,7 +14,7 @@ import javax.persistence.Id;
 public class PersonaAutorizada implements Serializable{
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
-	private String id;
+	private String idAutorizada;
 	@Column (unique = true)
 	private String identificacion;
 	private String nombre;
@@ -31,7 +31,7 @@ public class PersonaAutorizada implements Serializable{
 	
 	public PersonaAutorizada(String id, String identificacion, String nombre, String apellidos, String direccion) {
 		super();
-		this.id = id;
+		idAutorizada = id;
 		this.identificacion = identificacion;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
@@ -40,13 +40,17 @@ public class PersonaAutorizada implements Serializable{
 		fechaInicio = null;
 		fechaFin = null;
 	}
+	
+	public PersonaAutorizada() {
+		
+	}
 
 	public String getId() {
-		return id;
+		return idAutorizada;
 	}
 
 	public void setId(String id) {
-		this.id = id;
+		this.idAutorizada = id;
 	}
 
 	public String getIdentificacion() {
@@ -115,7 +119,7 @@ public class PersonaAutorizada implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(idAutorizada);
 	}
 
 	@Override
@@ -127,12 +131,12 @@ public class PersonaAutorizada implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		PersonaAutorizada other = (PersonaAutorizada) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(idAutorizada, other.idAutorizada);
 	}
 
 	@Override
 	public String toString() {
-		return "PersonaAutorizada [id=" + id + ", identificacion=" + identificacion + ", nombre=" + nombre
+		return "PersonaAutorizada [id=" + idAutorizada + ", identificacion=" + identificacion + ", nombre=" + nombre
 				+ ", apellidos=" + apellidos + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento
 				+ ", estado=" + estado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}

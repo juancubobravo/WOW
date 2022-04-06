@@ -33,6 +33,10 @@ public class CuentaReferencia extends Cuenta {
 		this.fechaApertura = null;
 		this.estado = null;		
 	}
+	
+	public CuentaReferencia() {
+		
+	}
 
 	public String getNombreBanco() {
 		return nombreBanco;

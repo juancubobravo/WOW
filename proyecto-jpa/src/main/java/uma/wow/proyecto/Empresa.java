@@ -17,6 +17,10 @@ public class Empresa extends Cliente implements Serializable{
 		super(id, identificacion, tipoCliente, estado, fechaAlta, direccion, ciudad, codigoPostal, pais, cuentas);
 		this.razonSocial = razonSocial;
 	}
+	
+	public Empresa() {
+		super();
+	}
 
 	public String getRazon_Social() {
 		return razonSocial;

@@ -1,11 +1,13 @@
 package uma.wow.proyecto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Segregada extends CuentaFintech {
+public class Segregada extends CuentaFintech implements Serializable{
 
 	@Column (nullable = true)
 	private String comision;
@@ -26,6 +28,10 @@ public class Segregada extends CuentaFintech {
 
 	public Segregada(String iban) {
 		super(iban);
+	}
+	
+	public Segregada() {
+		
 	}
 	
 	@Override

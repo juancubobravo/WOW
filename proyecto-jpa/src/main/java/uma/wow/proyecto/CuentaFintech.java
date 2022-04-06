@@ -1,30 +1,41 @@
 package uma.wow.proyecto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 
 @Entity
-public class CuentaFintech extends Cuenta {
+public class CuentaFintech extends Cuenta implements Serializable {
 
 	private String estado;
+	
+	
+	@Temporal(TemporalType.DATE)
 	private  Date fechaApertura;
+	
 	@Column (nullable = true)
+	@Temporal(TemporalType.DATE)
 	private Date fechaCierre;
 	@Column (nullable = true)
 	private String clasificacion;
+	
+	@ManyToOne
+	@JoinColumn(name = "CUENTA_FINTECH_CLIENTE", nullable = false)
+	private Cliente cliente;
 	
 	
 	public CuentaFintech(String iban) {
 		super(iban);
 		fechaCierre = null;
 		clasificacion = null;
+	}
+	
+	public CuentaFintech() {
+		
 	}
 
 
