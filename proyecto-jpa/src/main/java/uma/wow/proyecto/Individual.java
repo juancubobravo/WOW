@@ -11,7 +11,9 @@ import javax.persistence.*;
 @DiscriminatorValue(value="Individual")
 public class Individual extends Cliente implements Serializable  {
 	private static final long serialVersionUID = 1L;
+	@Column(nullable = false)
 	private String nombre;
+	@Column(nullable = false)
 	private String apellido;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)

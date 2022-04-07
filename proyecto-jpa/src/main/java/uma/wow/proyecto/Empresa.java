@@ -11,8 +11,8 @@ import javax.persistence.*;
 @DiscriminatorValue(value="Empresa")
 public class Empresa extends Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
+	@Column(nullable = false)
 	private String razonSocial;
-
 	
 	public Empresa(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
 			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String razonSocial) {

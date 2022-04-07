@@ -15,10 +15,13 @@ public class PersonaAutorizada implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private String idAutorizada;
-	@Column (unique = true)
+	@Column (unique = true, nullable = false)
 	private String identificacion;
+	@Column(nullable = false)
 	private String nombre;
+	@Column(nullable = false)
 	private String apellidos;
+	@Column(nullable = false)
 	private String direccion;
 	@Column (nullable = true)
 	private Date fechaNacimiento;

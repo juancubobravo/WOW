@@ -11,9 +11,11 @@ public class Divisa implements Serializable {
 	@Id
 	@GeneratedValue
 	private String abreviatura;
+	@Column(nullable = false)
 	private String nombre;
 	@Column (nullable = true)
 	private String simbolo;
+	@Column(nullable = false)
 	private double cambioEuro;
 	
 	@ManyToOne

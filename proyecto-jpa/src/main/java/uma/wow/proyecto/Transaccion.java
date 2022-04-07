@@ -13,13 +13,17 @@ public class Transaccion implements Serializable {
 	@Id
 	@GeneratedValue
 	private String idUnico;
-	@Column @Temporal(TemporalType.DATE)
+	@Column (nullable = false) @Temporal(TemporalType.DATE)
 	private Date fechaInstruccion;
+	@Column (nullable = false)
 	private double cantidad;
 	@Column (nullable = true) @Temporal(TemporalType.DATE) 
 	private Date fechaEjecucion;
+	@Column (nullable = false)
 	private String tipo;
+	@Column (nullable = true)
 	private String comision;
+	@Column (nullable = true)
 	private String internacional;
 	
 	@ManyToOne
