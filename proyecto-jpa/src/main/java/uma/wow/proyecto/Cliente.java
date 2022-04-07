@@ -8,11 +8,13 @@ import java.util.Objects;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn (name="Tipo", discriminatorType = DiscriminatorType.STRING)
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private String id;
-	@Column (unique=true)
+	@Column (unique=true, nullable = false)
 	private String identificacion;
 	private String tipoCliente;
 	private String estado;
