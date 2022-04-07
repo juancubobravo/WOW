@@ -2,13 +2,13 @@ package uma.wow.proyecto;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
 public class PooledAccount extends CuentaFintech implements Serializable {
-
+	private static final long serialVersionUID = 1L;
 	@OneToOne
 	private String iban1;
 

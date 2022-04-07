@@ -3,12 +3,13 @@ package uma.wow.proyecto;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
+
 
 import javax.persistence.*;
 
 @Entity
 public class Empresa extends Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String razonSocial;
 
 	

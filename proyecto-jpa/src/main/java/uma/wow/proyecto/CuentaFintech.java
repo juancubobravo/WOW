@@ -2,8 +2,7 @@ package uma.wow.proyecto;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+
 
 import javax.persistence.*;
 
@@ -11,6 +10,7 @@ import javax.persistence.*;
 @Entity
 public class CuentaFintech extends Cuenta implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private String estado;
 	
 	

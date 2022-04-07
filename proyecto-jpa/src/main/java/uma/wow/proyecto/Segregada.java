@@ -8,7 +8,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Segregada extends CuentaFintech implements Serializable{
-
+	
+	private static final long serialVersionUID = 1L;
 	@Column (nullable = true)
 	private String comision;
 	

@@ -3,12 +3,13 @@ package uma.wow.proyecto;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
+
 
 import javax.persistence.*;
 
 @Entity
 public class Individual extends Cliente implements Serializable  {
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String apellido;
 	@Column (nullable=true)
@@ -43,7 +44,7 @@ public class Individual extends Cliente implements Serializable  {
 	public java.util.Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFecha_nacimiento(java.util.Date fecha_nacimiento) {
+	public void setFecha_nacimiento(java.util.Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	

@@ -1,14 +1,13 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.*;
 
 @Entity
 public class DepositadaEn implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private float saldo;
 	private String iban;
 	private String iban1;

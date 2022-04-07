@@ -1,7 +1,6 @@
 package uma.wow.proyecto;
 
 import java.util.Date;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +8,8 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class CuentaReferencia extends Cuenta {
-
+	
+	private static final long serialVersionUID = 1L;
 	private String nombreBanco;
 	@Column (nullable = true)
 	private String sucursal;
