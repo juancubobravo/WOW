@@ -16,16 +16,23 @@ public class Cliente implements Serializable{
 	private String id;
 	@Column (unique=true, nullable = false)
 	private String identificacion;
+	@Column(nullable = false)
 	private String tipoCliente;
+	@Column(nullable = false)
 	private String estado;
 	@Temporal (TemporalType.DATE)
+	@Column(nullable = false)
 	private java.util.Date fechaAlta;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
 	private java.util.Date fechaBaja;
+	@Column(nullable = false)
 	private String direccion;
+	@Column(nullable = false)
 	private String ciudad;
+	@Column(nullable = false)
 	private String codigoPostal;
+	@Column(nullable = false)
 	private String pais;
 	
 	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)

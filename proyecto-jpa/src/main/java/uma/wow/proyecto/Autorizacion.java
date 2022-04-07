@@ -20,7 +20,7 @@ public class Autorizacion implements Serializable{
 	@JoinColumn
 	private PersonaAutorizada idAutorizada;
 	
-	
+	@Column(nullable = false)
 	private String tipo;
 	
 	

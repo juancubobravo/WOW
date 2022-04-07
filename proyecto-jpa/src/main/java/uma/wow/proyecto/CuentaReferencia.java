@@ -12,11 +12,13 @@ import javax.persistence.ManyToOne;
 public class CuentaReferencia extends Cuenta {
 	
 	private static final long serialVersionUID = 1L;
+	@Column(nullable = false)
 	private String nombreBanco;
 	@Column (nullable = true)
 	private String sucursal;
 	@Column (nullable = true)
 	private String pais;
+	@Column(nullable = false)
 	private double saldo;
 	@Column (nullable = true)
 	private Date fechaApertura;

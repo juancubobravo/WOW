@@ -13,10 +13,12 @@ import javax.persistence.*;
 public class CuentaFintech extends Cuenta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@Column(nullable = false)
 	private String estado;
 	
 	
 	@Temporal(TemporalType.DATE)
+	@Column(nullable = false)
 	private  Date fechaApertura;
 	
 	@Column (nullable = true)
