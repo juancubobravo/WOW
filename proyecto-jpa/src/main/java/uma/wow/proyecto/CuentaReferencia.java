@@ -3,10 +3,12 @@ package uma.wow.proyecto;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
+@DiscriminatorValue(value="Referencia")
 public class CuentaReferencia extends Cuenta {
 	
 	private static final long serialVersionUID = 1L;

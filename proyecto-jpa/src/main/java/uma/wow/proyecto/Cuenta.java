@@ -6,8 +6,13 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn (name="TipoCuenta", discriminatorType = DiscriminatorType.STRING)
+
 public class Cuenta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
