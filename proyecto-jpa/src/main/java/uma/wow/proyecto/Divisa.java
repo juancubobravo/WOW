@@ -89,6 +89,12 @@ public class Divisa implements Serializable {
 		this.cambioEuro = cambioEuro;
 	}
 
+	@Override
+	public String toString() {
+		return "Divisa [abreviatura=" + abreviatura + ", nombre=" + nombre + ", simbolo=" + simbolo + ", cambioEuro="
+				+ cambioEuro + "]";
+	}
+
 	
 
 }

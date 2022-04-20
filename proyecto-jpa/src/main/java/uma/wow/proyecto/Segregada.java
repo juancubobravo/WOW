@@ -29,6 +29,22 @@ public class Segregada extends CuentaFintech implements Serializable{
 	}
 
 
+	public CuentaReferencia getIban() {
+		return this.iban;
+	}
+
+
+	public void setIban(CuentaReferencia iban) {
+		this.iban = iban;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Segregada [comision=" + comision + "]";
+	}
+
+
 	public Segregada(String iban) {
 		super(iban);
 	}

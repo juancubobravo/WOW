@@ -83,6 +83,14 @@ public class CuentaFintech extends Cuenta implements Serializable {
 	}
 
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();
@@ -92,6 +100,12 @@ public class CuentaFintech extends Cuenta implements Serializable {
 	@Override
 	public boolean equals(Object obj) {
 		return super.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+		return "CuentaFintech [estado=" + estado + ", fechaApertura=" + fechaApertura + ", fechaCierre=" + fechaCierre
+				+ ", clasificacion=" + clasificacion + ", getIban()=" + getIban() + ", getSwift()=" + getSwift() + "]";
 	}
 
 	

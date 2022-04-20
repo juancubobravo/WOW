@@ -63,5 +63,10 @@ public class Individual extends Cliente implements Serializable  {
 	public boolean equals(Object obj) {
 		return super.equals(obj);
 	}
+
+	@Override
+	public String toString() {
+		return "Individual [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + "]";
+	}
 	
 }
