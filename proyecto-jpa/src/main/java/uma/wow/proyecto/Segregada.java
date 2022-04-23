@@ -28,11 +28,12 @@ public class Segregada extends CuentaFintech implements Serializable{
 		this.comision = comision;
 	}
 
-
+	//Sale error por algún motivo
+	/*
 	public CuentaReferencia getIban() {
-		return this.iban;
+		return iban;
 	}
-
+	*/
 
 	public void setIban(CuentaReferencia iban) {
 		this.iban = iban;

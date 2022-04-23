@@ -2,10 +2,7 @@ package uma.wow.proyecto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(value="Referencia")
@@ -28,6 +25,7 @@ public class CuentaReferencia extends Cuenta {
 	@ManyToOne
 	private Divisa abreviatura;
 	
+	
 	public CuentaReferencia(String iban,String nombreBanco, double saldo) {
 		super(iban);
 		this.nombreBanco = nombreBanco;
@@ -41,6 +39,8 @@ public class CuentaReferencia extends Cuenta {
 	public CuentaReferencia() {
 		
 	}
+	
+
 
 	public String getNombreBanco() {
 		return nombreBanco;
