@@ -2,14 +2,10 @@ package uma.wow.proyecto;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
 @Entity
 public class PersonaAutorizada implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -32,6 +28,14 @@ public class PersonaAutorizada implements Serializable{
 	@Column (nullable = true)
 	private Date fechaFin;
 	
+	@OneToMany(mappedBy="personaAutorizada")
+	private List<Autorizacion> autori;
+	
+	@OneToOne(mappedBy = "personaAutorizada")
+	@JoinColumn(nullable = false)
+	private Usuario usuario;
+	
+	
 	public PersonaAutorizada(String id, String identificacion, String nombre, String apellidos, String direccion) {
 		super();
 		idAutorizada = id;
@@ -46,6 +50,14 @@ public class PersonaAutorizada implements Serializable{
 	
 	public PersonaAutorizada() {
 		
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getId() {

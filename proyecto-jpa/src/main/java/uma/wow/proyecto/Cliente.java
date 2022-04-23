@@ -34,6 +34,10 @@ public class Cliente implements Serializable{
 	private String codigoPostal;
 	@Column(nullable = false)
 	private String pais;
+	@OneToOne(mappedBy = "cliente")
+	@JoinColumn(nullable = false)
+	private Usuario usuario;
+	
 	
 	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)
 	private List<CuentaFintech> cuentas;
@@ -56,6 +60,14 @@ public class Cliente implements Serializable{
 	
 	public Cliente() {
 		
+	}
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	public String getId() {

@@ -10,14 +10,14 @@ public class Autorizacion implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
-	@Id
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(nullable = false)
+	@MapsId("empresaId")
 	private Empresa id;
 	
-	@Id
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn( nullable = false)
+	@MapsId("personaAutorizadaId")
 	private PersonaAutorizada idAutorizada;
 	
 	@Column(nullable = false)
