@@ -1,26 +1,30 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @DiscriminatorValue(value="Pooled")
 
 public class PooledAccount extends CuentaFintech implements Serializable {
 	private static final long serialVersionUID = 1L;
-	@OneToOne
-	private String iban1;
+	
+	@OneToMany(mappedBy="pooledAccount")
+	private List<DepositadaEn> depositaEn;
 
-
-	public PooledAccount(String iban) {
-		super(iban);
-	}
 	
 	public PooledAccount() {
 		
+	}
+
+	public List<DepositadaEn> getDepositaEn() {
+		return depositaEn;
+	}
+
+	public void setDepositaEn(List<DepositadaEn> depositaEn) {
+		this.depositaEn = depositaEn;
 	}
 
 	@Override
@@ -35,7 +39,7 @@ public class PooledAccount extends CuentaFintech implements Serializable {
 
 	@Override
 	public String toString() {
-		return "PooledAccount [iban1=" + iban1 + "]";
+		return "PooledAccount []";
 	}
 	
 }

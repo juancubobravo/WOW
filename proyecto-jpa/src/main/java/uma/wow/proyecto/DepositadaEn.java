@@ -8,13 +8,23 @@ import javax.persistence.*;
 @Entity
 public class DepositadaEn implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
 	@Column(nullable = false)
 	private float saldo;
 	
+	@MapsId
+	@EmbeddedId
+	private DepositaEnPK id;
+	
+
 	@ManyToOne
+	@JoinColumn(name="CUENTA_REFERENCIA_IBAN", nullable = false)
+	@MapsId("cuentaReferenciaIban")
 	private CuentaReferencia id1;
 	
 	@ManyToOne
+	@JoinColumn(name="POOLED_ACCOUNT_IBAN", nullable = false)
+	@MapsId("pooledAccountIban")
 	private PooledAccount id2;
 	
 	public DepositadaEn(float saldo) {
@@ -24,6 +34,14 @@ public class DepositadaEn implements Serializable{
 	
 	public DepositadaEn() {
 		
+	}
+	
+	public DepositaEnPK getId() {
+		return id;
+	}
+
+	public void setId(DepositaEnPK id) {
+		this.id = id;
 	}
 
 	public float getSaldo() {
