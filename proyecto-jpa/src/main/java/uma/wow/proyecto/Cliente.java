@@ -39,24 +39,8 @@ public class Cliente implements Serializable{
 	private Usuario usuario;
 	
 	
-	@OneToMany (fetch = FetchType.LAZY, orphanRemoval=true,cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy="cliente")
 	private List<CuentaFintech> cuentas;
-
-	public Cliente(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
-			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas) {
-		super();
-		this.id = id;
-		this.identificacion = identificacion;
-		this.tipoCliente = tipoCliente;
-		this.estado = estado;
-		this.fechaAlta = fechaAlta;
-		this.fechaBaja = null;
-		this.direccion = direccion;
-		this.ciudad = ciudad;
-		this.codigoPostal = codigoPostal;
-		this.pais = pais;
-		this.cuentas = cuentas;
-	}
 	
 	public Cliente() {
 		

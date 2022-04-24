@@ -19,15 +19,7 @@ public class Individual extends Cliente implements Serializable  {
 	@Temporal(TemporalType.DATE)
 	private java.util.Date fechaNacimiento;
 	
-	
-	public Individual(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
-			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String nombre, String apellido, Date fechaNacimiento) {
-		super(id, identificacion, tipoCliente, estado, fechaAlta, direccion, ciudad, codigoPostal, pais, cuentas);
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.fechaNacimiento = fechaNacimiento;
-	}
-	
+		
 	public Individual() {
 		
 	}

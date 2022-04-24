@@ -17,11 +17,6 @@ public class Empresa extends Cliente implements Serializable{
 	@OneToMany(mappedBy="empresa")
 	private List<Autorizacion> autori;
 	
-	public Empresa(String id, String identificacion, String tipoCliente, String estado, Date fechaAlta,
-			String direccion, String ciudad, String codigoPostal, String pais, List<CuentaFintech> cuentas, String razonSocial) {
-		super(id, identificacion, tipoCliente, estado, fechaAlta, direccion, ciudad, codigoPostal, pais, cuentas);
-		this.razonSocial = razonSocial;
-	}
 	
 	public Empresa() {
 		super();
