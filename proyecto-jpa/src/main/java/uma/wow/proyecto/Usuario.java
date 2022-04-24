@@ -21,7 +21,10 @@ public class Usuario {
 	@OneToOne
 	private Cliente cliente;
 
-
+	public Usuario() {
+		
+	}
+	
 	public String getNombreUsuario() {
 		return nombre;
 	}
@@ -36,21 +39,6 @@ public class Usuario {
 
 	public void setPassword(String contras) {
 		this.contras = contras;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(nombre);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
-	
-	@Override
-	public String toString() {
-		return "Usuario [nombre= " + nombre + ", tipo de usuario= "+tipo+"]";
 	}
 
 
@@ -76,6 +64,21 @@ public class Usuario {
 
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+	
+	@Override
+	public String toString() {
+		return "Usuario [nombre= " + nombre + ", tipo de usuario= "+tipo+"]";
 	}
 	
 }

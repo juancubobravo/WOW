@@ -28,15 +28,10 @@ public class CuentaFintech extends Cuenta implements Serializable {
 	private String clasificacion;
 	
 	@ManyToOne
-	@JoinColumn(name = "CUENTA_FINTECH_CLIENTE", nullable = false)
+	@JoinColumn(nullable = false)
 	private Cliente cliente;
 	
 	
-	public CuentaFintech(String iban) {
-		super(iban);
-		fechaCierre = null;
-		clasificacion = null;
-	}
 	
 	public CuentaFintech() {
 		

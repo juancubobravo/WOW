@@ -27,10 +27,7 @@ public class DepositadaEn implements Serializable{
 	@MapsId("pooledAccountIban")
 	private PooledAccount id2;
 	
-	public DepositadaEn(float saldo) {
-		super();
-		this.saldo = saldo;
-	}
+
 	
 	public DepositadaEn() {
 		

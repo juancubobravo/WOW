@@ -1,6 +1,7 @@
 package uma.wow.proyecto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -26,21 +27,13 @@ public class CuentaReferencia extends Cuenta {
 	private Divisa abreviatura;
 	
 	
-	public CuentaReferencia(String iban,String nombreBanco, double saldo) {
-		super(iban);
-		this.nombreBanco = nombreBanco;
-		this.saldo = saldo;
-		this.sucursal = null;
-		this.pais = null;
-		this.fechaApertura = null;
-		this.estado = null;		
-	}
+	@OneToMany(mappedBy="cuentaReferencia")
+	private List<DepositadaEn> depositadaEn;
 	
 	public CuentaReferencia() {
 		
 	}
 	
-
 
 	public String getNombreBanco() {
 		return nombreBanco;

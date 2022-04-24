@@ -36,18 +36,6 @@ public class PersonaAutorizada implements Serializable{
 	private Usuario usuario;
 	
 	
-	public PersonaAutorizada(String id, String identificacion, String nombre, String apellidos, String direccion) {
-		super();
-		idAutorizada = id;
-		this.identificacion = identificacion;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.direccion = direccion;
-		estado = null;
-		fechaInicio = null;
-		fechaFin = null;
-	}
-	
 	public PersonaAutorizada() {
 		
 	}

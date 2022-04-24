@@ -46,9 +46,6 @@ public class Segregada extends CuentaFintech implements Serializable{
 	}
 
 
-	public Segregada(String iban) {
-		super(iban);
-	}
 	
 	public Segregada() {
 		

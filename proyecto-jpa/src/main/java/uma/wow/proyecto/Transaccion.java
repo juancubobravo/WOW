@@ -27,10 +27,20 @@ public class Transaccion implements Serializable {
 	private String internacional;
 	
 	@ManyToOne
+	@Column (nullable = false)
 	private Cuenta iban;
 	
 	@ManyToOne
+	@Column (nullable = false)
 	private Cuenta iban1;
+	
+	@ManyToOne
+	@Column (nullable = false)
+	private Divisa divisa;
+	
+	@ManyToOne
+	@Column (nullable = false)
+	private Divisa divisa1;
 	
 
 	public Transaccion() {
@@ -44,18 +54,7 @@ public class Transaccion implements Serializable {
 				+ ", internacional=" + internacional + "]";
 	}
 
-	public Transaccion(String idUnico, Date fechaInstruccion, double cantidad, String tipo, String comision,
-			String internacional) {
-		super();
-		this.idUnico = idUnico;
-		this.fechaInstruccion = fechaInstruccion;
-		this.cantidad = cantidad;
-		this.tipo = tipo;
-		this.comision = comision;
-		this.internacional = internacional;
-		this.fechaEjecucion = null;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(idUnico);

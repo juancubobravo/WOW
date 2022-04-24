@@ -1,6 +1,7 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -21,22 +22,21 @@ public class Cuenta implements Serializable{
 	@Column (nullable = true)
 	private String swift;
 	
+
+	@OneToMany(mappedBy="iban")
+	private List<Transaccion> transaccion;
+
+	@OneToMany(mappedBy="iban1")
+	private List<Transaccion> transaccion1;
 	
-	public Cuenta(String iban) {
-		super();
-		this.iban = iban;
-		swift = null;
-	}
 	
 	public Cuenta() {
 		
 	}
 
-
 	public String getIban() {
 		return iban;
 	}
-
 
 	public void setIban(String iban) {
 		this.iban = iban;
@@ -47,17 +47,14 @@ public class Cuenta implements Serializable{
 		return swift;
 	}
 
-
 	public void setSwift(String swift) {
 		this.swift = swift;
 	}
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(iban);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -70,7 +67,6 @@ public class Cuenta implements Serializable{
 		Cuenta other = (Cuenta) obj;
 		return Objects.equals(iban, other.iban);
 	}
-
 
 	@Override
 	public String toString() {
