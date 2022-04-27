@@ -1,5 +1,5 @@
 package exceptions;
 
-public class UsuarioException {
+public class UsuarioException extends EJBException{
 
 }
