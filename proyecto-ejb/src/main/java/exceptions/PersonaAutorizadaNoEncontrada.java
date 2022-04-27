@@ -1,5 +1,5 @@
 package exceptions;
 
-public class PersonaAutorizadaNoEncontrada {
+public class PersonaAutorizadaNoEncontrada extends EJBException{
 
 }

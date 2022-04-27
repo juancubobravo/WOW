@@ -1,5 +1,5 @@
 package exceptions;
 
-public class CuentasActivas {
+public class CuentasActivas extends EJBException{
 
 }
