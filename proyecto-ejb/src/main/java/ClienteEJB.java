@@ -120,15 +120,20 @@ public class ClienteEJB implements GestionCliente{
 
         boolean cuenta_activa = false;
 
-        for (CuentaFintech cuenta: listCuentas) {
-            if(cuenta.getEstado().equals("ACTIVO")){
-                cuenta_activa = true;
-            }
-        }
+        if(listCuentas!=null) {
+        	
+        	 for (CuentaFintech cuenta: listCuentas) {
+                 if(cuenta.getEstado().equals("ACTIVO")){
+                     cuenta_activa = true;
+                 }
+             }
 
-        if(cuenta_activa){
-            throw new CuentasActivas();
+             if(cuenta_activa){
+                 throw new CuentasActivas();
+             }
         }
+        
+       
 
         cliente.setEstado("BAJA");
 
@@ -147,15 +152,18 @@ public class ClienteEJB implements GestionCliente{
 
         boolean cuenta_activa = false;
 
-        for (CuentaFintech cuenta: listCuentas) {
-            if(cuenta.getEstado().equals("ACTIVO")){
-                cuenta_activa = true;
+        if(listCuentas!=null) {
+        	
+       	 for (CuentaFintech cuenta: listCuentas) {
+                if(cuenta.getEstado().equals("ACTIVO")){
+                    cuenta_activa = true;
+                }
             }
-        }
 
-        if(cuenta_activa){
-            throw new CuentasActivas();
-        }
+            if(cuenta_activa){
+                throw new CuentasActivas();
+            }
+       }
 
         cliente.setEstado("BAJA");
 
