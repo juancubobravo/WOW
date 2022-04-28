@@ -20,7 +20,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
-    //R6
+    //R6 y R15
     @Override
     public void anyadirPersonaAutorizada(PooledAccount c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
         acceso.loginAdministrador(user);
@@ -55,7 +55,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
         }
     }
     
-    //R6
+    //R6 y //R15
     @Override
     public void anyadirPersonaAutorizada(Segregada c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
         acceso.loginAdministrador(user);
