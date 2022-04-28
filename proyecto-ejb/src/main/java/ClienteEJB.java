@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import exceptions.ClienteNoEncontrado;
+import exceptions.ClienteYaExistente;
 import exceptions.ContraseniaInvalida;
 import exceptions.CuentasActivas;
 import exceptions.DatosException;
@@ -24,27 +25,27 @@ public class ClienteEJB implements GestionCliente{
 
     //R2
     @Override
-    public void altaCliente(Empresa cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado{
+    public void altaCliente(Empresa cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado, ClienteYaExistente{
     	
     	acceso.loginAdministrador(usuario);
 
         Empresa busc = em.find(Empresa.class, cliente.getId());
 
         if(busc != null){
-            throw new ClienteNoEncontrado();
+            throw new ClienteYaExistente();
         }
 
         em.persist(cliente);
     }
     
-    public void altaCliente(Individual cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado{
+    public void altaCliente(Individual cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado, ClienteYaExistente{
     	
     	acceso.loginAdministrador(usuario);
 
         Individual busc = em.find(Individual.class, cliente.getId());
 
         if(busc != null){
-            throw new ClienteNoEncontrado();
+            throw new ClienteYaExistente();
         }
 
         em.persist(cliente);
