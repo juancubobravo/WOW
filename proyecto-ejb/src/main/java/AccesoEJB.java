@@ -12,7 +12,7 @@ import exceptions.UsuarioNoEncontrado;
 @Stateless
 public class AccesoEJB implements GestionAcceso{
 
-	@PersistenceContext(name="WOWEJB")
+	@PersistenceContext(unitName="WOWEJB")
 	private EntityManager em;
 	
 	@Override

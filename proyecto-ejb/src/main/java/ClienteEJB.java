@@ -11,7 +11,7 @@ import uma.wow.proyecto.*;
 
 public class ClienteEJB implements GestionCliente{
 
-    @PersistenceContext(name="WOWEJB")
+    @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
     //R2

@@ -13,7 +13,7 @@ import java.util.logging.Logger;
 @Stateless
 public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
 
-    @PersistenceContext(name="WOWEJB")
+    @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
     //R6

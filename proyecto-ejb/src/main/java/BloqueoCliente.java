@@ -10,7 +10,7 @@ import java.util.List;
 
 public class BloqueoCliente implements GestionBloqueoCliente{
 
-    @PersistenceContext(name="WOWEJB")
+    @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
 

@@ -10,7 +10,7 @@ import java.util.List;
 @Stateless
 public class CuentaEJB implements GestionCuenta {
 
-    @PersistenceContext(name="WOWEJB")
+    @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
     // R5

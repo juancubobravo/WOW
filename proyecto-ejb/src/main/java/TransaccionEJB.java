@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 
 public class TransaccionEJB implements GestionTransaccion{
 
-    @PersistenceContext(name="Trazabilidad")
+    @PersistenceContext(unitName="WOWEJB")
     private EntityManager em;
 
     //R14
