@@ -30,9 +30,9 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
         }
 
         if(cliente.getTipoCliente().equals("EMPRESA")){
-            List<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getListAutorizaciones();
-            listaAutorizaciones.add(new Autorizacion(pers, (Empresa) cliente));
-            ((Empresa) cliente).setListAutorizaciones(listaAutorizaciones);
+            //List<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getListAutorizaciones();
+           // listaAutorizaciones.add(new Autorizacion(pers, (Empresa) cliente));
+           // ((Empresa) cliente).setListAutorizaciones(listaAutorizaciones);
         }
     }
 
@@ -54,7 +54,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             personaAutorizada.setEstado(nuevosDatos.getEstado());
             personaAutorizada.setFechaInicio(nuevosDatos.getFechaInicio());
             personaAutorizada.setFechaFin(nuevosDatos.getFechaFin());
-            personaAutorizada.setAutorizacionesPersona(nuevosDatos.getAutorizacionesPersona());
+          //  personaAutorizada.setAutorizacionesPersona(nuevosDatos.getAutorizacionesPersona());
             personaAutorizada.setUsuario(nuevosDatos.getUsuario());
         }
 
@@ -76,9 +76,9 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
         }
 
         if(cliente.getTipoCliente().equals("PERSONA_JURIDICA")){
-            Set<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getAutorizacionesEmpresa();
-            Autorizacion aux = new Autorizacion(pers, (Empresa) cliente);
-            if (listaAutorizaciones.contains(aux)) listaAutorizaciones.remove(aux);
+           // Set<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getAutorizacionesEmpresa();
+           // Autorizacion aux = new Autorizacion(pers, (Empresa) cliente);
+          //  if (listaAutorizaciones.contains(aux)) listaAutorizaciones.remove(aux);
         }
     }
 

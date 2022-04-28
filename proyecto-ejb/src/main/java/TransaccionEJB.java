@@ -1,9 +1,11 @@
 import exceptions.*;
 import uma.wow.proyecto.*;
 
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+@Stateless
 public class TransaccionEJB implements GestionTransaccion{
 
     @PersistenceContext(unitName="WOWEJB")
