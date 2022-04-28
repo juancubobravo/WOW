@@ -15,7 +15,8 @@ public interface GestionCliente {
 	public void modificaCliente(Individual cliente) throws ClienteNoEncontrado,DatosException;
 	*/
 
-	    public void altaCliente(Cliente cliente, Usuario usuario) throws UsuarioException;
+	    public void altaCliente(Empresa cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	    public void altaCliente(Individual cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	    public void modificaCliente(Cliente cliente) throws ClienteNoEncontrado, DatosException;
 	    public void bajaCliente(Cliente c) throws ClienteNoEncontrado, CuentasActivas;
 
