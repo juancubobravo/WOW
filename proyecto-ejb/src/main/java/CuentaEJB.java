@@ -107,7 +107,7 @@ public class CuentaEJB implements GestionCuenta {
     
 
     // R9
-    // TODO -- Revisar (¿a qué saldo se refiere el requisito?)
+    
     @Override
     public void cierraCuenta(String IBAN) throws SaldoException, CuentaNoEncontrada {
         CuentaReferencia cuenta = em.find(CuentaReferencia.class, IBAN);
