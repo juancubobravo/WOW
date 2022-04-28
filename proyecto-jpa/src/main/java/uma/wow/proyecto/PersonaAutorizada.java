@@ -21,7 +21,7 @@ public class PersonaAutorizada implements Serializable{
 	private String direccion;
 	@Column (nullable = true)
 	private Date fechaNacimiento;
-	@Column (nullable = true)
+	@Column (nullable = false)
 	private String estado;
 	@Column (nullable = true)
 	private Date fechaInicio;

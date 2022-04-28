@@ -84,14 +84,14 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
 
     //R7
     @Override
-    public void modificaPersonaAutorizada(PersonaAutorizada nuevosDatos) throws PersonaAutorizadaNoEncontrada {
-        PersonaAutorizada personaAutorizada = em.find(PersonaAutorizada.class, nuevosDatos.getId());
+    public void modificaPersonaAutorizada(PersonaAutorizada nuevosDatos, Usuario user) throws PersonaAutorizadaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+        acceso.loginAdministrador(user);
+    	PersonaAutorizada personaAutorizada = em.find(PersonaAutorizada.class, nuevosDatos.getId());
         if(personaAutorizada == null){
             throw new PersonaAutorizadaNoEncontrada();
         }
 
-        if(nuevosDatos.getIdentificacion() != null && nuevosDatos.getNombre() != null &&
-                nuevosDatos.getApellidos() != null && nuevosDatos.getDireccion() != null){
+
             personaAutorizada.setIdentificacion(nuevosDatos.getIdentificacion());
             personaAutorizada.setNombre(nuevosDatos.getNombre());
             personaAutorizada.setApellidos(nuevosDatos.getApellidos());
@@ -100,9 +100,8 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             personaAutorizada.setEstado(nuevosDatos.getEstado());
             personaAutorizada.setFechaInicio(nuevosDatos.getFechaInicio());
             personaAutorizada.setFechaFin(nuevosDatos.getFechaFin());
-          //  personaAutorizada.setAutorizacionesPersona(nuevosDatos.getAutorizacionesPersona());
+            personaAutorizada.setAutori(nuevosDatos.getAutori());
             personaAutorizada.setUsuario(nuevosDatos.getUsuario());
-        }
 
     }
 
@@ -110,22 +109,14 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
 
     // R8
     @Override
-    public void borraPersonaAutorizada(String IBAN, PersonaAutorizada pers) throws ClienteNoEncontrado, CuentaNoEncontrada {
-        CuentaFintech cuenta = em.find(CuentaFintech.class, IBAN);
-        if(cuenta == null){
-            throw new CuentaNoEncontrada();
-        }
+    public void borraPersonaAutorizada(PersonaAutorizada pers, Usuario user) throws PersonaAutorizadaNoEncontrada,UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    	acceso.loginAdministrador(user);
+    	PersonaAutorizada persona = em.find(PersonaAutorizada.class, pers.getId());
+    	if(persona == null) {
+    		throw new PersonaAutorizadaNoEncontrada();
+    	}
+    	persona.setEstado("BAJA");
 
-        Cliente cliente = cuenta.getCliente();
-        if(cliente == null){
-            throw new ClienteNoEncontrado();
-        }
-
-        if(cliente.getTipoCliente().equals("PERSONA_JURIDICA")){
-           // Set<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getAutorizacionesEmpresa();
-           // Autorizacion aux = new Autorizacion(pers, (Empresa) cliente);
-          //  if (listaAutorizaciones.contains(aux)) listaAutorizaciones.remove(aux);
-        }
     }
 
 }
