@@ -108,29 +108,59 @@ public class ClienteEJB implements GestionCliente{
 
     // R4
     @Override
-    public void bajaCliente(Cliente c) throws ClienteNoEncontrado, CuentasActivas{
-        Cliente cliente = em.find(Cliente.class, c.getId());
+    public void bajaCliente(Individual c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    	acceso.loginAdministrador(usuario);
+        Individual cliente = em.find(Individual.class, c.getId());
         if(cliente == null){
             throw new ClienteNoEncontrado();
         }
 
         List<CuentaFintech> listCuentas = cliente.getCuentas();
 
-        int ok = 0;
+        boolean cuenta_activa = false;
 
         for (CuentaFintech cuenta: listCuentas) {
             if(cuenta.getEstado().equals("ACTIVO")){
-                ok = 1;
+                cuenta_activa = true;
             }
         }
 
-        if(ok == 1){
+        if(cuenta_activa){
             throw new CuentasActivas();
         }
 
         cliente.setEstado("BAJA");
 
     }
+    
+    // R4
+    @Override
+    public void bajaCliente(Empresa c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    	acceso.loginAdministrador(usuario);
+        Empresa cliente = em.find(Empresa.class, c.getId());
+        if(cliente == null){
+            throw new ClienteNoEncontrado();
+        }
+
+        List<CuentaFintech> listCuentas = cliente.getCuentas();
+
+        boolean cuenta_activa = false;
+
+        for (CuentaFintech cuenta: listCuentas) {
+            if(cuenta.getEstado().equals("ACTIVO")){
+                cuenta_activa = true;
+            }
+        }
+
+        if(cuenta_activa){
+            throw new CuentasActivas();
+        }
+
+        cliente.setEstado("BAJA");
+
+    }
+    
+    
 
 
 }
