@@ -24,27 +24,27 @@ public class ClienteEJB implements GestionCliente{
 
     //R2
     @Override
-    public void altaCliente(Empresa cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    public void altaCliente(Empresa cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado{
     	
     	acceso.loginAdministrador(usuario);
 
         Empresa busc = em.find(Empresa.class, cliente.getId());
 
         if(busc != null){
-            throw new UsuarioException();
+            throw new ClienteNoEncontrado();
         }
 
         em.persist(cliente);
     }
     
-    public void altaCliente(Individual cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    public void altaCliente(Individual cliente, Usuario usuario) throws UsuarioException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, ClienteNoEncontrado{
     	
     	acceso.loginAdministrador(usuario);
 
         Individual busc = em.find(Individual.class, cliente.getId());
 
         if(busc != null){
-            throw new UsuarioException();
+            throw new ClienteNoEncontrado();
         }
 
         em.persist(cliente);

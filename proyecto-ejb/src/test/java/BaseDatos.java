@@ -35,6 +35,39 @@ public class BaseDatos {
 		
 		em.persist(administrador);
 		
+		Individual individual = new Individual();
+		individual.setIdentificacion("654987");
+		individual.setTipoCliente("FISICA");
+		individual.setEstado("ACTIVO");
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaBaja(null);
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
+		
+		em.persist(individual);
+		
+		/*
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("654987");
+		empresa.setTipoCliente("FISICA");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-03-14"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Avenida Correcaminos");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29001");
+		empresa.setPais("España");
+		empresa.setNombre("Jammal");
+		empresa.setApellido("Hasbullah");
+		empresa.setFecha_nacimiento(null);
+		
+		em.persist(individual);
+		*/
 		em.getTransaction().commit();
 		
 		em.close();

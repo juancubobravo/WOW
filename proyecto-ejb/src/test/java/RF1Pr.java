@@ -32,8 +32,8 @@ public class RF1Pr {
 	public void testComprobarAdministradorCorrecto() throws NoAdministradorException{
 		
 		Usuario u1 = new Usuario();
-		u1.setNombreUsuario("Maria");
-		u1.setPassword("34562");
+		u1.setNombreUsuario("Alvaro");
+		u1.setPassword("perro");
 		u1.setTipo("ADMIN");
 		
 		try {
@@ -49,13 +49,14 @@ public class RF1Pr {
 	@Test
 	public void testComprobarAdministradorIncorrecto() throws NoAdministradorException{
 		
-		Usuario u1 = new Usuario();
-		u1.setNombreUsuario("Maria");
-		u1.setPassword("34562");
-		u1.setTipo("Normal");
+		Usuario u2 = new Usuario ();
+		u2.setNombreUsuario("Carlos");
+		u2.setPassword("1234");
+		u2.setTipo("NORMAL");
+		
 		
 		try {
-			gestionAcceso.loginAdministrador(u1);
+			gestionAcceso.loginAdministrador(u2);
 		}catch(NoAdministradorException e) {
 			//OK
 		}catch(EJBException e) {
