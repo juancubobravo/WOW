@@ -22,30 +22,34 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
 
     //R6
     @Override
-    public void anyadirPersonaAutorizada(PooledAccount c, PersonaAutorizada pers, Usuario user) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    public void anyadirPersonaAutorizada(PooledAccount c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
         acceso.loginAdministrador(user);
     	PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
         }
 
-        Cliente cliente = cuenta.getCliente();
+        Cliente cl = cuenta.getCliente();
+        Empresa cliente = em.find(Empresa.class, cl.getId()); 
         if(cliente == null){
             throw new ClienteNoEncontrado();
         }
 
         if(cliente.getTipoCliente().equals("EMPRESA")){
-            List<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getAutori();
+            List<Autorizacion> listaAutorizaciones = cliente.getAutori();
             Autorizacion auto = new Autorizacion();
-            auto.setEmpresa((Empresa)cliente);
+            auto.setEmpresa(cliente);
             auto.setIdAutorizada(pers);
             AutorizacionPK pk = new AutorizacionPK();
             pk.setEmpresaId(cliente.getId());
             pk.setPersonaAutorizadaId(pers.getId());
             auto.setId(pk);
-            auto.setTipo("");
+            auto.setTipo(tipo);
             listaAutorizaciones.add(auto);
-            ((Empresa) cliente).setAutori(listaAutorizaciones);
+            cliente.setAutori(listaAutorizaciones);
+            em.persist(pk);
+            em.persist(auto);
+            
         } else {
         	throw new NoEsEmpresaException();
         }
@@ -53,30 +57,34 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     
     //R6
     @Override
-    public void anyadirPersonaAutorizada(Segregada c, PersonaAutorizada pers, Usuario user) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    public void anyadirPersonaAutorizada(Segregada c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
         acceso.loginAdministrador(user);
     	Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
         }
 
-        Cliente cliente = cuenta.getCliente();
+        Cliente cl = cuenta.getCliente();
+        Empresa cliente = em.find(Empresa.class, cl.getId()); 
         if(cliente == null){
             throw new ClienteNoEncontrado();
         }
 
         if(cliente.getTipoCliente().equals("EMPRESA")){
-            List<Autorizacion> listaAutorizaciones = ((Empresa) cliente).getAutori();
+            List<Autorizacion> listaAutorizaciones = cliente.getAutori();
             Autorizacion auto = new Autorizacion();
-            auto.setEmpresa((Empresa)cliente);
+            auto.setEmpresa(cliente);
             auto.setIdAutorizada(pers);
             AutorizacionPK pk = new AutorizacionPK();
             pk.setEmpresaId(cliente.getId());
             pk.setPersonaAutorizadaId(pers.getId());
             auto.setId(pk);
-            auto.setTipo("");
+            auto.setTipo(tipo);
             listaAutorizaciones.add(auto);
-            ((Empresa) cliente).setAutori(listaAutorizaciones);
+            cliente.setAutori(listaAutorizaciones);
+            em.persist(pk);
+            em.persist(auto);
+            
         } else {
         	throw new NoEsEmpresaException();
         }
