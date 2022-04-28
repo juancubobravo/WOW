@@ -53,14 +53,15 @@ public class ClienteEJB implements GestionCliente{
     //R3
   
     @Override
-    public void modificaCliente(Cliente cliente) throws ClienteNoEncontrado, DatosException{
-        Cliente oldCliente = em.find(Cliente.class, cliente);
+    public void modificaCliente(Empresa cliente,Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    	acceso.loginAdministrador(usuario);
+        Empresa oldCliente = em.find(Empresa.class, cliente.getId());
 
         if(oldCliente == null){
             throw new ClienteNoEncontrado();
         }
 
-        if(cliente.getIdentificacion() != null && cliente.getTipoCliente() != null){ // MIRAR LAS COMPROBACIONES
+    
             oldCliente.setIdentificacion(cliente.getIdentificacion());
             oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
             oldCliente.setEstado(cliente.getEstado());
@@ -72,10 +73,38 @@ public class ClienteEJB implements GestionCliente{
             oldCliente.setPais(cliente.getPais());
             oldCliente.setCuentas(cliente.getCuentas());
             oldCliente.setUsuario(cliente.getUsuario());
-        } else {
-            throw new DatosException();
-        }
+            oldCliente.setRazon_Social(cliente.getRazon_Social());
+           
+        
     }
+    
+    //R3
+	@Override
+	public void modificaCliente(Individual cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    	acceso.loginAdministrador(usuario);
+        Individual oldCliente = em.find(Individual.class, cliente.getId());
+
+        if(oldCliente == null){
+            throw new ClienteNoEncontrado();
+        }
+
+    
+            oldCliente.setIdentificacion(cliente.getIdentificacion());
+            oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
+            oldCliente.setEstado(cliente.getEstado());
+            oldCliente.setFechaAlta(cliente.getFechaAlta());
+            oldCliente.setFechaBaja(cliente.getFechaBaja());
+            oldCliente.setDireccion(cliente.getDireccion());
+            oldCliente.setCiudad(cliente.getCiudad());
+            oldCliente.setCodigoPostal(cliente.getCodigoPostal());
+            oldCliente.setPais(cliente.getPais());
+            oldCliente.setCuentas(cliente.getCuentas());
+            oldCliente.setUsuario(cliente.getUsuario());
+            oldCliente.setNombre(cliente.getNombre());
+            oldCliente.setApellido(cliente.getApellido());
+            oldCliente.setFecha_nacimiento(cliente.getFechaNacimiento());
+		
+	}
 
     // R4
     @Override
@@ -102,8 +131,6 @@ public class ClienteEJB implements GestionCliente{
         cliente.setEstado("BAJA");
 
     }
-
-
 
 
 }

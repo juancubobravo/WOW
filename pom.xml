@@ -43,7 +43,7 @@
       
     <module>proyecto-jpa</module>
     <module>proyecto-ejb</module>
-    <module>anotaciones</module>
+    
       
   </modules>
 </project>
