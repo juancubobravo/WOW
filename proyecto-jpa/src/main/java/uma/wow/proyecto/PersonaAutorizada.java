@@ -31,6 +31,14 @@ public class PersonaAutorizada implements Serializable{
 	@OneToMany(mappedBy="personaAutorizada")
 	private List<Autorizacion> autori;
 	
+	public List<Autorizacion> getAutori() {
+		return autori;
+	}
+
+	public void setAutori(List<Autorizacion> autori) {
+		this.autori = autori;
+	}
+
 	@OneToOne(mappedBy = "personaAutorizada")
 	@JoinColumn(nullable = false)
 	private Usuario usuario;

@@ -3,7 +3,7 @@ package uma.wow.proyecto;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -19,7 +19,7 @@ public class Empresa extends Cliente implements Serializable{
 	
 	
 	public Empresa() {
-		super();
+		
 	}
 
 	public String getRazon_Social() {
@@ -30,13 +30,18 @@ public class Empresa extends Cliente implements Serializable{
 		this.razonSocial = razonSocial;
 	}
 
+	public List<Autorizacion> getAutori() {
+		return autori;
+	}
+
+	public void setAutori(List<Autorizacion> autori) {
+		this.autori = autori;
+	}
+
 	@Override
 	public String toString() {
 		return "Empresa [razonSocial=" + razonSocial + "]";
 	}
-	
-	
-	
 	
 	@Override
 	public int hashCode() {
