@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class BloqueoCliente implements GestionBloqueoCliente{
 
@@ -19,7 +18,6 @@ public class BloqueoCliente implements GestionBloqueoCliente{
     @Override
     public void bloqueoUsuario(Usuario user, String estado) throws UsuarioException, DatosException, EmpresaNoEncontrada {
         Usuario usuario = em.find(Usuario.class, user.getNombreUsuario());
-
         if(usuario == null){
             throw new UsuarioException();
         }
@@ -52,7 +50,7 @@ public class BloqueoCliente implements GestionBloqueoCliente{
         if(empresa == null){
             throw new EmpresaNoEncontrada();
         }
-        Set<Autorizacion> autorizacionList = empresa.getIdAutorizada();
+        List<Autorizacion> autorizacionList = empresa.getAutori();
         List<PersonaAutorizada> listaPersonasAutorizadas = new ArrayList<>();
 
         for (Autorizacion auto: autorizacionList) {
@@ -60,7 +58,7 @@ public class BloqueoCliente implements GestionBloqueoCliente{
         }
 
         for(PersonaAutorizada pers : listaPersonasAutorizadas){
-            if(pers.getAutorizacionesPersona().size() == 1){
+            if(pers.getAutori().size() == 1){
                 pers.setEstado(estado);
             }
         }
