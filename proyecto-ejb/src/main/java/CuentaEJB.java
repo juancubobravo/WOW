@@ -109,15 +109,35 @@ public class CuentaEJB implements GestionCuenta {
     // R9
     
     @Override
-    public void cierraCuenta(String IBAN) throws SaldoException, CuentaNoEncontrada {
-        CuentaReferencia cuenta = em.find(CuentaReferencia.class, IBAN);
+    public void cierraCuenta(Segregada c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    	acceso.loginAdministrador(admin);
+        Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
         }
-
-        if(cuenta.getSaldo() > 0){
+        
+        if(cuenta.getCuentaReferencia().getSaldo() > 0){
             throw new SaldoException();
         }
+
+        cuenta.setEstado("BAJA");
+    }
+    
+    public void cierraCuenta(PooledAccount c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
+    	acceso.loginAdministrador(admin);
+        PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
+        if(cuenta == null){
+            throw new CuentaNoEncontrada();
+        }
+        
+		for (DepositadaEn de : cuenta.getDepositaEn()) {
+
+			if (de.getSaldo() != 0) {
+
+				throw new SaldoException();
+			}
+		}
+        
 
         cuenta.setEstado("BAJA");
     }

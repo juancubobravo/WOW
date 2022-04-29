@@ -1,4 +1,4 @@
-//Areglar paquete
+
 
 
 import java.util.Properties;
