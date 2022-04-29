@@ -65,6 +65,50 @@ public class BaseDatos {
 
 		em.persist(empresa);
 		
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setIdentificacion("789544");
+		empresaParaUsuario.setTipoCliente("JURIDICO");
+		empresaParaUsuario.setEstado("ACTIVO");
+		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaBaja(null);
+		empresaParaUsuario.setDireccion("Calle Pamplona");
+		empresaParaUsuario.setCiudad("Madrid");
+		empresaParaUsuario.setCodigoPostal("27009");
+		empresaParaUsuario.setPais("España");
+		empresaParaUsuario.setRazon_Social("Comida");
+		
+		usuarioEmpresa.setCliente(empresaParaUsuario);
+		
+		em.persist(usuarioEmpresa);
+		
+		Usuario usuarioIndividual = new Usuario ();
+		usuarioIndividual.setNombreUsuario("Carlos");
+		usuarioIndividual.setPassword("1234");
+		usuarioIndividual.setTipo("NORMAL");
+		
+		Individual individualParaUsuario = new Individual();
+		individualParaUsuario.setIdentificacion("654987");
+		individualParaUsuario.setTipoCliente("FISICA");
+		individualParaUsuario.setEstado("ACTIVO");
+		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualParaUsuario.setFechaBaja(null);
+		individualParaUsuario.setDireccion("Avenida Correcaminos");
+		individualParaUsuario.setCiudad("Malaga");
+		individualParaUsuario.setCodigoPostal("29001");
+		individualParaUsuario.setPais("España");
+		individualParaUsuario.setNombre("Jammal");
+		individualParaUsuario.setApellido("Hasbullah");
+		individualParaUsuario.setFecha_nacimiento(null);
+		
+		usuarioIndividual.setCliente(individualParaUsuario);
+		
+		em.persist(usuarioIndividual);
+		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1453134534528");
 		pooled.setSwift("4512");
