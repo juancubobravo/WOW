@@ -37,7 +37,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
 	@Test
 	public void testBajaPersonaAutorizadaCorrecto(){
 		
@@ -69,8 +69,8 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		}
 		
 	}	
-	
-
+	*/
+	/*
 	@Test
 	public void testBajaPersonaAutorizadaIncorrecto(){
 		
@@ -92,7 +92,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		personaAutorizadaBaja.setUsuario(usuario);
 		
 		try {			
-			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizada, usuario);		
+			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizadaBaja, usuario);		
 			
 		}catch(CuentaDeBaja e) {
 			//OK
@@ -100,7 +100,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
-		
-	}	
 	
+	}	
+	*/
 }

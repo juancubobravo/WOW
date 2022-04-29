@@ -37,7 +37,7 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
 	@Test
 	public void testBloqueaClienteCorrecto(){
 		
@@ -118,4 +118,5 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		}
 		
 	}	
+	*/
 }

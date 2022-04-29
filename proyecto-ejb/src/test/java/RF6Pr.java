@@ -36,7 +36,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
 	@Test
 	public void testAnyadirPersonaAutorizadaCorrecto(){
 		
@@ -149,5 +149,5 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		}
 		
 	}	
-	
+	*/
 }
