@@ -23,7 +23,9 @@ public interface GestionCliente {
 	    public void modificaCliente(Individual cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	    public void bajaCliente(Individual c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	    public void bajaCliente(Empresa c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
-	    public List<Cliente> devolverTodosClientes();
-	    public Cliente devolver(String identificacion) throws ClienteNoEncontrado;
+	    public List<Individual> devolverTodosClientesIndividuales();
+	    public List<Empresa> devolverTodosClientesEmpresa();
+	    public Empresa devolverEmpresa(String identificacion) throws ClienteNoEncontrado;
+	    public Individual devolverIndividual(String identificacion) throws ClienteNoEncontrado;
 
 }

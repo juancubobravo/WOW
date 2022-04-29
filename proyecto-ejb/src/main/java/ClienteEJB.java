@@ -171,15 +171,31 @@ public class ClienteEJB implements GestionCliente{
     }
     
     @Override
-    public List<Cliente> devolverTodosClientes(){
-        TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
-        List<Cliente> clientes= query.getResultList();
+    public List<Individual> devolverTodosClientesIndividuales(){
+        TypedQuery<Individual> query = em.createQuery("SELECT c FROM Individual c", Individual.class);
+        List<Individual> clientes= query.getResultList();
         return clientes;
     }
     
     @Override
-    public Cliente devolver(String identificacion) throws ClienteNoEncontrado {
-        Cliente cliente = em.find(Cliente.class, identificacion);
+    public List<Empresa> devolverTodosClientesEmpresa(){
+        TypedQuery<Empresa> query = em.createQuery("SELECT c FROM Empresa c", Empresa.class);
+        List<Empresa> clientes= query.getResultList();
+        return clientes;
+    }
+    
+    @Override
+    public Empresa devolverEmpresa(String identificacion) throws ClienteNoEncontrado {
+        Empresa cliente = em.find(Empresa.class, identificacion);
+        if(cliente == null) {
+            throw new ClienteNoEncontrado();
+        }
+        return cliente;
+    }
+    
+    @Override
+    public Individual devolverIndividual(String identificacion) throws ClienteNoEncontrado {
+        Individual cliente = em.find(Individual.class, identificacion);
         if(cliente == null) {
             throw new ClienteNoEncontrado();
         }
