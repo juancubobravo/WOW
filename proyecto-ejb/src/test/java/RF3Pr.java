@@ -1,3 +1,7 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.sql.Date;
 import java.util.logging.Logger;
 
 import javax.naming.NamingException;
@@ -8,13 +12,15 @@ import org.junit.Test;
 import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.ClienteNoEncontrado;
 import exceptions.ContraseniaInvalida;
+import exceptions.EJBException;
 import exceptions.NoAdministradorException;
 import exceptions.UsuarioNoEncontrado;
+import uma.wow.proyecto.Cliente;
 import uma.wow.proyecto.Empresa;
 import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.Usuario;
 
-@Requisitos({"RF3"})
+
 public class RF3Pr {
 	
 private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName());
@@ -32,77 +38,128 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 	}
 	
+	@Requisitos({"RF3"})
 	@Test
-	public void testModificaClienteEmpresa(Empresa cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+	public void testModificaClienteEmpresa() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle Malaga");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		
 		
 		try {
 			
-			gestionCliente.modificaCliente(cliente, usuario);
+			gestionCliente.modificaCliente(empresa, administrador);
+			Cliente cliente = gestionCliente.devolver(empresa.getId());
 			
-
-			cliente.setCiudad("MALAGA");
-			cliente.setCodigoPostal("29007");
-			cliente.setDireccion("C/MALAGA");
-			cliente.setEstado("INACTIVO");
-			cliente.setFechaAlta(cliente.getFechaAlta());
-			cliente.setFechaBaja(cliente.getFechaBaja());
-			cliente.setId("1111");
-			cliente.setIdentificacion("1111");
-			cliente.setPais("ESPANYA");
-			cliente.setRazon_Social("x");
-			cliente.setTipoCliente("INDIVIDUAL");
-			cliente.setUsuario(usuario);
-			
-			usuario.setCliente(cliente);
-			usuario.setNombreUsuario("Pepe");
-			usuario.setPassword("1234");
-			usuario.setTipo("INDIVIDUAL");
+			assertEquals(cliente.getDireccion(),empresa.getDireccion());
 			
 		}catch(ClienteNoEncontrado e) {
-			
+			fail("Cliente no encontrado");
 		}catch(UsuarioNoEncontrado e) {
-			
+			fail("Usuario no encontrado");
 		}catch(ContraseniaInvalida e) {
-			
-		}catch(NoAdministradorException e) {
-			
+			fail("Constrasenia erroenea");
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
 		}
 		
 	}
 	
 	@Test
-    public void testModificaClienteIndividual(Individual cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    public void testModificaClienteIndividual() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
     	
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		Individual individual = new Individual();
+		individual.setIdentificacion("654987");
+		individual.setTipoCliente("FISICA");
+		individual.setEstado("ACTIVO");
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaBaja(null);
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29007");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
+		
 		try {
 			
-			gestionCliente.modificaCliente(cliente, usuario);
+			gestionCliente.modificaCliente(individual, administrador);
+			Cliente cliente = gestionCliente.devolver(individual.getId());
 			
-			cliente.setCiudad("MALAGA");
-			cliente.setCodigoPostal("29007");
-			cliente.setDireccion("C/MALAGA");
-			cliente.setEstado("INACTIVO");
-			cliente.setFechaAlta(cliente.getFechaAlta());
-			cliente.setFechaBaja(cliente.getFechaBaja());
-			cliente.setId("1111");
-			cliente.setIdentificacion("1111");
-			cliente.setPais("ESPANYA");
-			cliente.setTipoCliente("EMPRESA");
-			cliente.setUsuario(usuario);
-			
-			usuario.setCliente(cliente);
-			usuario.setNombreUsuario("Pepe");
-			usuario.setPassword("1234");
-			usuario.setTipo("INDIVIDUAL");
+			assertEquals(cliente.getCodigoPostal(),individual.getCodigoPostal());
 			
 		}catch(ClienteNoEncontrado e) {
-			
+			fail("Cliente no encontrado");
 		}catch(UsuarioNoEncontrado e) {
-			
+			fail("Usuario no encontrado");
 		}catch(ContraseniaInvalida e) {
+			fail("Constrasenia erroenea");
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}	
+    	
+    	
+    }
+	
+	
+	@Test
+    public void testModificaClienteIndividualError() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    	
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		Individual individual = new Individual();
+		individual.setIdentificacion("454987");
+		individual.setTipoCliente("FISICA");
+		individual.setEstado("ACTIVO");
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaBaja(null);
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Barcelona");
+		individual.setCodigoPostal("29001");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
+		
+		try {
 			
-		}catch(NoAdministradorException e) {
+			gestionCliente.modificaCliente(individual, administrador);
+			Cliente cliente = gestionCliente.devolver(individual.getId());
 			
-		}
+			assertEquals(cliente.getCiudad(),individual.getCiudad());
+			
+		}catch(ClienteNoEncontrado e) {
+			fail("Cliente no encontrado");
+		}catch(UsuarioNoEncontrado e) {
+			fail("Usuario no encontrado");
+		}catch(ContraseniaInvalida e) {
+			fail("Constrasenia erroenea");
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}	
     	
     	
     }

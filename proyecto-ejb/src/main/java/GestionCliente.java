@@ -1,3 +1,5 @@
+import java.util.List;
+
 import exceptions.*;
 import uma.wow.proyecto.*;
 
@@ -21,6 +23,7 @@ public interface GestionCliente {
 	    public void modificaCliente(Individual cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	    public void bajaCliente(Individual c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	    public void bajaCliente(Empresa c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
-	
+	    public List<Cliente> devolverTodosClientes();
+	    public Cliente devolver(String identificacion) throws ClienteNoEncontrado;
 
 }

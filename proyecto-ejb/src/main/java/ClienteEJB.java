@@ -4,6 +4,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import exceptions.ClienteNoEncontrado;
 import exceptions.ClienteYaExistente;
@@ -167,6 +168,22 @@ public class ClienteEJB implements GestionCliente{
 
         cliente.setEstado("BAJA");
 
+    }
+    
+    @Override
+    public List<Cliente> devolverTodosClientes(){
+        TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c", Cliente.class);
+        List<Cliente> clientes= query.getResultList();
+        return clientes;
+    }
+    
+    @Override
+    public Cliente devolver(String identificacion) throws ClienteNoEncontrado {
+        Cliente cliente = em.find(Cliente.class, identificacion);
+        if(cliente == null) {
+            throw new ClienteNoEncontrado();
+        }
+        return cliente;
     }
     
     
