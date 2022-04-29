@@ -8,7 +8,9 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.*;
+import uma.wow.proyecto.Empresa;
 import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.PooledAccount;
 import uma.wow.proyecto.Segregada;
@@ -36,22 +38,23 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
-	public void testAbrirCuentaPooledCorrecto(){
+	public void testAbrirCuentaPooledIndividualCorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("1211345");
+		individual.setIdentificacion("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2020-03-24"));
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
 		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Cadiz");
-		individual.setCodigoPostal("29020");
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
 		individual.setPais("España");
-		individual.setNombre("Pep");
-		individual.setApellido("Josep");
-		individual.setFecha_nacimiento(Date.valueOf("1990-03-24"));
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
 		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1422224555528");
@@ -64,8 +67,8 @@ public class RF5Pr {
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
-		administrador.setNombreUsuario("Alvarooo");
-		administrador.setPassword("perrrro");
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
 		administrador.setTipo("ADMIN");
 		
 		try {			
@@ -73,29 +76,31 @@ public class RF5Pr {
 			
 		}catch(CuentaEncontrada e) {
 			fail("No debería saltar error, la cuenta es diferente");
-			
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
-	public void testAbrirCuentaPooledIncorrecto(){
+	public void testAbrirCuentaPooledIndividualIncorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("122345");
+		individual.setIdentificacion("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-01-10"));
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
 		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Lima");
-		individual.setCodigoPostal("29000");
-		individual.setPais("Peru");
-		individual.setNombre("Ale");
-		individual.setApellido("Jandro");
-		individual.setFecha_nacimiento(Date.valueOf("2000-03-24"));
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
 		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1453134534528");
@@ -108,7 +113,7 @@ public class RF5Pr {
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
-		administrador.setNombreUsuario("Alllvaro");
+		administrador.setNombreUsuario("Alvaro");
 		administrador.setPassword("perro");
 		administrador.setTipo("ADMIN");
 		
@@ -117,41 +122,129 @@ public class RF5Pr {
 			
 		}catch(CuentaEncontrada e) {
 			//OK
-			
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
-	public void testAbrirCuentaSegregadaCorrecto(){
+	public void testAbrirCuentaPooledEmpresaCorrecto() {
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle España");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		
+		PooledAccount pooled = new PooledAccount();
+		pooled.setIban("1422224555528");
+		pooled.setSwift("4892");
+		pooled.setClasificacion("POOLED");
+		pooled.setCliente(empresa);
+		pooled.setDepositaEn(null);
+		pooled.setEstado("ABIERTA");
+		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaCierre(null);
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		try {			
+			gestionCuenta.creaCuenta(pooled, empresa, administrador);		
+			
+		}catch(CuentaEncontrada e) {
+			fail("No debería saltar error, la cuenta es diferente");
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}
+	}
+	
+	@Requisitos({"RF5"})
+	@Test
+	public void testAbrirCuentaPooledEmpresaIncorrecto() {
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("78995");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle Vavia");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29099");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		
+		PooledAccount pooled = new PooledAccount();
+		pooled.setIban("1422224555528");
+		pooled.setSwift("4892");
+		pooled.setClasificacion("POOLED");
+		pooled.setCliente(empresa);
+		pooled.setDepositaEn(null);
+		pooled.setEstado("ABIERTA");
+		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaCierre(null);
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		try {			
+			gestionCuenta.creaCuenta(pooled, empresa, administrador);		
+			
+		}catch(CuentaEncontrada e) {
+			fail("No debería saltar error, la cuenta es diferente");
+		}catch(ClienteNoEncontrado e) {
+			//OK	
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}
+	}
+	
+	@Requisitos({"RF5"})
+	@Test
+	public void testAbrirCuentaSegregadaIndividualCorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("12343445");
+		individual.setIdentificacion("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
 		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Barcelona");
-		individual.setCodigoPostal("29000");
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
 		individual.setPais("España");
-		individual.setNombre("Pepe");
-		individual.setApellido("Jose");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
 		individual.setFecha_nacimiento(null);
 		
 		Segregada segregada = new Segregada();
-		segregada.setIban("1422224555528");
-		segregada.setSwift("48992");
-		segregada.setClasificacion("POOLED");
+		segregada.setIban("134538888");
+		segregada.setSwift("6582");
+		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-02-12"));
+		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
 		segregada.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
-		administrador.setNombreUsuario("Aaalvaro");
+		administrador.setNombreUsuario("Alvaro");
 		administrador.setPassword("perro");
 		administrador.setTipo("ADMIN");
 		
@@ -160,28 +253,30 @@ public class RF5Pr {
 			
 		}catch(CuentaEncontrada e) {
 			fail("No debería saltar error, la cuenta es diferente");
-			
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
-	}	
+	}
 	
+	@Requisitos({"RF5"})
 	@Test
-	public void testAbrirCuentaSegregadaIncorrecto(){
+	public void testAbrirCuentaSegregadaIndividualIncorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("123045");
+		individual.setIdentificacion("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
 		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Barcelona");
-		individual.setCodigoPostal("29000");
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
 		individual.setPais("España");
-		individual.setNombre("Pepe");
-		individual.setApellido("Jose");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
 		individual.setFecha_nacimiento(null);
 		
 		Segregada segregada = new Segregada();
@@ -203,11 +298,96 @@ public class RF5Pr {
 			
 		}catch(CuentaEncontrada e) {
 			//OK
-			
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
+	}
+	
+	@Requisitos({"RF5"})
+	@Test
+	public void testAbrirCuentaIndividualEmpresaCorrecto() {
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle España");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		
+		Segregada segregada = new Segregada();
+		segregada.setIban("1888588888");
+		segregada.setSwift("78962");
+		segregada.setClasificacion("SEGREGADA");
+		segregada.setCliente(empresa);
+		segregada.setEstado("ABIERTA");
+		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaCierre(null);
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		try {			
+			gestionCuenta.creaCuenta(segregada, empresa, administrador);		
+			
+		}catch(CuentaEncontrada e) {
+			fail("No debería saltar error, la cuenta es diferente");
+		}catch(ClienteNoEncontrado e) {
+			fail("No debería saltar error, cliente ya creado");		
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}
+	}
+	
+	@Requisitos({"RF5"})
+	@Test
+	public void testAbrirCuentaSegregadaEmpresaIncorrecto() {
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("792595");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle Bolsa");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29099");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Redes");
+		
+		Segregada segregada = new Segregada();
+		segregada.setIban("596354538888");
+		segregada.setSwift("4962");
+		segregada.setClasificacion("SEGREGADA");
+		segregada.setCliente(empresa);
+		segregada.setEstado("ABIERTA");
+		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaCierre(null);
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		try {			
+			gestionCuenta.creaCuenta(segregada, empresa, administrador);		
+			
+		}catch(CuentaEncontrada e) {
+			fail("No debería saltar error, la cuenta es diferente");
+		}catch(ClienteNoEncontrado e) {
+			//OK	
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}
 	}
 	
 }
