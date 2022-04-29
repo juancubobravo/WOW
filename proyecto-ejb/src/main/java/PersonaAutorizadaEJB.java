@@ -126,5 +126,14 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     	persona.setEstado("BAJA");
 
     }
+    
+    @Override
+    public PersonaAutorizada devolver(String identificacion) throws PersonaAutorizadaNoEncontrada {
+        PersonaAutorizada persA = em.find(PersonaAutorizada.class, identificacion);
+        if(persA == null) {
+            throw new PersonaAutorizadaNoEncontrada();
+        }
+        return persA;
+    }
 
 }
