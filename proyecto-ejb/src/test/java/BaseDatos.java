@@ -64,6 +64,29 @@ public class BaseDatos {
 		empresa.setRazon_Social("Ayudas");
 
 		em.persist(empresa);
+		
+		PooledAccount pooled = new PooledAccount();
+		pooled.setIban("1453134534528");
+		pooled.setSwift("4512");
+		pooled.setClasificacion("POOLED");
+		pooled.setCliente(individual);
+		pooled.setDepositaEn(null);
+		pooled.setEstado("ABIERTA");
+		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaCierre(null);
+		
+		em.persist(pooled);
+		
+		Segregada segregada = new Segregada();
+		segregada.setIban("1888134538888");
+		segregada.setSwift("4582");
+		segregada.setClasificacion("SEGREGADA");
+		segregada.setCliente(individual);
+		segregada.setEstado("ABIERTA");
+		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaCierre(null);
+		
+		em.persist(segregada);
 
 		em.getTransaction().commit();
 		
