@@ -3,7 +3,9 @@
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -109,6 +111,21 @@ public class BaseDatos {
 		
 		em.persist(usuarioIndividual);
 		
+		CuentaReferencia cuentaLlena = new CuentaReferencia();
+		cuentaLlena.setIban("9999");
+		cuentaLlena.setSwift("4812");
+		cuentaLlena.setSaldo(1000000);
+		
+		CuentaReferencia cuentaVacia = new CuentaReferencia();
+		cuentaVacia.setIban("538888");
+		cuentaVacia.setSwift("482");
+		cuentaVacia.setSaldo(0);
+		
+		em.persist(cuentaVacia);
+		
+		
+		em.persist(cuentaLlena);
+		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1453134534528");
 		pooled.setSwift("4512");
@@ -118,6 +135,15 @@ public class BaseDatos {
 		pooled.setEstado("ABIERTA");
 		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
 		pooled.setFechaCierre(null);
+		
+		DepositadaEn dep = new DepositadaEn();
+		dep.setId2(pooled);
+		dep.setId1(cuentaLlena);
+		dep.setSaldo(cuentaLlena.getSaldo());
+		
+		List<DepositadaEn> lista = new ArrayList<DepositadaEn>();
+		lista.add(dep);
+		pooled.setDepositaEn(lista);
 		
 		em.persist(pooled);
 		
@@ -129,22 +155,9 @@ public class BaseDatos {
 		segregada.setEstado("ABIERTA");
 		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
 		segregada.setFechaCierre(null);
+		segregada.setCuentaReferencia(cuentaLlena);
 		
 		em.persist(segregada);
-		
-		CuentaReferencia cuentaVacia = new CuentaReferencia();
-		cuentaVacia.setIban("538888");
-		cuentaVacia.setSwift("482");
-		cuentaVacia.setSaldo(0);
-		
-		em.persist(cuentaVacia);
-		
-		CuentaReferencia cuentaLlena = new CuentaReferencia();
-		cuentaVacia.setIban("9999");
-		cuentaVacia.setSwift("4812");
-		cuentaVacia.setSaldo(1000000);
-		
-		em.persist(cuentaLlena);
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setApellidos("Pelaez");
@@ -159,6 +172,10 @@ public class BaseDatos {
 		personaAutorizadaBaja.setUsuario(usuario);
 		
 		em.persist(personaAutorizadaBaja);
+		
+		
+		
+		
 
 		em.getTransaction().commit();
 		

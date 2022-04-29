@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BloqueoCliente implements GestionBloqueoCliente{
+public class BloqueoClienteEJB implements GestionBloqueoCliente{
 
 	@EJB
 	AccesoEJB acceso;

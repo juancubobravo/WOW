@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
@@ -8,9 +9,14 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.*;
 import uma.wow.proyecto.Cliente;
 import uma.wow.proyecto.CuentaReferencia;
+import uma.wow.proyecto.Empresa;
+import uma.wow.proyecto.Individual;
+import uma.wow.proyecto.PersonaAutorizada;
+import uma.wow.proyecto.Segregada;
 import uma.wow.proyecto.Usuario;
 
 /*	La aplicación permitirá a un usuario administrativo bloquear a un cliente o 
@@ -27,96 +33,164 @@ public class RF16Pr {
 private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName());
 	
 	private static final String CLIENTE_EJB = "java:global/classes/ClienteEJB";
+	private static final String PERSONA_AUTORIZADA_EJB = "java:global/classes/PersonaAutorizadaEJB";
+	private static final String BLOQUEO_CLIENTE_EJB = "java:global/classes/BloqueoClienteEJB";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "WOWEJBTest";
 	
+	private GestionBloqueoCliente gestionBloqueoCliente;
 	private GestionCliente gestionCliente;
+	private GestionPersonaAutorizada gestionPersonaAutorizada;
 	
 	@Before
 	public void setup() throws NamingException{
+		gestionBloqueoCliente = (GestionBloqueoCliente) SuiteTest.ctx.lookup(BLOQUEO_CLIENTE_EJB);
 		gestionCliente = (GestionCliente) SuiteTest.ctx.lookup(CLIENTE_EJB);
+		gestionPersonaAutorizada = (GestionPersonaAutorizada) SuiteTest.ctx.lookup(PERSONA_AUTORIZADA_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	/*
-	@Test
-	public void testBloqueaClienteCorrecto(){
-		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Andres");
-		usuario.setPassword("12324");
-		usuario.setTipo("NORMAL");
-		
-		Cliente cliente = new Cliente();
-		cliente.setCiudad("Alora");
-		cliente.setCodigoPostal("5234");
-		cliente.setCuentas(null);
-		cliente.setDireccion("Calle Calle");
-		cliente.setEstado(null);
-		cliente.setFechaAlta(Date.valueOf("2020-08-14"));
-		cliente.setFechaBaja(null);
-		cliente.setId("23525");
-		cliente.setIdentificacion("2562666");
-		cliente.setPais("Mali");
-		cliente.setTipoCliente("FISICO");
-		cliente.setUsuario(usuario);
-		
-		try {			
-			gestionCliente.bloqueaCliente(cliente);		
-			
-			
-			//FALTA CREAR EN GestionCliente bloqueaCliente.java
-			
-			
-		}catch(ClienteBloqueado e) {
-			
-			
-			//FALTA CREAR LA EXCEPCION ClienteBloqueado.java
-			
-			
-			fail("No debería saltar error, el cliente se bloquea");
-			
-		}catch(EJBException e) {
-			fail("Excepción no controlada");
-		}
-		
-	}	
 	
+	//Para pruebo los 3 diferentes tipos de clientes en esta misma clase
+	
+	@Requisitos({"RF16"})
 	@Test
-	public void testBloqueaClienteIncorrecto(){
+	public void testBloquearClientesCorrecto(){
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Maria");
-		usuario.setPassword("1222324");
-		usuario.setTipo("NORMAL");
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
 		
-		Cliente cliente = new Cliente();
-		cliente.setCiudad("Alora");
-		cliente.setCodigoPostal("5234");
-		cliente.setCuentas(null);
-		cliente.setDireccion("Calle Calle");
-		cliente.setEstado(null);
-		cliente.setFechaAlta(Date.valueOf("2020-08-14"));
-		cliente.setFechaBaja(null);
-		cliente.setId("2352225");
-		cliente.setIdentificacion("22666");
-		cliente.setPais("Mali");
-		cliente.setTipoCliente("FISICO");
-		cliente.setUsuario(usuario);
+		Individual individual = new Individual();
+		individual.setIdentificacion("654987");
+		individual.setTipoCliente("FISICA");
+		individual.setEstado("ACTIVO");
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaBaja(null);
+		individual.setDireccion("Avenida Correcaminos");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29001");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
+		
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle España");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		empresa.setUsuario(usuarioEmpresa);
 		
 		
-		//HAY QUE PONER ESTE CLIENTE COMO BLOQUEADO (NO SE COMO VAIS A IMPLEMENTARLO AUN)
-		
+		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
+		personaAutorizada.setApellidos("Pelaez");
+		personaAutorizada.setAutori(null);
+		personaAutorizada.setDireccion("Avda S");
+		personaAutorizada.setEstado("ACTIVO");
+		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
+		personaAutorizada.setFechaFin(null);
+		personaAutorizada.setId("511155");
+		personaAutorizada.setIdentificacion("0771");
+		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
+		personaAutorizada.setUsuario(usuarioEmpresa);
 		
 		try {			
-			gestionCliente.bloqueaCliente(cliente);		
+			gestionBloqueoCliente.bloqueoPersonaFisica(individual, administrador);
+			gestionBloqueoCliente.bloqueoAutorizado(personaAutorizada, administrador);
+			gestionBloqueoCliente.bloqueoEmpresa(empresa, administrador);
 			
-		}catch(ClienteBloqueado e) {
-			//OK
+			assertEquals(gestionCliente.devolverIndividual(individual.getIdentificacion()).getEstado(),"BLOQUEADO");
+			assertEquals(gestionPersonaAutorizada.devolver(personaAutorizada.getIdentificacion()).getEstado(),"BLOQUEADO");
+			assertEquals(gestionCliente.devolverEmpresa(empresa.getIdentificacion()).getEstado(),"BLOQUEADO");
 			
+		}catch(ClienteNoEncontrado e) {			
+			fail("No debería saltar error, el cliente está en la BD");
+		}catch(CuentaDeBaja e){
+			fail("No debería dar error, ninguna cuenta está dada de baja");
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
-	}	
-	*/
+	}
+	
+	@Requisitos({"RF16"})
+	@Test
+	public void testBloquearClientesIncorrecto(){
+		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
+		Individual individual = new Individual();
+		individual.setIdentificacion("95987");
+		individual.setTipoCliente("FISICA");
+		individual.setEstado("ACTIVO");
+		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaBaja(null);
+		individual.setDireccion("Avenida Plato");
+		individual.setCiudad("Malaga");
+		individual.setCodigoPostal("29085");
+		individual.setPais("España");
+		individual.setNombre("Jammal");
+		individual.setApellido("Hasbullah");
+		individual.setFecha_nacimiento(null);
+		
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresa = new Empresa();
+		empresa.setIdentificacion("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaBaja(null);
+		empresa.setDireccion("Calle España");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+		empresa.setUsuario(usuarioEmpresa);
+		
+		
+		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
+		personaAutorizada.setApellidos("Pelaez");
+		personaAutorizada.setAutori(null);
+		personaAutorizada.setDireccion("Avda S");
+		personaAutorizada.setEstado(null);
+		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
+		personaAutorizada.setFechaFin(null);
+		personaAutorizada.setId("511155");
+		personaAutorizada.setIdentificacion("0771");
+		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
+		personaAutorizada.setUsuario(usuarioEmpresa);
+		
+		try {			
+			gestionBloqueoCliente.bloqueoPersonaFisica(individual, administrador);
+			gestionBloqueoCliente.bloqueoAutorizado(personaAutorizada, administrador);
+			gestionBloqueoCliente.bloqueoEmpresa(empresa, administrador);						
+			
+		}catch(ClienteNoEncontrado e) {			
+			//OK
+		}catch(CuentaDeBaja e){
+			fail("No debería dar error, ninguna cuenta está dada de baja");
+		}catch(EJBException e) {
+			fail("Excepción no controlada");
+		}
+		
+	}
 }

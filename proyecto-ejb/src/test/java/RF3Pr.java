@@ -63,7 +63,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		try {
 			
 			gestionCliente.modificaCliente(empresa, administrador);
-			Cliente cliente = gestionCliente.devolver(empresa.getId());
+			Cliente cliente = gestionCliente.devolverEmpresa(empresa.getId());
 			
 			assertEquals(cliente.getDireccion(),empresa.getDireccion());
 			
@@ -104,7 +104,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		try {
 			
 			gestionCliente.modificaCliente(individual, administrador);
-			Cliente cliente = gestionCliente.devolver(individual.getId());
+			Cliente cliente = gestionCliente.devolverIndividual(individual.getId());
 			
 			assertEquals(cliente.getCodigoPostal(),individual.getCodigoPostal());
 			
@@ -147,7 +147,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		try {
 			
 			gestionCliente.modificaCliente(individual, administrador);
-			Cliente cliente = gestionCliente.devolver(individual.getId());
+			Cliente cliente = gestionCliente.devolverIndividual(individual.getId());
 			
 			assertEquals(cliente.getCiudad(),individual.getCiudad());
 			
