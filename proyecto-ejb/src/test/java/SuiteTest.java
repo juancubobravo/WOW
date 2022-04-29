@@ -14,7 +14,8 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({RF1Pr.class, RF2Pr.class, RF5Pr.class, RF9Pr.class, RF16Pr.class})
+@SuiteClasses({RF1Pr.class, RF2Pr.class, RF3Pr.class, RF4Pr.class, RF5Pr.class, RF6Pr.class, RF7Pr.class, RF8Pr.class, 
+	RF9Pr.class, RF10Pr.class, RF11Pr.class, RF12Pr.class, RF14Pr.class, RF15Pr.class, RF16Pr.class})
 public class SuiteTest {
 	
 	private static final String GLASSFISH_CONFIGI_FILE_PROPERTY = "org.glassfish.ejb.embedded.glassfish.configuration.file";

@@ -101,6 +101,20 @@ public class BaseDatos {
 		cuentaVacia.setSaldo(1000000);
 		
 		em.persist(cuentaLlena);
+		
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setAutori(null);
+		personaAutorizadaBaja.setDireccion("Avda S");
+		personaAutorizadaBaja.setEstado(null);
+		personaAutorizadaBaja.setFechaInicio(Date.valueOf("2020-03-24"));
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setIdentificacion("0771");
+		personaAutorizadaBaja.setNombre(usuario.getNombreUsuario());
+		personaAutorizadaBaja.setUsuario(usuario);
+		
+		em.persist(personaAutorizadaBaja);
 
 		em.getTransaction().commit();
 		
