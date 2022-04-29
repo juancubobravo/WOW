@@ -26,6 +26,9 @@ public class CuentaReferencia extends Cuenta {
 	@ManyToOne
 	private Divisa abreviatura;
 	
+	@OneToOne
+	private Segregada cuentaSegregada;
+	
 	
 	@OneToMany(mappedBy="cuentaReferencia")
 	private List<DepositadaEn> depositadaEn;

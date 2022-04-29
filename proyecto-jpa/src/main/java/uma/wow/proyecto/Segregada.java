@@ -16,7 +16,7 @@ public class Segregada extends CuentaFintech implements Serializable{
 	private String comision;
 	
 	@OneToOne
-	private CuentaReferencia iban;
+	private CuentaReferencia cuentaReferencia;
 	
 
 	public String getComision() {
@@ -28,15 +28,15 @@ public class Segregada extends CuentaFintech implements Serializable{
 		this.comision = comision;
 	}
 
-	//Sale error por algún motivo
-	/*
-	public CuentaReferencia getIban() {
-		return iban;
-	}
-	*/
 
-	public void setIban(CuentaReferencia iban) {
-		this.iban = iban;
+
+	public CuentaReferencia getCuentaReferencia() {
+		return cuentaReferencia;
+	}
+
+
+	public void setCuentaReferencia(CuentaReferencia cuentaReferencia) {
+		this.cuentaReferencia = cuentaReferencia;
 	}
 
 
