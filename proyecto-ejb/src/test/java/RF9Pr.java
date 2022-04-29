@@ -1,6 +1,5 @@
 import static org.junit.Assert.fail;
 
-import java.sql.Date;
 import java.util.logging.Logger;
 
 import javax.naming.NamingException;
@@ -10,10 +9,6 @@ import org.junit.Test;
 
 import exceptions.*;
 import uma.wow.proyecto.CuentaReferencia;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.PooledAccount;
-import uma.wow.proyecto.Segregada;
-import uma.wow.proyecto.Usuario;
 
 /*	La aplicación permitirá a un administrativo cerrar una cuenta bancaria. 
  * Solo se puede cerrar una cuenta que tenga saldo 0 (en todas sus divisas). 
@@ -22,7 +17,7 @@ import uma.wow.proyecto.Usuario;
 
 public class RF9Pr {
 	
-private static final Logger LOG = Logger.getLogger(RF5Pr.class.getCanonicalName());
+private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName());
 	
 	private static final String CUENTA_EJB = "java:global/classes/CuentaEJB";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "WOWEJBTest";
