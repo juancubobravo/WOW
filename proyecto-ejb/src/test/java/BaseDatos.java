@@ -87,6 +87,20 @@ public class BaseDatos {
 		segregada.setFechaCierre(null);
 		
 		em.persist(segregada);
+		
+		CuentaReferencia cuentaVacia = new CuentaReferencia();
+		cuentaVacia.setIban("538888");
+		cuentaVacia.setSwift("482");
+		cuentaVacia.setSaldo(0);
+		
+		em.persist(cuentaVacia);
+		
+		CuentaReferencia cuentaLlena = new CuentaReferencia();
+		cuentaVacia.setIban("9999");
+		cuentaVacia.setSwift("4812");
+		cuentaVacia.setSaldo(1000000);
+		
+		em.persist(cuentaLlena);
 
 		em.getTransaction().commit();
 		

@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import exceptions.*;
-import uma.wow.proyecto.Cuenta;
 import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.PooledAccount;
 import uma.wow.proyecto.Segregada;
