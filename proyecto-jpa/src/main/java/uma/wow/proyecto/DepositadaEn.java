@@ -10,7 +10,7 @@ public class DepositadaEn implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(nullable = false)
-	private float saldo;
+	private double saldo;
 	
 	@MapsId
 	@EmbeddedId
@@ -41,11 +41,11 @@ public class DepositadaEn implements Serializable{
 		this.id = id;
 	}
 
-	public float getSaldo() {
+	public double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(float saldo) {
+	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
 
