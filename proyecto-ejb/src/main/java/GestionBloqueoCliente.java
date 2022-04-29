@@ -3,8 +3,12 @@ import uma.wow.proyecto.*;
 
 public interface GestionBloqueoCliente {
 	
-    public void bloqueoUsuario(Usuario user, String estado) throws UsuarioException, DatosException, EmpresaNoEncontrada;
-    public void bloqueoCliente(Cliente cliente, String estado) throws DatosException, EmpresaNoEncontrada;
-    public void comprobarBloqueoClienteAutorizado(Cliente cliente, String estado) throws EmpresaNoEncontrada;
+	public void bloqueoPersonaFisica(Individual c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	public void bloqueoAutorizado(PersonaAutorizada c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	public void bloqueoEmpresa(Empresa c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	public void desbloqueoPersonaFisica(Individual c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	public void desbloqueoAutorizado(PersonaAutorizada c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+	public void desbloqueoEmpresa(Empresa c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
+
 
 }
