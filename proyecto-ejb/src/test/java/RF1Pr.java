@@ -7,6 +7,7 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.*;
 import uma.wow.proyecto.Usuario;
 
@@ -28,6 +29,7 @@ public class RF1Pr {
 		
 	}
 	
+	@Requisitos({"RF1"})
 	@Test
 	public void testComprobarAdministradorCorrecto() throws NoAdministradorException{
 		
@@ -46,6 +48,7 @@ public class RF1Pr {
 				
 	}
 	
+	@Requisitos({"RF1"})
 	@Test
 	public void testComprobarAdministradorIncorrecto() throws NoAdministradorException{
 		

@@ -9,6 +9,7 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.ClienteNoEncontrado;
 import exceptions.ClienteYaExistente;
 import exceptions.ContraseniaInvalida;
@@ -37,6 +38,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 	}
 	
+	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaIndividualCorrecto(){
 		
@@ -71,6 +73,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaEmpresaCorrecto(){
 		
@@ -103,6 +106,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaIndividualIncorrecto(){
 		
@@ -137,6 +141,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaEmpresaIncorrecto(){
 		
