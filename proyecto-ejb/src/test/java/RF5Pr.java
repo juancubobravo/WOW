@@ -8,6 +8,7 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import exceptions.*;
 import uma.wow.proyecto.Empresa;
 import uma.wow.proyecto.Individual;
@@ -37,6 +38,7 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledIndividualCorrecto(){
 		
@@ -82,6 +84,7 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledIndividualIncorrecto(){
 		
@@ -127,6 +130,7 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledEmpresaCorrecto() {
 		
@@ -169,6 +173,7 @@ public class RF5Pr {
 		}
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledEmpresaIncorrecto() {
 		
@@ -211,6 +216,7 @@ public class RF5Pr {
 		}
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaIndividualCorrecto(){
 		
@@ -255,6 +261,7 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaIndividualIncorrecto(){
 		
@@ -299,6 +306,7 @@ public class RF5Pr {
 		
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaIndividualEmpresaCorrecto() {
 		
@@ -340,6 +348,7 @@ public class RF5Pr {
 		}
 	}
 	
+	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaEmpresaIncorrecto() {
 		

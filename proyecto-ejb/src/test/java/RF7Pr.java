@@ -39,6 +39,11 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 	@Test
 	public void testModificaAutorizado() throws PersonaAutorizadaNoEncontrada, ContraseniaInvalida, UsuarioNoEncontrado, NoAdministradorException{
 		
+		Usuario administrador = new Usuario();
+		administrador.setNombreUsuario("Alvaro");
+		administrador.setPassword("perro");
+		administrador.setTipo("ADMIN");
+		
 		Usuario usuario = new Usuario ();
 		usuario.setNombreUsuario("Carlos");
 		usuario.setPassword("1234");
@@ -58,13 +63,13 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 		try {
 				
-			gestionAutorizada.modificaPersonaAutorizada(personaAutorizada, usuario);
+			gestionAutorizada.modificaPersonaAutorizada(personaAutorizada, administrador);
 			PersonaAutorizada persA = gestionAutorizada.devolver(personaAutorizada.getId());
 			
 			assertEquals(personaAutorizada.getApellidos(),persA.getApellidos());
 			
 		}catch(PersonaAutorizadaNoEncontrada e) {
-			fail("Persona Autorizada no eoncontrada");
+			fail("Persona Autorizada no encontrada");
 		}
 		
 		
