@@ -12,7 +12,7 @@
 		<class>uma.wow.proyecto.CuentaFintech</class>
 		<class>uma.wow.proyecto.CuentaReferencia</class>
 		<class>uma.wow.proyecto.DepositadaEn</class>
-		<class>uma.wow.proyecto.DepositadaEnPK</class>
+		<class>uma.wow.proyecto.DepositaEnPK</class>
 		<class>uma.wow.proyecto.Divisa</class>
 		<class>uma.wow.proyecto.Empresa</class>
 		<class>uma.wow.proyecto.PersonaAutorizada</class>
@@ -20,6 +20,7 @@
 		<class>uma.wow.proyecto.Transaccion</class>
 		<class>uma.wow.proyecto.Individual</class>
 		<class>uma.wow.proyecto.Usuario</class>
+		<class>uma.wow.proyecto.Segregada</class>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
     	<property name="javax.persistence.schema-generation.database.action" value="create"/>
