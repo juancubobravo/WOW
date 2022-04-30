@@ -66,23 +66,7 @@ public class DepositadaEn implements Serializable{
 		this.id2 = id2;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(id1, id2);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DepositadaEn other = (DepositadaEn) obj;
-		return Objects.equals(id1, other.id1) && Objects.equals(id2, other.id2);
-	}
-
+	
 	@Override
 	public String toString() {
 		return "DepositadaEn [saldo=" + saldo + ", id1=" + id1 + ", id2=" + id2 + "]";

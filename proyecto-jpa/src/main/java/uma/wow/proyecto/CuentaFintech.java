@@ -86,16 +86,6 @@ public class CuentaFintech extends Cuenta implements Serializable {
 		this.cliente = cliente;
 	}
 
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
-	}
 
 	@Override
 	public String toString() {
