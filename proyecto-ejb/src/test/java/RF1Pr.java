@@ -8,8 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uma.informatica.sii.anotaciones.Requisitos;
-import exceptions.*;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 
 public class RF1Pr {

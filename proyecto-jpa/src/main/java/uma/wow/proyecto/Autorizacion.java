@@ -14,13 +14,13 @@ public class Autorizacion implements Serializable{
 	private AutorizacionPK id;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(name = "EmpresaID",nullable = false)
 	@MapsId("empresaId")
-	private Empresa empresa;
+	private Empresa empresaId;
 	
 	@ManyToOne
-	@JoinColumn( nullable = false)
-	@MapsId("personaAutorizadaId")
+	@JoinColumn(name = "AutorizadaID",nullable = false)
+	@MapsId("idAutorizada")
 	private PersonaAutorizada idAutorizada;
 	
 	@Column(nullable = false)
@@ -39,10 +39,10 @@ public class Autorizacion implements Serializable{
 	
 	
 	public Empresa getEmpresa() {
-		return empresa;
+		return empresaId;
 	}
 	public void setEmpresa(Empresa id) {
-		this.empresa = id;
+		this.empresaId = id;
 	}
 	public PersonaAutorizada getIdAutorizada() {
 		return idAutorizada;
@@ -61,7 +61,10 @@ public class Autorizacion implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 	@Override
 	public boolean equals(Object obj) {

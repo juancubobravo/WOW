@@ -10,24 +10,24 @@ public class DepositaEnPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="POOLED_ACCOUNT_IBAN", insertable=false, updatable=false)
-	private String pooledAccountIban;
+	private String pooledAccount;
 
 	@Column(name="CUENTA_REFERENCIA_IBAN", insertable=false, updatable=false)
-	private String cuentaReferenciaIban;
+	private String cuentaReferencia;
 
 	public DepositaEnPK() {
 	}
 	public String getPooledAccountIban() {
-		return this.pooledAccountIban;
+		return this.pooledAccount;
 	}
 	public void setPooledAccountIban(String pooledAccountIban) {
-		this.pooledAccountIban = pooledAccountIban;
+		this.pooledAccount = pooledAccountIban;
 	}
 	public String getCuentaReferenciaIban() {
-		return this.cuentaReferenciaIban;
+		return this.cuentaReferencia;
 	}
 	public void setCuentaReferenciaIban(String cuentaReferenciaIban) {
-		this.cuentaReferenciaIban = cuentaReferenciaIban;
+		this.cuentaReferencia= cuentaReferenciaIban;
 	}
 
 	public boolean equals(Object other) {
@@ -39,15 +39,15 @@ public class DepositaEnPK implements Serializable {
 		}
 		DepositaEnPK castOther = (DepositaEnPK)other;
 		return 
-			this.pooledAccountIban.equals(castOther.pooledAccountIban)
-			&& this.cuentaReferenciaIban.equals(castOther.cuentaReferenciaIban);
+			this.pooledAccount.equals(castOther.pooledAccount)
+			&& this.cuentaReferencia.equals(castOther.cuentaReferencia);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
-		hash = hash * prime + this.pooledAccountIban.hashCode();
-		hash = hash * prime + this.cuentaReferenciaIban.hashCode();
+		hash = hash * prime + this.pooledAccount.hashCode();
+		hash = hash * prime + this.cuentaReferencia.hashCode();
 		
 		return hash;
 	}

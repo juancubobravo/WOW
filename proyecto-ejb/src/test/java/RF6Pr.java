@@ -8,12 +8,9 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
-import exceptions.*;
-import uma.wow.proyecto.CuentaReferencia;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.PersonaAutorizada;
-import uma.wow.proyecto.PooledAccount;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 /*	La aplicación permitirá a un administrativo añadir personas autorizadas a las 
  * cuentas que pertenezcan a cliente que son personas jurídicas. Las personas 

@@ -10,15 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uma.informatica.sii.anotaciones.Requisitos;
-import exceptions.ClienteNoEncontrado;
-import exceptions.ContraseniaInvalida;
-import exceptions.EJBException;
-import exceptions.NoAdministradorException;
-import exceptions.UsuarioNoEncontrado;
-import uma.wow.proyecto.Cliente;
-import uma.wow.proyecto.Empresa;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 
 public class RF3Pr {

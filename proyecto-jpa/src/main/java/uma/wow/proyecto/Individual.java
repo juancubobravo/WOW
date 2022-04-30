@@ -17,7 +17,7 @@ public class Individual extends Cliente implements Serializable  {
 	private String apellido;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
-	private Date fechaNacimiento;
+	private java.util.Date fechaNacimiento;
 	
 		
 	public Individual() {
@@ -36,14 +36,26 @@ public class Individual extends Cliente implements Serializable  {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Date getFechaNacimiento() {
+	public java.util.Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFecha_nacimiento(Date fechaNacimiento) {
+	public void setFecha_nacimiento(java.util.Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
 	
+	
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
 	@Override
 	public String toString() {
 		return "Individual [nombre=" + nombre + ", apellido=" + apellido + ", fechaNacimiento=" + fechaNacimiento + "]";

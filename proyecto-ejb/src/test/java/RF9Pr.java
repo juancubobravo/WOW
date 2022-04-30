@@ -11,13 +11,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uma.informatica.sii.anotaciones.Requisitos;
-import exceptions.*;
-import uma.wow.proyecto.CuentaReferencia;
-import uma.wow.proyecto.DepositadaEn;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.PooledAccount;
-import uma.wow.proyecto.Segregada;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 /*	La aplicación permitirá a un administrativo cerrar una cuenta bancaria. 
  * Solo se puede cerrar una cuenta que tenga saldo 0 (en todas sus divisas). 

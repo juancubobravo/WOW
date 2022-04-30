@@ -28,7 +28,10 @@ public class PersonaAutorizada implements Serializable{
 	@Column (nullable = true)
 	private Date fechaFin;
 	
-	@OneToMany(mappedBy="personaAutorizada")
+	@OneToOne
+	private Usuario usuario;
+	
+	@OneToMany(mappedBy="idAutorizada")
 	private List<Autorizacion> autori;
 	
 	public List<Autorizacion> getAutori() {
@@ -39,9 +42,7 @@ public class PersonaAutorizada implements Serializable{
 		this.autori = autori;
 	}
 
-	@OneToOne(mappedBy = "personaAutorizada")
-	@JoinColumn(nullable = false)
-	private Usuario usuario;
+
 	
 	
 	public PersonaAutorizada() {

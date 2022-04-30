@@ -27,19 +27,19 @@ public class Transaccion implements Serializable {
 	private String internacional;
 	
 	@ManyToOne
-	@Column (nullable = false)
+	@JoinColumn (name="CUENTA_IBAN1",nullable = false)
 	private Cuenta iban;
 	
 	@ManyToOne
-	@Column (nullable = false)
+	@JoinColumn (name="CUENTA_IBAN2",nullable = false)
 	private Cuenta iban1;
 	
 	@ManyToOne
-	@Column (nullable = false)
+	@JoinColumn (name="DIVISA1",nullable = false)
 	private Divisa divisa;
 	
 	@ManyToOne
-	@Column (nullable = false)
+	@JoinColumn (name="DIVISA2",nullable = false)
 	private Divisa divisa1;
 	
 

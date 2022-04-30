@@ -14,7 +14,7 @@ public class Empresa extends Cliente implements Serializable{
 	@Column(nullable = false)
 	private String razonSocial;
 	
-	@OneToMany(mappedBy="empresa")
+	@OneToMany(mappedBy="empresaId")
 	private List<Autorizacion> autori;
 	
 	
@@ -43,5 +43,14 @@ public class Empresa extends Cliente implements Serializable{
 		return "Empresa [razonSocial=" + razonSocial + "]";
 	}
 	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
 	
 }

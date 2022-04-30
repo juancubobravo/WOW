@@ -10,14 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uma.informatica.sii.anotaciones.Requisitos;
-import exceptions.*;
-import uma.wow.proyecto.Cliente;
-import uma.wow.proyecto.CuentaReferencia;
-import uma.wow.proyecto.Empresa;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.PersonaAutorizada;
-import uma.wow.proyecto.Segregada;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 /*	La aplicación permitirá a un usuario administrativo bloquear a un cliente o 
  * autorizado de manera temporal (no es lo mismo que una baja). En el caso de que 

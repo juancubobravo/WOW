@@ -19,13 +19,13 @@ public class DepositadaEn implements Serializable{
 
 	@ManyToOne
 	@JoinColumn(name="CUENTA_REFERENCIA_IBAN", nullable = false)
-	@MapsId("cuentaReferenciaIban")
-	private CuentaReferencia id1;
+	@MapsId("cuentaReferencia")
+	private CuentaReferencia cuentaReferencia;
 	
 	@ManyToOne
 	@JoinColumn(name="POOLED_ACCOUNT_IBAN", nullable = false)
-	@MapsId("pooledAccountIban")
-	private PooledAccount id2;
+	@MapsId("pooledAccount")
+	private PooledAccount pooledAccount;
 	
 
 	
@@ -51,26 +51,53 @@ public class DepositadaEn implements Serializable{
 
 
 	public CuentaReferencia getId1() {
-		return id1;
+		return cuentaReferencia;
 	}
 
 	public void setId1(CuentaReferencia id1) {
-		this.id1 = id1;
+		this.cuentaReferencia = id1;
 	}
 
 	public PooledAccount getId2() {
-		return id2;
+		return this.pooledAccount;
 	}
 
 	public void setId2(PooledAccount id2) {
-		this.id2 = id2;
+		this.pooledAccount = id2;
 	}
 
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		DepositadaEn other = (DepositadaEn) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
-		return "DepositadaEn [saldo=" + saldo + ", id1=" + id1 + ", id2=" + id2 + "]";
+		return "DepositadaEn [saldo=" + saldo + ", id=" + id + ", cuentaReferencia=" + cuentaReferencia
+				+ ", pooledAccount=" + pooledAccount + "]";
 	}
+
+
 
 
 	

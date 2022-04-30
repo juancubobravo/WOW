@@ -13,7 +13,7 @@ public class AutorizacionPK implements Serializable {
 	private String empresaId;
 
 	@Column(name="PERSONA_AUTORIZADA_ID", insertable=false, updatable=false)
-	private String personaAutorizadaId;
+	private String idAutorizada;
 
 	public AutorizacionPK() {
 	}
@@ -24,10 +24,10 @@ public class AutorizacionPK implements Serializable {
 		this.empresaId = empresaId;
 	}
 	public String getPersonaAutorizadaId() {
-		return this.personaAutorizadaId;
+		return this.idAutorizada;
 	}
 	public void setPersonaAutorizadaId(String personaAutorizadaId) {
-		this.personaAutorizadaId = personaAutorizadaId;
+		this.idAutorizada = personaAutorizadaId;
 	}
 
 	public boolean equals(Object other) {
@@ -40,14 +40,14 @@ public class AutorizacionPK implements Serializable {
 		AutorizacionPK castOther = (AutorizacionPK)other;
 		return 
 			this.empresaId.equals(castOther.empresaId)
-			&& this.personaAutorizadaId.equals(castOther.personaAutorizadaId);
+			&& this.idAutorizada.equals(castOther.idAutorizada);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int hash = 17;
 		hash = hash * prime + this.empresaId.hashCode();
-		hash = hash * prime + this.personaAutorizadaId.hashCode();
+		hash = hash * prime + this.idAutorizada.hashCode();
 		
 		return hash;
 	}

@@ -9,12 +9,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.uma.informatica.sii.anotaciones.Requisitos;
-import exceptions.*;
-import uma.wow.proyecto.Empresa;
-import uma.wow.proyecto.Individual;
-import uma.wow.proyecto.PooledAccount;
-import uma.wow.proyecto.Segregada;
-import uma.wow.proyecto.Usuario;
+import uma.wow.proyecto.*;
+import uma.wow.proyecto.ejb.exceptions.*;
+import uma.wow.proyecto.ejb.*;
 
 /* 	La aplicación permitirá a un administrativo la apertura de una cuenta y asociarla a un cliente. 
  * La cuenta podrá ser agrupada (pooled) o segregada (segregated). En ambos casos la(s) cuenta(s) 
