@@ -4,7 +4,8 @@ import uma.wow.proyecto.*;
 
 public interface GestionTransaccion {
 	
-    public void transaccionClienteAutorizado(Individual ind, PersonaAutorizada persAut, String ibanDes, String ibanOr, double saldo)
-            throws ClienteNoEncontrado, PersonaAutorizadaNoEncontrada;
+	public void transaccion(Usuario user, String IBANorigen, String IBANdestino, double dinero) throws EJBException;
+	public void transaccionCliente(Cliente c, String IBANorigen, String IBANdestino, double dinero) throws ClienteSinAutorizacion, CuentaNoEncontrada, SaldoInsuficiente;
+	public void transaccionAutorizado(PersonaAutorizada c, String IBANorigen, String IBANdestino, double dinero) throws PermisoSoloDeLecturaException, ClienteSinAutorizacion, SaldoInsuficiente, CuentaNoEncontrada;
 
 }
