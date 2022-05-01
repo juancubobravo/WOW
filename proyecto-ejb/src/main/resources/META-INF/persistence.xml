@@ -16,7 +16,7 @@
 		<class>uma.wow.proyecto.Divisa</class>
 		<class>uma.wow.proyecto.Empresa</class>
 		<class>uma.wow.proyecto.PersonaAutorizada</class>
-		<class>uma.wow.proyecto.PooledAcount</class>
+		<class>uma.wow.proyecto.PooledAccount</class>
 		<class>uma.wow.proyecto.Transaccion</class>
 		<class>uma.wow.proyecto.Individual</class>
 		<class>uma.wow.proyecto.Usuario</class>

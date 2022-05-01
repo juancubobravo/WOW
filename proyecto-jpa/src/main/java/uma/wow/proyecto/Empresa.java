@@ -8,7 +8,6 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue(value="Empresa")
 public class Empresa extends Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Column(nullable = false)

@@ -38,7 +38,8 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 	public void testDarAltaIndividualCorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("12345");
+		individual.setId("12345");
+		individual.setIdentificacion("77445");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -73,7 +74,8 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 	public void testDarAltaEmpresaCorrecto(){
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("35466");
+		empresa.setId("35466");
+		empresa.setIdentificacion("00141");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -106,7 +108,8 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 	public void testDarAltaIndividualIncorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("3123455558");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -141,7 +144,8 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 	public void testDarAltaEmpresaIncorrecto(){
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("77777");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));

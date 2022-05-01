@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
 @Entity
-@DiscriminatorValue(value="Segregada")
+
 public class Segregada extends CuentaFintech implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

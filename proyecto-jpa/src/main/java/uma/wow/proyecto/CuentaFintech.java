@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 
 @Entity
-@DiscriminatorValue(value="CuentaReferencia")
+
 
 public class CuentaFintech extends Cuenta implements Serializable {
 

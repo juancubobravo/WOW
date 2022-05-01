@@ -29,6 +29,7 @@ public class BaseDatos {
 		usuario.setTipo("NORMAL");
 		
 		em.persist(usuario);
+	
 		
 		Usuario administrador = new Usuario();
 		administrador.setNombreUsuario("Alvaro");
@@ -36,9 +37,10 @@ public class BaseDatos {
 		administrador.setTipo("ADMIN");
 		
 		em.persist(administrador);
-		
+	
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -54,7 +56,8 @@ public class BaseDatos {
 		em.persist(individual);
 				
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -64,9 +67,9 @@ public class BaseDatos {
 		empresa.setCodigoPostal("29009");
 		empresa.setPais("España");
 		empresa.setRazon_Social("Ayudas");
-
-		em.persist(empresa);
 		
+		em.persist(empresa);
+	
 		Usuario usuarioEmpresa = new Usuario ();
 		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
 		usuarioEmpresa.setPassword("vivalacomida");
@@ -84,14 +87,18 @@ public class BaseDatos {
 		empresaParaUsuario.setPais("España");
 		empresaParaUsuario.setRazon_Social("Comida");
 		
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
 		usuarioEmpresa.setCliente(empresaParaUsuario);
 		
 		em.persist(usuarioEmpresa);
+		em.persist(empresaParaUsuario);
 		
 		Usuario usuarioIndividual = new Usuario ();
 		usuarioIndividual.setNombreUsuario("Carlos");
 		usuarioIndividual.setPassword("1234");
 		usuarioIndividual.setTipo("NORMAL");
+		
+		
 		
 		Individual individualParaUsuario = new Individual();
 		individualParaUsuario.setIdentificacion("654987");
@@ -103,20 +110,24 @@ public class BaseDatos {
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("29001");
 		individualParaUsuario.setPais("España");
-		individualParaUsuario.setNombre("Jammal");
-		individualParaUsuario.setApellido("Hasbullah");
+		individualParaUsuario.setNombre("Paco");
+		individualParaUsuario.setApellido("Uwu");
 		individualParaUsuario.setFecha_nacimiento(null);
 		
-		usuarioIndividual.setCliente(individualParaUsuario);
+		usuario.setCliente(individualParaUsuario);
+		individualParaUsuario.setUsuario(usuario);
 		
-		em.persist(usuarioIndividual);
+		//em.persist(usuarioIndividual); // Clave primaria duplicada
+		em.persist(individualParaUsuario);
 		
 		CuentaReferencia cuentaLlena = new CuentaReferencia();
+		cuentaLlena.setNombreBanco("Unicaja");
 		cuentaLlena.setIban("9999");
 		cuentaLlena.setSwift("4812");
 		cuentaLlena.setSaldo(1000000);
 		
 		CuentaReferencia cuentaVacia = new CuentaReferencia();
+		cuentaVacia.setNombreBanco("Unicaja");
 		cuentaVacia.setIban("538888");
 		cuentaVacia.setSwift("482");
 		cuentaVacia.setSaldo(0);
@@ -145,6 +156,7 @@ public class BaseDatos {
 		lista.add(dep);
 		pooled.setDepositaEn(lista);
 		
+		em.persist(dep);
 		em.persist(pooled);
 		
 		Segregada segregada = new Segregada();
@@ -163,7 +175,7 @@ public class BaseDatos {
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setAutori(null);
 		personaAutorizadaBaja.setDireccion("Avda S");
-		personaAutorizadaBaja.setEstado(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
 		personaAutorizadaBaja.setFechaInicio(Date.valueOf("2020-03-24"));
 		personaAutorizadaBaja.setFechaFin(null);
 		personaAutorizadaBaja.setId("511155");
@@ -172,6 +184,7 @@ public class BaseDatos {
 		personaAutorizadaBaja.setUsuario(usuario);
 		
 		em.persist(personaAutorizadaBaja);
+		
 		
 		
 		

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue(value="Pooled")
+
 
 public class PooledAccount extends CuentaFintech implements Serializable {
 	private static final long serialVersionUID = 1L;

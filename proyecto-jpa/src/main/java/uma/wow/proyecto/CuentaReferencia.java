@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@DiscriminatorValue(value="Referencia")
+
 public class CuentaReferencia extends Cuenta {
 	
 	private static final long serialVersionUID = 1L;
