@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
@@ -8,6 +9,7 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import uma.wow.proyecto.*;
 import uma.wow.proyecto.ejb.exceptions.*;
 import uma.wow.proyecto.ejb.*;
@@ -34,70 +36,100 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	/*
+	@Requisitos({"RF8"})
 	@Test
 	public void testBajaPersonaAutorizadaCorrecto(){
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Antonio");
-		usuario.setPassword("12rrr34");
-		usuario.setTipo("NORMAL");
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
 		
-		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
-		personaAutorizada.setApellidos(PERSONA_AUTORIZADA_EJB);
-		personaAutorizada.setAutori(null);
-		personaAutorizada.setDireccion("Avda Grande");
-		personaAutorizada.setEstado(null);
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizada.setFechaFin(null);
-		personaAutorizada.setId("5555");
-		personaAutorizada.setIdentificacion("010101");
-		personaAutorizada.setNombre(usuario.getNombreUsuario());
-		personaAutorizada.setUsuario(usuario);
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setIdentificacion("0771");
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 		
 		try {			
-			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizada, usuario);		
+			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizadaBaja, usuarioPerAut);	
+			PersonaAutorizada aux = gestionPersonaAutorizada.devolver(personaAutorizadaBaja.getId());
 			
-		}catch(CuentaDeBaja e) {
-			fail("No debería saltar error, la persona esta autorizada");
+			assertEquals(aux.getId(),personaAutorizadaBaja.getId());
 			
+		}catch(PersonaAutorizadaEncontrada e) {
+			//ok
+			
+		}catch(PersonaAutorizadaNoEncontrada e) {
+			fail("Persona Autorizada no encontrada");
+		}catch(ClienteNoEncontrado e) {
+			fail("Cliente no encontrado");
+		}catch(CuentaNoEncontrada e) {
+			fail("Cuenta no encontrada");
+		}catch(UsuarioNoEncontrado e) {
+			fail("Usuario no encontrado");
+		}catch(NoEsEmpresaException e) {
+			fail("Usuario no es empresa");
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
 	}	
-	*/
-	/*
+	
+	@Requisitos({"RF8"})
 	@Test
 	public void testBajaPersonaAutorizadaIncorrecto(){
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Manolo");
-		usuario.setPassword("1200034");
-		usuario.setTipo("NORMAL");
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
-		personaAutorizadaBaja.setApellidos("Pelaez");
-		personaAutorizadaBaja.setAutori(null);
-		personaAutorizadaBaja.setDireccion("Avda S");
-		personaAutorizadaBaja.setEstado(null);
-		personaAutorizadaBaja.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizadaBaja.setFechaFin(null);
-		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setId("51112");
 		personaAutorizadaBaja.setIdentificacion("0771");
-		personaAutorizadaBaja.setNombre(usuario.getNombreUsuario());
-		personaAutorizadaBaja.setUsuario(usuario);
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 		
 		try {			
-			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizadaBaja, usuario);		
+			gestionPersonaAutorizada.borraPersonaAutorizada(personaAutorizadaBaja, usuarioPerAut);	
+			PersonaAutorizada aux = gestionPersonaAutorizada.devolver(personaAutorizadaBaja.getId());
 			
-		}catch(CuentaDeBaja e) {
-			//OK
+			assertEquals(aux.getId(),personaAutorizadaBaja.getId());
 			
+		}catch(PersonaAutorizadaEncontrada e) {
+			
+			fail("Persona Autorizada encontrada");
+		}catch(PersonaAutorizadaNoEncontrada e) {
+			//ok
+		}catch(ClienteNoEncontrado e) {
+			fail("Cliente no encontrado");
+		}catch(CuentaNoEncontrada e) {
+			fail("Cuenta no encontrada");
+		}catch(UsuarioNoEncontrado e) {
+			fail("Usuario no encontrado");
+		}catch(NoEsEmpresaException e) {
+			fail("Usuario no es empresa");
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 	
 	}	
-	*/
+	
 }
