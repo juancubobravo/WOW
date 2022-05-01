@@ -36,7 +36,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	//Comprobamos que las cuentas son cerradas correctamente
 	@Requisitos({"RF9"})
 	@Test
 	public void testCerrarCuentaCorrecto(){
@@ -134,7 +134,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		}
 		
 	}	
-	
+	//Comprobamos que si existe salndo en las cuentas estas no son borradas
 	@Requisitos({"RF9"})
 	@Test
 	public void testCerrarCuentaIncorrecto(){

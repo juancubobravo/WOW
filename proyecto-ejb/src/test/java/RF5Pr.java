@@ -34,7 +34,10 @@ public class RF5Pr {
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'pooled(Individual)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al no haber ningun tipo de error, no salta ninguna exception
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledIndividualCorrecto(){
@@ -81,7 +84,10 @@ public class RF5Pr {
 		}
 		
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'pooled(Individual)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al haber una cuenta ya creada, salta la exception 'CuentaEncontrada'
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledIndividualIncorrecto(){
@@ -128,7 +134,10 @@ public class RF5Pr {
 		}
 		
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'pooled(Empresa)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al no haber ningun tipo de error, no salta ninguna exception
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledEmpresaCorrecto() {
@@ -172,7 +181,10 @@ public class RF5Pr {
 			fail("Excepción no controlada");
 		}
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'pooled(Empresa)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al noo haber un usuario con esa id salta la exception 'ClienteNoEncontrado'
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaPooledEmpresaIncorrecto() {
@@ -216,7 +228,10 @@ public class RF5Pr {
 			fail("Excepción no controlada");
 		}
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'segregada(Individual)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al no haber ningun tipo de error, no salta ninguna exception 
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaIndividualCorrecto(){
@@ -262,7 +277,10 @@ public class RF5Pr {
 		}
 		
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'segregada(Individual)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al haber una cuenta ya creada salta la exception 'CuentraEncontrada'
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaIndividualIncorrecto(){
@@ -308,7 +326,10 @@ public class RF5Pr {
 		}
 		
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'segregada(Empresa)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al no haber ningun tipo de error, no salta ninguna exception
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaIndividualEmpresaCorrecto() {
@@ -351,7 +372,10 @@ public class RF5Pr {
 			fail("Excepción no controlada");
 		}
 	}
-	
+	/*
+	 * Vamos a abrir un tipo 'segregada(Empresa)', para ello lo creamos y llamamos al metodo de 'creaCuenta' y 
+     al no haber ningun cliente en la bsa de datos, salta la exception 'ClienteNoEncontrado'
+	 */
 	@Requisitos({"RF5"})
 	@Test
 	public void testAbrirCuentaSegregadaEmpresaIncorrecto() {

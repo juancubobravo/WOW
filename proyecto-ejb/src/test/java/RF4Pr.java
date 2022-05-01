@@ -27,7 +27,10 @@ public class RF4Pr {
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
+	 * Vamos a dar de baja un tipo 'Individual', para ello lo creamos y llamamos al metodo de 'bajaCliente' y 
+     al estar todo correcto, fuinciona sin problemas
+	 */
 	@Requisitos({"RF4"})
 	@Test
 	public void testDarBajaIndividualCorrecto() {
@@ -75,7 +78,10 @@ public class RF4Pr {
 		
 	}
 	
-	
+	/*
+	 * Vamos a dar de baja un tipo 'Empresa', para ello lo creamos y llamamos al metodo de 'bajaCliente' y 
+     al estar todo correcto, fuinciona sin problemas
+	 */
 	
 	@Requisitos({"RF4"})
 	@Test
@@ -110,6 +116,10 @@ public class RF4Pr {
 		}		
 	}
 	
+	/*
+	 * Vamos a dar de baja un tipo 'Empresa', para ello lo creamos y llamamos al metodo de 'bajaCliente' y 
+     al no haber ningun tipo empresa con esa misma ID en la base de datos, salta la exception 'ClienteNoEncontrado'
+	 */
 	@Requisitos({"RF4"})
 	@Test
 	public void testDarBajaEmpresaClienteNoEncontrado() {
@@ -142,6 +152,11 @@ public class RF4Pr {
 			fail("Excepción no controlada");
 		}		
 	}
+	
+	/*
+	 * Vamos a dar de baja un tipo 'Individual', para ello lo creamos y llamamos al metodo de 'bajaCliente' y 
+     al no haber ningun tipo empresa con esa misma ID en la base de datos, salta la exception 'ClienteNoEncontrado'
+	 */
 	
 	@Requisitos({"RF4"})
 	@Test

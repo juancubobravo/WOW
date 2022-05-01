@@ -26,7 +26,7 @@ public class RF10Pr {
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	//Comprobamos que los usuarios se logean correctamente
 	@Requisitos({"RF10"})
 	@Test
 	public void testAccesoUsuario() {
@@ -73,7 +73,7 @@ public class RF10Pr {
 		}
 		
 	}
-	
+	//Comprobamos que salta un error si introducimos una contraseña incorrecta
 	@Requisitos({"RF10"})
 	@Test
 	public void testAccesoUsuarioContraseñaErronea() {
@@ -120,7 +120,7 @@ public class RF10Pr {
 		}
 		
 	}
-	
+	//Comprobamos que los usuarios empresa pueden logearse sin problemas
 	@Requisitos({"RF10"})
 	@Test
 	public void testAccesoUsuarioEmpresa() {

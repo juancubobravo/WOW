@@ -30,7 +30,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	//Comprobamos que los datos de una persona autorizada son modificados correctamente
 	@Requisitos({"RF7"})
 	@Test
 	public void testModificaAutorizado() throws PersonaAutorizadaNoEncontrada, ContraseniaInvalida, UsuarioNoEncontrado, NoAdministradorException{

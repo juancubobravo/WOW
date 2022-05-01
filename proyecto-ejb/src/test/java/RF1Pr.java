@@ -30,6 +30,7 @@ public class RF1Pr {
 		
 	}
 	
+	//comprobamos que el administrador tiene acceso de manera correcta
 	@Requisitos({"RF1"})
 	@Test
 	public void testComprobarAdministradorCorrecto() throws NoAdministradorException{
@@ -49,6 +50,8 @@ public class RF1Pr {
 				
 	}
 	
+	
+	//comprobamos que la exception 'NoAdministradorExcption' funciona ya que la password es incorrecta
 	@Requisitos({"RF1"})
 	@Test
 	public void testComprobarAdministradorIncorrecto() throws NoAdministradorException{

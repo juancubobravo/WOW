@@ -33,6 +33,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 	}
 	
+	//Vamos a dar de alta a un tipo 'Individual', para ello lo creamos y llamamos al metodo de 'altaCliente'
 	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaIndividualCorrecto(){
@@ -69,6 +70,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	//Vamos a dar de alta a un tipo 'Empresa', para ello lo creamos y llamamos al metodo de 'altaCliente.'
 	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaEmpresaCorrecto(){
@@ -103,6 +105,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	//Vamos a dar de alta a un tipo 'Individual', para ello lo creamos y llamamos al metodo de 'altaCliente.Como vemos funciona la exception 'ClienteYaExiste'
 	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaIndividualIncorrecto(){
@@ -139,6 +142,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}				
 	}
 	
+	//Vamos a dar de alta a un tipo 'Empresa', para ello lo creamos y llamamos al metodo de 'altaCliente.Como vemos funciona la exception 'ClienteYaExiste'
 	@Requisitos({"RF2"})
 	@Test
 	public void testDarAltaEmpresaIncorrecto(){

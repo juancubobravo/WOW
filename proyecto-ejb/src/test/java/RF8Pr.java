@@ -36,6 +36,8 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
+	
+	//Comprobamos que las personas autorizadas se pueden dar de baja correctamente
 	@Requisitos({"RF8"})
 	@Test
 	public void testBajaPersonaAutorizadaCorrecto(){
@@ -83,7 +85,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		}
 		
 	}	
-	
+	//Comprobamos que si la persona autorizada no está en la base de datos salta una excepcion
 	@Requisitos({"RF8"})
 	@Test
 	public void testBajaPersonaAutorizadaIncorrecto(){

@@ -37,6 +37,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
+	//Comprobamos que las personas autorizadas son añadidas correctamente a la base de datos
 	@Requisitos({"RF6"})
 	@Test
 	public void testAnyadirPersonaAutorizadaCorrecto(){
@@ -117,7 +118,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		}
 		
 	}	
-	
+	//Comprobamos la excepcion cuenta no encontrada a la hora de crear una persona autorizada
 	@Requisitos({"RF6"})
 	@Test
 	public void testAnyadirPersonaAutorizadaIncorrecto(){

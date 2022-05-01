@@ -31,7 +31,10 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	
+	/*
+	 * Vamos a modificar un tipo 'Empresa', para ello lo creamos y llamamos al metodo de 'modificaCliente' y 
+     al estar todo correcto, fuinciona sin problemas
+	 */
 	@Requisitos({"RF3"})
 	@Test
 	public void testModificaClienteEmpresa() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
@@ -73,7 +76,10 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		}
 		
 	}
-	
+	/*
+	 * Vamos a modificar un tipo 'individual', para ello lo creamos y llamamos al metodo de 'modificaCliente' y 
+     al estar todo correcto, fuinciona sin problemas
+	 */
 	@Requisitos({"RF3"})
 	@Test
     public void testModificaClienteIndividual() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
@@ -117,7 +123,10 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
     	
     	
     }
-	
+	/*
+	 * Vamos a modificar un tipo 'individual', para ello lo creamos y llamamos al metodo de 'modificaCliente' y 
+     como podemos ver, al ser un individual que no esta en la Base de Datos, salta la exception 'ClienteNoEncontrado'
+	 */
 	@Requisitos({"RF3"})
 	@Test
     public void testModificaClienteIndividualError() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
