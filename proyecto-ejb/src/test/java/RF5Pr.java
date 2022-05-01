@@ -40,7 +40,8 @@ public class RF5Pr {
 	public void testAbrirCuentaPooledIndividualCorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -86,7 +87,8 @@ public class RF5Pr {
 	public void testAbrirCuentaPooledIndividualIncorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -132,7 +134,8 @@ public class RF5Pr {
 	public void testAbrirCuentaPooledEmpresaCorrecto() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -175,7 +178,8 @@ public class RF5Pr {
 	public void testAbrirCuentaPooledEmpresaIncorrecto() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("78995");
+		empresa.setId("98558774526");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -218,7 +222,8 @@ public class RF5Pr {
 	public void testAbrirCuentaSegregadaIndividualCorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -263,7 +268,8 @@ public class RF5Pr {
 	public void testAbrirCuentaSegregadaIndividualIncorrecto(){
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -277,7 +283,7 @@ public class RF5Pr {
 		individual.setFecha_nacimiento(null);
 		
 		Segregada segregada = new Segregada();
-		segregada.setIban("1888134538888");
+		segregada.setIban("1538888");
 		segregada.setSwift("4582");
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
@@ -308,7 +314,8 @@ public class RF5Pr {
 	public void testAbrirCuentaIndividualEmpresaCorrecto() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -350,7 +357,8 @@ public class RF5Pr {
 	public void testAbrirCuentaSegregadaEmpresaIncorrecto() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("792595");
+		empresa.setId("9852854756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));

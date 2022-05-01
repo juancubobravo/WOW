@@ -14,7 +14,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({RF1Pr.class, RF2Pr.class,RF3Pr.class, RF7Pr.class, RF4Pr.class})//, RF5Pr.class, RF6Pr.class,RF7Pr.class , RF8Pr.class, 
+@SuiteClasses({RF1Pr.class, RF2Pr.class,RF3Pr.class, RF4Pr.class,RF5Pr.class, RF7Pr.class})//, RF5Pr.class, RF6Pr.class,RF7Pr.class , RF8Pr.class, 
 //	RF9Pr.class, RF10Pr.class,  RF16Pr.class})
 public class SuiteTest {
 	
