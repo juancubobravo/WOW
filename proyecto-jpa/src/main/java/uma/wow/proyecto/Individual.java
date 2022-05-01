@@ -16,7 +16,7 @@ public class Individual extends Cliente implements Serializable  {
 	private String apellido;
 	@Column (nullable=true)
 	@Temporal(TemporalType.DATE)
-	private java.util.Date fechaNacimiento;
+	private Date fechaNacimiento;
 	
 		
 	public Individual() {
@@ -35,7 +35,7 @@ public class Individual extends Cliente implements Serializable  {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public java.util.Date getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 	public void setFecha_nacimiento(java.util.Date fechaNacimiento) {

@@ -1,6 +1,9 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.NamingException;
 
@@ -14,16 +17,13 @@ import uma.wow.proyecto.ejb.*;
 
 public class RF4Pr {
 	private static final String CLIENTE_EJB = "java:global/classes/ClienteEJB";
-	private static final String ACCESO_EJB = "java:global/classes/AccesoEJB";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "WOWEJBTest";
 	
 	private GestionCliente gestionCliente;
-	private GestionAcceso gestionAcceso;
 	
 	@Before
 	public void setup() throws NamingException{
 		gestionCliente = (GestionCliente) SuiteTest.ctx.lookup(CLIENTE_EJB);
-		gestionAcceso = (GestionAcceso) SuiteTest.ctx.lookup(ACCESO_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
@@ -31,6 +31,11 @@ public class RF4Pr {
 	@Requisitos({"RF4"})
 	@Test
 	public void testDarBajaIndividualCorrecto() {
+		
+		Usuario usuario = new Usuario ();
+		usuario.setNombreUsuario("Carlos");
+		usuario.setPassword("1234");
+		usuario.setTipo("NORMAL");
 		
 		Individual individual = new Individual();
 		individual.setIdentificacion("654987");
@@ -45,6 +50,10 @@ public class RF4Pr {
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
 		individual.setFecha_nacimiento(null);
+		individual.setUsuario(usuario);
+		List<CuentaFintech> lista = new ArrayList<CuentaFintech>();
+		individual.setCuentas(lista);		
+		usuario.setCliente(individual);
 		
 		Usuario administrador = new Usuario();
 		administrador.setNombreUsuario("Alvaro");
@@ -53,6 +62,8 @@ public class RF4Pr {
 		
 		try {
 			gestionCliente.bajaCliente(individual, administrador);
+			Cliente cliente = gestionCliente.devolverIndividual(individual.getId());
+			assertEquals(cliente.getEstado(),"BAJA");
 		}catch(CuentasActivas e) {
 			fail("No debería saltar error, el cliente no tiene cuentas activas");
 		}catch(ClienteNoEncontrado e) {
@@ -62,6 +73,8 @@ public class RF4Pr {
 		}
 		
 	}
+	
+	/*
 	
 	@Requisitos({"RF4"})
 	@Test
@@ -160,5 +173,5 @@ public class RF4Pr {
 			fail("Excepción no controlada");
 		}
 		
-	}
+	}*/
 }

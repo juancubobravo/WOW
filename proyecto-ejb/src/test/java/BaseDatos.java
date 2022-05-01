@@ -23,13 +23,6 @@ public class BaseDatos {
 		
 		em.getTransaction().begin();
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Carlos");
-		usuario.setPassword("1234");
-		usuario.setTipo("NORMAL");
-		
-		em.persist(usuario);
-	
 		
 		Usuario administrador = new Usuario();
 		administrador.setNombreUsuario("Alvaro");
@@ -37,6 +30,11 @@ public class BaseDatos {
 		administrador.setTipo("ADMIN");
 		
 		em.persist(administrador);
+		
+		Usuario usuario = new Usuario ();
+		usuario.setNombreUsuario("Carlos");
+		usuario.setPassword("1234");
+		usuario.setTipo("NORMAL");
 	
 		Individual individual = new Individual();
 		individual.setId("654987");
@@ -52,7 +50,13 @@ public class BaseDatos {
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
 		individual.setFecha_nacimiento(null);
+		individual.setUsuario(usuario);
+		List<CuentaFintech> lista = new ArrayList<CuentaFintech>();
+		individual.setCuentas(lista);
 		
+		usuario.setCliente(individual);
+		
+		em.persist(usuario);
 		em.persist(individual);
 				
 		Empresa empresa = new Empresa();
@@ -93,6 +97,8 @@ public class BaseDatos {
 		em.persist(usuarioEmpresa);
 		em.persist(empresaParaUsuario);
 		
+		
+		/*
 		Usuario usuarioIndividual = new Usuario ();
 		usuarioIndividual.setNombreUsuario("Carlos");
 		usuarioIndividual.setPassword("1234");
@@ -119,6 +125,8 @@ public class BaseDatos {
 		
 		//em.persist(usuarioIndividual); // Clave primaria duplicada
 		em.persist(individualParaUsuario);
+		*/
+		
 		
 		CuentaReferencia cuentaLlena = new CuentaReferencia();
 		cuentaLlena.setNombreBanco("Unicaja");
@@ -152,9 +160,9 @@ public class BaseDatos {
 		dep.setId1(cuentaLlena);
 		dep.setSaldo(cuentaLlena.getSaldo());
 		
-		List<DepositadaEn> lista = new ArrayList<DepositadaEn>();
-		lista.add(dep);
-		pooled.setDepositaEn(lista);
+		List<DepositadaEn> listaa = new ArrayList<DepositadaEn>();
+		listaa.add(dep);
+		pooled.setDepositaEn(listaa);
 		
 		em.persist(dep);
 		em.persist(pooled);
@@ -171,18 +179,26 @@ public class BaseDatos {
 		
 		em.persist(segregada);
 		
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
+		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
-		personaAutorizadaBaja.setApellidos("Pelaez");
-		personaAutorizadaBaja.setAutori(null);
-		personaAutorizadaBaja.setDireccion("Avda S");
-		personaAutorizadaBaja.setEstado("ACTIVO");
-		personaAutorizadaBaja.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizadaBaja.setFechaFin(null);
 		personaAutorizadaBaja.setId("511155");
 		personaAutorizadaBaja.setIdentificacion("0771");
-		personaAutorizadaBaja.setNombre(usuario.getNombreUsuario());
-		personaAutorizadaBaja.setUsuario(usuario);
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 		
+		em.persist(usuarioPerAut);
 		em.persist(personaAutorizadaBaja);
 		
 		

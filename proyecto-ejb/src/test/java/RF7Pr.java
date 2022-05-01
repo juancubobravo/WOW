@@ -40,32 +40,36 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		administrador.setPassword("perro");
 		administrador.setTipo("ADMIN");
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Carlos");
-		usuario.setPassword("1234");
-		usuario.setTipo("NORMAL");
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
 		
-		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
-		personaAutorizada.setApellidos("Paez");
-		personaAutorizada.setAutori(null);
-		personaAutorizada.setDireccion("Avda S");
-		personaAutorizada.setEstado(null);
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizada.setFechaFin(null);
-		personaAutorizada.setId("511155");
-		personaAutorizada.setIdentificacion("0771");
-		personaAutorizada.setNombre(usuario.getNombreUsuario());
-		personaAutorizada.setUsuario(usuario);
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setIdentificacion("0771");
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 		
 		try {
 				
-			gestionAutorizada.modificaPersonaAutorizada(personaAutorizada, administrador);
-			PersonaAutorizada persA = gestionAutorizada.devolver(personaAutorizada.getId());
+			gestionAutorizada.modificaPersonaAutorizada(personaAutorizadaBaja, administrador);
+			PersonaAutorizada persA = gestionAutorizada.devolver(personaAutorizadaBaja.getId());
 			
-			assertEquals(personaAutorizada.getApellidos(),persA.getApellidos());
+			assertEquals(personaAutorizadaBaja.getApellidos(),persA.getApellidos());
 			
 		}catch(PersonaAutorizadaNoEncontrada e) {
 			fail("Persona Autorizada no encontrada");
+		}catch(EJBException e) {
+			fail("Excepcion no controlada");
 		}
 		
 		

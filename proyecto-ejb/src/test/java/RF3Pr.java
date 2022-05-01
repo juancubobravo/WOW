@@ -74,6 +74,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 	}
 	
+	@Requisitos({"RF3"})
 	@Test
     public void testModificaClienteIndividual() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
     	
@@ -117,7 +118,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
     	
     }
 	
-	
+	@Requisitos({"RF3"})
 	@Test
     public void testModificaClienteIndividualError() throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
     	
@@ -149,7 +150,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 			assertEquals(cliente.getCiudad(),individual.getCiudad());
 			
 		}catch(ClienteNoEncontrado e) {
-			fail("Cliente no encontrado");
+			//OK
 		}catch(UsuarioNoEncontrado e) {
 			fail("Usuario no encontrado");
 		}catch(ContraseniaInvalida e) {
