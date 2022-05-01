@@ -38,7 +38,8 @@ public class RF4Pr {
 		usuario.setTipo("NORMAL");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -74,14 +75,15 @@ public class RF4Pr {
 		
 	}
 	
-	/*
+	
 	
 	@Requisitos({"RF4"})
 	@Test
 	public void testDarBajaEmpresaCorrecto() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -113,7 +115,8 @@ public class RF4Pr {
 	public void testDarBajaEmpresaClienteNoEncontrado() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("63554");
+		empresa.setId("63554");
+		empresa.setIdentificacion("aaa");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -145,7 +148,8 @@ public class RF4Pr {
 	public void testDarBajaIndividualClienteNoEncontrado() {
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("452757");
+		individual.setId("452757");
+		individual.setIdentificacion("yyy");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -173,5 +177,5 @@ public class RF4Pr {
 			fail("Excepción no controlada");
 		}
 		
-	}*/
+	}
 }
