@@ -143,6 +143,23 @@ public class CuentaEJB implements GestionCuenta {
         cuenta.setEstado("BAJA");
     }
 
+    @Override
+    public PooledAccount devolverPooled(String identificacion) throws CuentaNoEncontrada {
+        PooledAccount pooled = em.find(PooledAccount.class, identificacion);
+        if(pooled == null) {
+            throw new CuentaNoEncontrada();
+        }
+        return pooled;
+    }
+    
+    @Override
+    public Segregada devolverSegregada(String identificacion) throws CuentaNoEncontrada {
+        Segregada pooled = em.find(Segregada.class, identificacion);
+        if(pooled == null) {
+            throw new CuentaNoEncontrada();
+        }
+        return pooled;
+    }
 
 
 }

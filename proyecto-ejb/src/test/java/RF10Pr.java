@@ -18,12 +18,10 @@ public class RF10Pr {
 	private static final String ACCESO_EJB = "java:global/classes/AccesoEJB";
 	private static final String UNIDAD_PERSITENCIA_PRUEBAS = "WOWEJBTest";
 	
-	private GestionCliente gestionCliente;
 	private GestionAcceso gestionAcceso;
 	
 	@Before
 	public void setup() throws NamingException{
-		gestionCliente = (GestionCliente) SuiteTest.ctx.lookup(CLIENTE_EJB);
 		gestionAcceso = (GestionAcceso) SuiteTest.ctx.lookup(ACCESO_EJB);
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
@@ -34,24 +32,25 @@ public class RF10Pr {
 	public void testAccesoUsuario() {
 		
 		Usuario usuarioIndividual = new Usuario ();
-		usuarioIndividual.setNombreUsuario("Carlos");
+		usuarioIndividual.setNombreUsuario("Peter");
 		usuarioIndividual.setPassword("1234");
 		usuarioIndividual.setTipo("NORMAL");
 		
 		Individual individualParaUsuario = new Individual();
+		individualParaUsuario.setId("9999999");
 		individualParaUsuario.setIdentificacion("654987");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
 		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
 		individualParaUsuario.setFechaBaja(null);
-		individualParaUsuario.setDireccion("Avenida Correcaminos");
+		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
-		individualParaUsuario.setCodigoPostal("29001");
+		individualParaUsuario.setCodigoPostal("2901");
 		individualParaUsuario.setPais("España");
-		individualParaUsuario.setNombre("Jammal");
-		individualParaUsuario.setApellido("Hasbullah");
+		individualParaUsuario.setNombre("Jamal");
+		individualParaUsuario.setApellido("Peterh");
 		individualParaUsuario.setFecha_nacimiento(null);
-		
+		individualParaUsuario.setUsuario(usuarioIndividual);
 		usuarioIndividual.setCliente(individualParaUsuario);
 		
 		
@@ -80,24 +79,25 @@ public class RF10Pr {
 	public void testAccesoUsuarioContraseñaErronea() {
 		
 		Usuario usuarioIndividual = new Usuario ();
-		usuarioIndividual.setNombreUsuario("Carlos");
-		usuarioIndividual.setPassword("7412");
+		usuarioIndividual.setNombreUsuario("Peter");
+		usuarioIndividual.setPassword("17877774");
 		usuarioIndividual.setTipo("NORMAL");
 		
 		Individual individualParaUsuario = new Individual();
+		individualParaUsuario.setId("9999999");
 		individualParaUsuario.setIdentificacion("654987");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
 		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
 		individualParaUsuario.setFechaBaja(null);
-		individualParaUsuario.setDireccion("Avenida Correcaminos");
+		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
-		individualParaUsuario.setCodigoPostal("29001");
+		individualParaUsuario.setCodigoPostal("2901");
 		individualParaUsuario.setPais("España");
-		individualParaUsuario.setNombre("Jammal");
-		individualParaUsuario.setApellido("Hasbullah");
+		individualParaUsuario.setNombre("Jamal");
+		individualParaUsuario.setApellido("Peterh");
 		individualParaUsuario.setFecha_nacimiento(null);
-		
+		individualParaUsuario.setUsuario(usuarioIndividual);
 		usuarioIndividual.setCliente(individualParaUsuario);
 		
 		
@@ -131,6 +131,7 @@ public class RF10Pr {
 		usuarioEmpresa.setTipo("NORMAL");
 		
 		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setId("55555555");
 		empresaParaUsuario.setIdentificacion("789544");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
@@ -141,7 +142,7 @@ public class RF10Pr {
 		empresaParaUsuario.setCodigoPostal("27009");
 		empresaParaUsuario.setPais("España");
 		empresaParaUsuario.setRazon_Social("Comida");
-		
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
 		usuarioEmpresa.setCliente(empresaParaUsuario);
 		
 		

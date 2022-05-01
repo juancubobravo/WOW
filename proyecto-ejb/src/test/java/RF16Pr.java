@@ -57,7 +57,8 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		administrador.setTipo("ADMIN");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -76,7 +77,8 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		usuarioEmpresa.setTipo("NORMAL");
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
+		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
@@ -130,7 +132,8 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		administrador.setTipo("ADMIN");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("95987");
+		individual.setId("65165196157");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));

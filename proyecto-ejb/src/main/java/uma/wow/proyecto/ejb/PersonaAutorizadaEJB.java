@@ -35,7 +35,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             throw new ClienteNoEncontrado();
         }
 
-        if(cliente.getTipoCliente().equals("EMPRESA")){
+        if(cliente.getTipoCliente().equals("JURIDICO")){
             List<Autorizacion> listaAutorizaciones = cliente.getAutori();
             Autorizacion auto = new Autorizacion();
             auto.setEmpresa(cliente);
@@ -47,7 +47,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             auto.setTipo(tipo);
             listaAutorizaciones.add(auto);
             cliente.setAutori(listaAutorizaciones);
-            em.persist(pk);
             em.persist(auto);
             
         } else {
@@ -70,7 +69,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             throw new ClienteNoEncontrado();
         }
 
-        if(cliente.getTipoCliente().equals("EMPRESA")){
+        if(cliente.getTipoCliente().equals("JURIDICO")){
             List<Autorizacion> listaAutorizaciones = cliente.getAutori();
             Autorizacion auto = new Autorizacion();
             auto.setEmpresa(cliente);
@@ -82,7 +81,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
             auto.setTipo(tipo);
             listaAutorizaciones.add(auto);
             cliente.setAutori(listaAutorizaciones);
-            em.persist(pk);
             em.persist(auto);
             
         } else {

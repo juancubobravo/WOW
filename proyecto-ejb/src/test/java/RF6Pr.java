@@ -1,6 +1,9 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.naming.NamingException;
@@ -8,6 +11,7 @@ import javax.naming.NamingException;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.informatica.sii.anotaciones.Requisitos;
 import uma.wow.proyecto.*;
 import uma.wow.proyecto.ejb.exceptions.*;
 import uma.wow.proyecto.ejb.*;
@@ -33,118 +37,169 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		BaseDatos.inicializaBaseDatos(UNIDAD_PERSITENCIA_PRUEBAS);
 		
 	}
-	/*
+	@Requisitos({"RF6"})
 	@Test
 	public void testAnyadirPersonaAutorizadaCorrecto(){
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Daniel");
-		usuario.setPassword("1234");
-		usuario.setTipo("NORMAL");
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
 		
-		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
-		personaAutorizada.setApellidos(PERSONA_AUTORIZADA_EJB);
-		personaAutorizada.setAutori(null);
-		personaAutorizada.setDireccion("Avda Grande");
-		personaAutorizada.setEstado(null);
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizada.setFechaFin(null);
-		personaAutorizada.setId("456456");
-		personaAutorizada.setIdentificacion("765987");
-		personaAutorizada.setNombre(usuario.getNombreUsuario());
-		personaAutorizada.setUsuario(usuario);
+		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setId("55555555");
+		empresaParaUsuario.setIdentificacion("789544");
+		empresaParaUsuario.setTipoCliente("JURIDICO");
+		empresaParaUsuario.setEstado("ACTIVO");
+		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaBaja(null);
+		empresaParaUsuario.setDireccion("Calle Pamplona");
+		empresaParaUsuario.setCiudad("Madrid");
+		empresaParaUsuario.setCodigoPostal("27009");
+		empresaParaUsuario.setPais("España");
+		empresaParaUsuario.setRazon_Social("Comida");
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
+		usuarioEmpresa.setCliente(empresaParaUsuario);
+		
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
+		
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setIdentificacion("0771");
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 
-		Individual individual = new Individual();
-		individual.setIdentificacion("1211345");
-		individual.setTipoCliente("FISICA");
-		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2020-03-24"));
-		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Cadiz");
-		individual.setCodigoPostal("29020");
-		individual.setPais("España");
-		individual.setNombre("Pep");
-		individual.setApellido("Josep");
-		individual.setFecha_nacimiento(Date.valueOf("1990-03-24"));
 		
 		PooledAccount pooled = new PooledAccount();
-		pooled.setIban("1422224555528");
-		pooled.setSwift("4892");
+		pooled.setIban("16554");
+		pooled.setSwift("4512");
 		pooled.setClasificacion("POOLED");
-		pooled.setCliente(individual);
+		pooled.setCliente(empresaParaUsuario);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
 		pooled.setFechaCierre(null);
 		
+		
 		try {			
-			gestionPersonaAutorizada.anyadirPersonaAutorizada(pooled, personaAutorizada, usuario, "Autorizado");		
+					
+			gestionPersonaAutorizada.anyadirPersonaAutorizada(pooled, personaAutorizadaBaja,usuarioEmpresa, "OPERAR");
+			PersonaAutorizada aux = gestionPersonaAutorizada.devolver(personaAutorizadaBaja.getId());
 			
+			assertEquals(aux.getId(),personaAutorizadaBaja.getId());
+
 		}catch(PersonaAutorizadaEncontrada e) {
 			fail("No debería saltar error, la persona aun no esta autorizada");
 			
+		}catch(PersonaAutorizadaNoEncontrada e) {
+			//ok la persona no esta autorizada todavia
+		}catch(ClienteNoEncontrado e) {
+			fail("Cliente no encontrado");
+		}catch(CuentaNoEncontrada e) {
+			fail("Cuenta no encontrada");
+		}catch(UsuarioNoEncontrado e) {
+			fail("Usuario no encontrado");
+		}catch(NoEsEmpresaException e) {
+			fail("Usuario no es empresa");
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
 	}	
 	
-	
+	@Requisitos({"RF6"})
 	@Test
 	public void testAnyadirPersonaAutorizadaIncorrecto(){
 		
-		Usuario usuario = new Usuario ();
-		usuario.setNombreUsuario("Daniel");
-		usuario.setPassword("1234");
-		usuario.setTipo("NORMAL");
 		
-		PersonaAutorizada personaAutorizada = new PersonaAutorizada();
-		personaAutorizada.setApellidos(PERSONA_AUTORIZADA_EJB);
-		personaAutorizada.setAutori(null);
-		personaAutorizada.setDireccion("Avda Grande");
-		personaAutorizada.setEstado(null);
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
-		personaAutorizada.setFechaFin(null);
-		personaAutorizada.setId("46");
-		personaAutorizada.setIdentificacion("5987");
-		personaAutorizada.setNombre(usuario.getNombreUsuario());
-		personaAutorizada.setUsuario(usuario);
+			
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setId("55555555");
+		empresaParaUsuario.setIdentificacion("789544");
+		empresaParaUsuario.setTipoCliente("JURIDICO");
+		empresaParaUsuario.setEstado("ACTIVO");
+		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaBaja(null);
+		empresaParaUsuario.setDireccion("Calle Pamplona");
+		empresaParaUsuario.setCiudad("Madrid");
+		empresaParaUsuario.setCodigoPostal("27009");
+		empresaParaUsuario.setPais("España");
+		empresaParaUsuario.setRazon_Social("Comida");
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
+		usuarioEmpresa.setCliente(empresaParaUsuario);
+		
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
+		
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setIdentificacion("0771");
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
 
-		Individual individual = new Individual();
-		individual.setIdentificacion("1211345");
-		individual.setTipoCliente("FISICA");
-		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2020-03-24"));
-		individual.setFechaBaja(null);
-		individual.setDireccion("Avenida Casa");
-		individual.setCiudad("Cadiz");
-		individual.setCodigoPostal("29020");
-		individual.setPais("España");
-		individual.setNombre("Pep");
-		individual.setApellido("Josep");
-		individual.setFecha_nacimiento(Date.valueOf("1990-03-24"));
 		
 		PooledAccount pooled = new PooledAccount();
-		pooled.setIban("1422224555528");
-		pooled.setSwift("4892");
+		pooled.setIban("167896554");
+		pooled.setSwift("4512");
 		pooled.setClasificacion("POOLED");
-		pooled.setCliente(individual);
+		pooled.setCliente(empresaParaUsuario);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
 		pooled.setFechaCierre(null);
 		
+		
 		try {			
-			gestionPersonaAutorizada.anyadirPersonaAutorizada(pooled, personaAutorizada, usuario, "Autorizado");		
+					
+			gestionPersonaAutorizada.anyadirPersonaAutorizada(pooled, personaAutorizadaBaja,usuarioEmpresa, "OPERAR");
+			PersonaAutorizada aux = gestionPersonaAutorizada.devolver(personaAutorizadaBaja.getId());
 			
+			assertEquals(aux.getId(),personaAutorizadaBaja.getId());
+
 		}catch(PersonaAutorizadaEncontrada e) {
-			//OK
+			fail("No debería saltar error, la persona aun no esta autorizada");
 			
+		}catch(PersonaAutorizadaNoEncontrada e) {
+			//ok la persona no esta autorizada todavia
+		}catch(ClienteNoEncontrado e) {
+			fail("Cliente no encontrado");
+		}catch(CuentaNoEncontrada e) {
+			//OK
+		}catch(UsuarioNoEncontrado e) {
+			fail("Usuario no encontrado");
+		}catch(NoEsEmpresaException e) {
+			fail("Usuario no es empresa");
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
 		
+		
 	}	
-	*/
+	
 }

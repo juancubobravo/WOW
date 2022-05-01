@@ -74,59 +74,6 @@ public class BaseDatos {
 		
 		em.persist(empresa);
 	
-		Usuario usuarioEmpresa = new Usuario ();
-		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
-		usuarioEmpresa.setPassword("vivalacomida");
-		usuarioEmpresa.setTipo("NORMAL");
-		
-		Empresa empresaParaUsuario = new Empresa();
-		empresaParaUsuario.setIdentificacion("789544");
-		empresaParaUsuario.setTipoCliente("JURIDICO");
-		empresaParaUsuario.setEstado("ACTIVO");
-		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresaParaUsuario.setFechaBaja(null);
-		empresaParaUsuario.setDireccion("Calle Pamplona");
-		empresaParaUsuario.setCiudad("Madrid");
-		empresaParaUsuario.setCodigoPostal("27009");
-		empresaParaUsuario.setPais("España");
-		empresaParaUsuario.setRazon_Social("Comida");
-		
-		empresaParaUsuario.setUsuario(usuarioEmpresa);
-		usuarioEmpresa.setCliente(empresaParaUsuario);
-		
-		em.persist(usuarioEmpresa);
-		em.persist(empresaParaUsuario);
-		
-		
-		/*
-		Usuario usuarioIndividual = new Usuario ();
-		usuarioIndividual.setNombreUsuario("Carlos");
-		usuarioIndividual.setPassword("1234");
-		usuarioIndividual.setTipo("NORMAL");
-		
-		
-		
-		Individual individualParaUsuario = new Individual();
-		individualParaUsuario.setIdentificacion("654987");
-		individualParaUsuario.setTipoCliente("FISICA");
-		individualParaUsuario.setEstado("ACTIVO");
-		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
-		individualParaUsuario.setFechaBaja(null);
-		individualParaUsuario.setDireccion("Avenida Correcaminos");
-		individualParaUsuario.setCiudad("Malaga");
-		individualParaUsuario.setCodigoPostal("29001");
-		individualParaUsuario.setPais("España");
-		individualParaUsuario.setNombre("Paco");
-		individualParaUsuario.setApellido("Uwu");
-		individualParaUsuario.setFecha_nacimiento(null);
-		
-		usuario.setCliente(individualParaUsuario);
-		individualParaUsuario.setUsuario(usuario);
-		
-		//em.persist(usuarioIndividual); // Clave primaria duplicada
-		em.persist(individualParaUsuario);
-		*/
-		
 		
 		CuentaReferencia cuentaLlena = new CuentaReferencia();
 		cuentaLlena.setNombreBanco("Unicaja");
@@ -135,37 +82,69 @@ public class BaseDatos {
 		cuentaLlena.setSaldo(1000000);
 		
 		CuentaReferencia cuentaVacia = new CuentaReferencia();
-		cuentaVacia.setNombreBanco("Unicaja");
 		cuentaVacia.setIban("538888");
+		cuentaVacia.setNombreBanco("Caixa");
+		cuentaVacia.setEstado(null);
+		cuentaVacia.setSucursal(null);
+		cuentaVacia.setFechaApertura(null);
+		cuentaVacia.setPais(null);
 		cuentaVacia.setSwift("482");
 		cuentaVacia.setSaldo(0);
 		
+		Segregada segregadaVacia = new Segregada();
+		segregadaVacia.setIban("88888");
+		segregadaVacia.setSwift("4582");
+		segregadaVacia.setClasificacion("SEGREGADA");
+		segregadaVacia.setCliente(individual);
+		segregadaVacia.setEstado("ABIERTA");
+		segregadaVacia.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregadaVacia.setFechaCierre(null);
+		segregadaVacia.setCuentaReferencia(cuentaVacia);
+		
 		em.persist(cuentaVacia);
+		em.persist(segregadaVacia);
 		
 		
 		em.persist(cuentaLlena);
 		
-		PooledAccount pooled = new PooledAccount();
-		pooled.setIban("1453134534528");
-		pooled.setSwift("4512");
-		pooled.setClasificacion("POOLED");
-		pooled.setCliente(individual);
-		pooled.setDepositaEn(null);
-		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
-		pooled.setFechaCierre(null);
+		CuentaReferencia cuentaVacia2 = new CuentaReferencia();
+		cuentaVacia2.setIban("723888");
+		cuentaVacia2.setNombreBanco("Capo");
+		cuentaVacia2.setEstado(null);
+		cuentaVacia2.setSucursal(null);
+		cuentaVacia2.setFechaApertura(null);
+		cuentaVacia2.setPais(null);
+		cuentaVacia2.setSwift("482");
+		cuentaVacia2.setSaldo(0);
+		
+		PooledAccount pooledVacia = new PooledAccount();
+		pooledVacia.setIban("1453134534528");
+		pooledVacia.setSwift("4512");
+		pooledVacia.setClasificacion("POOLED");
+		pooledVacia.setCliente(individual);
+		pooledVacia.setDepositaEn(null);
+		pooledVacia.setEstado("ABIERTA");
+		pooledVacia.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooledVacia.setFechaCierre(null);
+		
+		
+		DepositaEnPK pk = new DepositaEnPK();
+		pk.setCuentaReferenciaIban(cuentaVacia2.getIban());
+		pk.setPooledAccountIban(pooledVacia.getIban());
 		
 		DepositadaEn dep = new DepositadaEn();
-		dep.setId2(pooled);
-		dep.setId1(cuentaLlena);
-		dep.setSaldo(cuentaLlena.getSaldo());
+		dep.setId(pk);
+		dep.setId2(pooledVacia);
+		dep.setId1(cuentaVacia2);
+		dep.setSaldo(cuentaVacia2.getSaldo());
 		
-		List<DepositadaEn> listaa = new ArrayList<DepositadaEn>();
-		listaa.add(dep);
-		pooled.setDepositaEn(listaa);
+		List<DepositadaEn> listado = new ArrayList<DepositadaEn>();
+		listado.add(dep);
+		pooledVacia.setDepositaEn(listado);
 		
+		em.persist(cuentaVacia2);
 		em.persist(dep);
-		em.persist(pooled);
+		em.persist(pooledVacia);
 		
 		Segregada segregada = new Segregada();
 		segregada.setIban("1888134538888");
@@ -201,10 +180,77 @@ public class BaseDatos {
 		em.persist(usuarioPerAut);
 		em.persist(personaAutorizadaBaja);
 		
+		Usuario usuarioIndividual = new Usuario ();
+		usuarioIndividual.setNombreUsuario("Peter");
+		usuarioIndividual.setPassword("1234");
+		usuarioIndividual.setTipo("NORMAL");
+		
+		Individual individualParaUsuario = new Individual();
+		individualParaUsuario.setId("9999999");
+		individualParaUsuario.setIdentificacion("654987");
+		individualParaUsuario.setTipoCliente("FISICA");
+		individualParaUsuario.setEstado("ACTIVO");
+		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualParaUsuario.setFechaBaja(null);
+		individualParaUsuario.setDireccion("Avenida Cos");
+		individualParaUsuario.setCiudad("Malaga");
+		individualParaUsuario.setCodigoPostal("2901");
+		individualParaUsuario.setPais("España");
+		individualParaUsuario.setNombre("Jamal");
+		individualParaUsuario.setApellido("Peterh");
+		individualParaUsuario.setFecha_nacimiento(null);
+		
+		usuarioIndividual.setCliente(individualParaUsuario);
+		em.persist(usuarioIndividual);
+		em.persist(individualParaUsuario);
+		
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setId("55555555");
+		empresaParaUsuario.setIdentificacion("789544");
+		empresaParaUsuario.setTipoCliente("JURIDICO");
+		empresaParaUsuario.setEstado("ACTIVO");
+		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaBaja(null);
+		empresaParaUsuario.setDireccion("Calle Pamplona");
+		empresaParaUsuario.setCiudad("Madrid");
+		empresaParaUsuario.setCodigoPostal("27009");
+		empresaParaUsuario.setPais("España");
+		empresaParaUsuario.setRazon_Social("Comida");
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
+		usuarioEmpresa.setCliente(empresaParaUsuario);
+				
+		em.persist(usuarioEmpresa);
+		em.persist(empresaParaUsuario);
 		
 		
+		PooledAccount pooled = new PooledAccount();
+		pooled.setIban("16554");
+		pooled.setSwift("4512");
+		pooled.setClasificacion("POOLED");
+		pooled.setCliente(empresaParaUsuario);
+		pooled.setDepositaEn(null);
+		pooled.setEstado("ABIERTA");
+		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaCierre(null);
 		
 		
+		DepositadaEn dep1 = new DepositadaEn();
+		dep1.setId(pk);
+		dep1.setId2(pooled);
+		dep1.setId1(cuentaLlena);
+		dep1.setSaldo(cuentaLlena.getSaldo());
+		
+		List<DepositadaEn> listaa = new ArrayList<DepositadaEn>();
+		listaa.add(dep1);
+		pooled.setDepositaEn(listaa);
+		
+		em.persist(pooled);
+		em.persist(dep1);
 
 		em.getTransaction().commit();
 		

@@ -1,3 +1,4 @@
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.sql.Date;
@@ -46,7 +47,8 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		administrador.setTipo("ADMIN");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
@@ -61,47 +63,72 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		
 		CuentaReferencia cuentaVacia = new CuentaReferencia();
 		cuentaVacia.setIban("538888");
+		cuentaVacia.setEstado(null);
+		cuentaVacia.setSucursal(null);
+		cuentaVacia.setFechaApertura(null);
+		cuentaVacia.setPais(null);
 		cuentaVacia.setSwift("482");
 		cuentaVacia.setSaldo(0);
 		
-		PooledAccount pooled = new PooledAccount();
-		pooled.setIban("1453134534528");
-		pooled.setSwift("4512");
-		pooled.setClasificacion("POOLED");
-		pooled.setCliente(individual);
-		pooled.setDepositaEn(null);
-		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
-		pooled.setFechaCierre(null);
+		Segregada segregadaVacia = new Segregada();
+		segregadaVacia.setIban("88888");
+		segregadaVacia.setSwift("4582");
+		segregadaVacia.setClasificacion("SEGREGADA");
+		segregadaVacia.setCliente(individual);
+		segregadaVacia.setEstado("ABIERTA");
+		segregadaVacia.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregadaVacia.setFechaCierre(null);
+		segregadaVacia.setCuentaReferencia(cuentaVacia);
 		
+		CuentaReferencia cuentaVacia2 = new CuentaReferencia();
+		cuentaVacia.setIban("723888");
+		cuentaVacia.setNombreBanco("Capo");
+		cuentaVacia.setEstado(null);
+		cuentaVacia.setSucursal(null);
+		cuentaVacia.setFechaApertura(null);
+		cuentaVacia.setPais(null);
+		cuentaVacia.setSwift("482");
+		cuentaVacia.setSaldo(0);
+		
+		PooledAccount pooledVacia = new PooledAccount();
+		pooledVacia.setIban("1453134534528");
+		pooledVacia.setSwift("4512");
+		pooledVacia.setClasificacion("POOLED");
+		pooledVacia.setCliente(individual);
+		pooledVacia.setDepositaEn(null);
+		pooledVacia.setEstado("ABIERTA");
+		pooledVacia.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooledVacia.setFechaCierre(null);
+		
+		
+		DepositaEnPK pk = new DepositaEnPK();
+		pk.setCuentaReferenciaIban(cuentaVacia2.getIban());
+		pk.setPooledAccountIban(pooledVacia.getIban());
 		
 		DepositadaEn dep = new DepositadaEn();
-		dep.setId2(pooled);
-		dep.setId1(cuentaVacia);
-		dep.setSaldo(cuentaVacia.getSaldo());
+		dep.setId(pk);
+		dep.setId2(pooledVacia);
+		dep.setId1(cuentaVacia2);
+		dep.setSaldo(cuentaVacia2.getSaldo());
 		
 		List<DepositadaEn> lista = new ArrayList<DepositadaEn>();
 		lista.add(dep);
-		pooled.setDepositaEn(lista);
+		pooledVacia.setDepositaEn(lista);
 		
-		Segregada segregada = new Segregada();
-		segregada.setIban("1888134538888");
-		segregada.setSwift("4582");
-		segregada.setClasificacion("SEGREGADA");
-		segregada.setCliente(individual);
-		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
-		segregada.setFechaCierre(null);
-		segregada.setCuentaReferencia(cuentaVacia);
+		
 		
 		try {			
-			gestionCuenta.cierraCuenta(pooled,administrador);	
-			gestionCuenta.cierraCuenta(segregada,administrador);	
+			gestionCuenta.cierraCuenta(pooledVacia,administrador);	
+			gestionCuenta.cierraCuenta(segregadaVacia,administrador);
+			CuentaFintech cuenta1 = gestionCuenta.devolverPooled(pooledVacia.getIban());
+			CuentaFintech cuenta2 = gestionCuenta.devolverSegregada(segregadaVacia.getIban());
+			assertEquals(cuenta1.getEstado(),"BAJA");
+			assertEquals(cuenta2.getEstado(),"BAJA");
+			
 		}catch(CuentaNoEncontrada e) {			
 			fail("No debería saltar error, la cuenta está a 0");
 		}catch(SaldoException e) {
-			fail("No debería saltar error, la cuenta está a 0");
-			
+			fail("No debería saltar error, la cuenta está a 0");			
 		}catch(EJBException e) {
 			fail("Excepción no controlada");
 		}
@@ -118,7 +145,8 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		administrador.setTipo("ADMIN");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("654987");
+		individual.setId("654987");
+		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));

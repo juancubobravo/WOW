@@ -45,52 +45,61 @@ public class AccesoEJB implements GestionAcceso{
 	}
 
 	@Override
-	public void loginCliente(Usuario usuario) throws UsuarioNoEncontrado, ContraseniaInvalida, EsEmpresaException, CuentaBloqueada, CuentaDeBaja, ClienteNoEncontrado{
-		
-		Usuario u = em.find(Usuario.class, usuario.getNombreUsuario());
-		
-		//Comprobamos si existe el usuario
-		
-		if(u == null) {
-			throw new UsuarioNoEncontrado();
-		}
-		
-		//El usuario existe, comprobamos su contraseña
-		
-		if(!u.getPassword().equals(usuario.getPassword())) {
-			throw new ContraseniaInvalida();
-		}
-		
-		//Comprobamos que no sea una persona jurídica
-		
-		Empresa empresa = em.find(Empresa.class,u.getCliente().getId());
-		Individual fisica = em.find(Individual.class, u.getCliente().getId());
-		PersonaAutorizada autorizado = em.find(PersonaAutorizada.class, u.getPersonaAutorizada().getId());
-		
-		if(empresa != null) {
-			throw new EsEmpresaException();
-			
-		} else if(fisica != null) {
-			
-			if(fisica.getEstado() == "BLOQUEADO") {
-				throw new CuentaBloqueada();
-			} else if(fisica.getEstado()=="BAJA") {
-				throw new CuentaDeBaja();
-			}
-			
-		} else if(autorizado != null){
-			if(autorizado.getEstado() == "BLOQUEADO") {
-				throw new CuentaBloqueada();
-			} else if(autorizado.getEstado()=="BAJA") {
-				throw new CuentaDeBaja();
-			}
-			
-		} else {
-			throw new ClienteNoEncontrado();
-		}
-		
-		
-	}
+    public void loginCliente(Usuario usuario) throws UsuarioNoEncontrado, ContraseniaInvalida, EsEmpresaException, CuentaBloqueada, CuentaDeBaja, ClienteNoEncontrado{
+
+        Usuario u = em.find(Usuario.class, usuario.getNombreUsuario());
+
+        //Comprobamos si existe el usuario
+
+        if(u == null) {
+            throw new UsuarioNoEncontrado();
+        }
+
+        //El usuario existe, comprobamos su contraseña
+
+        if(!u.getPassword().equals(usuario.getPassword())) {
+            throw new ContraseniaInvalida();
+        }
+
+        //Comprobamos que no sea una persona jurídica
+
+        String ID;
+        if(u.getCliente()!=null) {
+            ID = u.getCliente().getId();
+        } else if (u.getPersonaAutorizada() != null) {
+            ID = u.getPersonaAutorizada().getId();
+        } else {
+            throw new ClienteNoEncontrado();
+        }
+
+        Empresa empresa = em.find(Empresa.class,ID);
+        Individual fisica = em.find(Individual.class, ID);
+        PersonaAutorizada autorizado = em.find(PersonaAutorizada.class, ID);
+
+        if(empresa != null) {
+            throw new EsEmpresaException();
+
+        } else if(fisica != null) {
+
+            if(fisica.getEstado() == "BLOQUEADO") {
+                throw new CuentaBloqueada();
+            } else if(fisica.getEstado()=="BAJA") {
+                throw new CuentaDeBaja();
+            }
+
+        } else if(autorizado != null){
+            if(autorizado.getEstado() == "BLOQUEADO") {
+                throw new CuentaBloqueada();
+            } else if(autorizado.getEstado()=="BAJA") {
+                throw new CuentaDeBaja();
+            }
+
+        } else {
+            throw new ClienteNoEncontrado();
+        }
+
+
+    }
 	
 	
 	

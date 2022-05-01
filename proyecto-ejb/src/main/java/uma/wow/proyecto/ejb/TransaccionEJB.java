@@ -20,6 +20,10 @@ public class TransaccionEJB implements GestionTransaccion{
     public void transaccion(Usuario user, String IBANorigen, String IBANdestino, double dinero) throws EJBException {
     	
     	Usuario usuario = em.find(Usuario.class, user.getNombreUsuario());
+    	if(usuario == null) {
+            throw new UsuarioNoEncontrado();
+        }
+    	
     	Cliente cliente = usuario.getCliente();
     	PersonaAutorizada autorizado = usuario.getPersonaAutorizada();
     	

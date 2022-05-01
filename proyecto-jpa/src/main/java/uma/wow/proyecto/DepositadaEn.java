@@ -93,8 +93,7 @@ public class DepositadaEn implements Serializable{
 
 	@Override
 	public String toString() {
-		return "DepositadaEn [saldo=" + saldo + ", id=" + id + ", cuentaReferencia=" + cuentaReferencia
-				+ ", pooledAccount=" + pooledAccount + "]";
+		return "DepositadaEn [saldo=" + saldo + ", id=" + id +"]";
 	}
 
 
