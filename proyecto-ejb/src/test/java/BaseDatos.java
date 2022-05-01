@@ -23,7 +23,6 @@ public class BaseDatos {
 		
 		em.getTransaction().begin();
 		
-		
 		Usuario administrador = new Usuario();
 		administrador.setNombreUsuario("Alvaro");
 		administrador.setPassword("perro");
@@ -251,6 +250,54 @@ public class BaseDatos {
 		
 		em.persist(pooled);
 		em.persist(dep1);
+		
+		//************************************************
+		Usuario userTrans = new Usuario ();
+		userTrans.setNombreUsuario("Leopoldo");
+		userTrans.setPassword("1124");
+		userTrans.setTipo("NORMAL");
+		
+		PersonaAutorizada personaAutorizadaTrans = new PersonaAutorizada();
+		personaAutorizadaTrans.setId("2216521981155");
+		personaAutorizadaTrans.setIdentificacion("0771");
+		personaAutorizadaTrans.setNombre("Pepe");
+		personaAutorizadaTrans.setApellidos("Pelaez");
+		personaAutorizadaTrans.setFechaNacimiento(null);
+		personaAutorizadaTrans.setEstado("ACTIVO");
+		personaAutorizadaTrans.setDireccion("Avda S");		
+		personaAutorizadaTrans.setFechaInicio(null);
+		personaAutorizadaTrans.setFechaFin(null);
+		personaAutorizadaTrans.setAutori(null);
+		
+		Individual individualTrans = new Individual();
+		individualTrans.setId("981841");
+		individualTrans.setIdentificacion("654987");
+		individualTrans.setTipoCliente("FISICA");
+		individualTrans.setEstado("ACTIVO");
+		individualTrans.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualTrans.setFechaBaja(null);
+		individualTrans.setDireccion("Avenida Cos");
+		individualTrans.setCiudad("Malaga");
+		individualTrans.setCodigoPostal("2901");
+		individualTrans.setPais("España");
+		individualTrans.setNombre("Jamal");
+		individualTrans.setApellido("Peterh");
+		individualTrans.setFecha_nacimiento(null);
+		
+		List<CuentaFintech> listaTrans = new ArrayList<CuentaFintech>();
+		CuentaFintech cuentaTrans = new CuentaFintech();
+		cuentaTrans.setIban("795588");
+		cuentaTrans.setEstado(null);
+		cuentaTrans.setSwift("482");
+		cuentaTrans.setFechaApertura(Date.valueOf("2021-03-14"));
+		cuentaTrans.setFechaCierre(null);
+		cuentaTrans.setClasificacion(null);
+		
+		listaTrans.add(cuentaTrans);
+		individualTrans.setCuentas(listaTrans);
+		
+		
+		
 
 		em.getTransaction().commit();
 		
