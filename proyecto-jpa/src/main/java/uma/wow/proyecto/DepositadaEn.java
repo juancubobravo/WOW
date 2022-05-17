@@ -12,7 +12,7 @@ public class DepositadaEn implements Serializable{
 	@Column(nullable = false)
 	private double saldo;
 	
-	@MapsId
+	
 	@EmbeddedId
 	private DepositaEnPK id;
 	
