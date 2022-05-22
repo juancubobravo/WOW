@@ -3,11 +3,13 @@ import uma.wow.proyecto.ejb.exceptions.*;
 import uma.wow.proyecto.*;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.ArrayList;
 import java.util.List;
 
+@Stateless
 public class BloqueoClienteEJB implements GestionBloqueoCliente{
 
 

@@ -105,12 +105,15 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		
 		try {			
 			gestionBloqueoCliente.bloqueoPersonaFisica(individual, administrador);
+
 			gestionBloqueoCliente.bloqueoAutorizado(personaAutorizada, administrador);
+
 			gestionBloqueoCliente.bloqueoEmpresa(empresa, administrador);
-			
-			assertEquals(gestionCliente.devolverIndividual(individual.getIdentificacion()).getEstado(),"BLOQUEADO");
-			assertEquals(gestionPersonaAutorizada.devolver(personaAutorizada.getIdentificacion()).getEstado(),"BLOQUEADO");
-			assertEquals(gestionCliente.devolverEmpresa(empresa.getIdentificacion()).getEstado(),"BLOQUEADO");
+
+			assertEquals(gestionCliente.devolverIndividual(individual.getId()).getEstado(),"BLOQUEADO");
+			assertEquals(gestionPersonaAutorizada.devolver(personaAutorizada.getId()).getEstado(),"BLOQUEADO");
+			assertEquals(gestionCliente.devolverEmpresa(empresa.getId()).getEstado(),"BLOQUEADO");
+
 			
 		}catch(ClienteNoEncontrado e) {			
 			fail("No debería saltar error, el cliente está en la BD");
