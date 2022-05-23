@@ -45,7 +45,7 @@ public class AccesoEJB implements GestionAcceso{
 	}
 
 	@Override
-    public void loginCliente(Usuario usuario) throws UsuarioNoEncontrado, ContraseniaInvalida, EsEmpresaException, CuentaBloqueada, CuentaDeBaja, ClienteNoEncontrado{
+    public void loginCliente(Usuario usuario) throws UsuarioNoEncontrado, ContraseniaInvalida, EsEmpresaException, CuentaBloqueada, CuentaDeBaja, ClienteNoEncontrado, EsAdministrador{
 
         Usuario u = em.find(Usuario.class, usuario.getNombreUsuario());
 
@@ -59,6 +59,10 @@ public class AccesoEJB implements GestionAcceso{
 
         if(!u.getPassword().equals(usuario.getPassword())) {
             throw new ContraseniaInvalida();
+        }
+        
+        if(u.getTipo().equals("ADMIN")) {
+        	throw new EsAdministrador();
         }
 
         //Comprobamos que no sea una persona jurídica
