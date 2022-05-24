@@ -28,10 +28,10 @@ public class individualAlta implements Serializable{
 	@Inject
 	private GestionCliente clienteEJB;
 	
-	@Inject
+
 	private Usuario usuario;
 	
-	@Inject
+
 	private Individual individual;
 
 	public Usuario getUsuario() {

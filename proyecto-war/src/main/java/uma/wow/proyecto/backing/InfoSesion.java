@@ -14,12 +14,15 @@ import uma.wow.proyecto.Usuario;
 @SessionScoped
 public class InfoSesion implements Serializable{
 	
-	@Inject
+
 	private Usuario usuario;
 
 	
 	public synchronized void setUsuario(Usuario usuario) {
 	        this.usuario = usuario;
+	}
+	public synchronized boolean isAdmin() {
+		return usuario.getTipo().equals("ADMIN");
 	}
 	
     public synchronized Usuario getUsuario() {

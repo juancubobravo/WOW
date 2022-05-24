@@ -7,7 +7,7 @@
        xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
-       <title>Login</title>
+       <title>Login Administrador</title>
 </h:head>
 
 <h:body>
@@ -16,7 +16,7 @@
               <c:choose>
                   <c:when test="#{!empty infoSesion.usuario}">
                       <p>Estás autenticado como <h:outputText value="#{infoSesion.usuario.nombre}"/>.</p>
-                      <p>Para ir a la página principal, pinche <h:link outcome ="mainUsuario.xhtml" value="aquí"/></p>
+                      <p>Para ir a la página principal, pinche <h:link outcome ="mainAdmin.xhtml" value="aquí"/></p>
                       <p>Para iniciar sesión con otra cuenta debe <h:commandLink action="#{infoSesion.invalidarSesion()}">salir</h:commandLink> primero de la aplicación</p>
                   </c:when>
   
@@ -30,12 +30,12 @@
                           <h:inputSecret id="pass" required="true" value="#{Login.usuario.contras}"/>
                           <h:message id="passwordMessage" for="pass"/>
   
-                          <h:commandButton id="botonLogin" value="Entrar" action="#{Login.loginCliente()}"/>
+                          <h:commandButton id="botonLogin" value="Entrar" action="#{Login.loginAdmin()}"/>
   
                       </h:panelGrid>
   
                       <div>
-                          <p>Para acceder como administrador, pinche <h:link outcome="admin.xhtml">aquí</h:link></p>
+                          <p>Para acceder como cliente, pinche <h:link outcome="index.xhtml">aquí</h:link></p>
                       </div>
   
                   </c:otherwise>

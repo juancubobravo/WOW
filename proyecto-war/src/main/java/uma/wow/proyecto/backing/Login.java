@@ -12,6 +12,7 @@ import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
 import uma.wow.proyecto.ejb.exceptions.CuentaBloqueada;
 import uma.wow.proyecto.ejb.exceptions.CuentaDeBaja;
+import uma.wow.proyecto.ejb.exceptions.EsAdministrador;
 import uma.wow.proyecto.ejb.exceptions.EsEmpresaException;
 import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
 import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
@@ -20,10 +21,13 @@ import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 @RequestScoped
 public class Login {
 	
-	@Inject
-	private Usuario usuario;
+
 	private AccesoEJB acceso;
+	
+	@Inject
 	private InfoSesion sesion;
+	
+	private Usuario usuario;
 	
 	public Login() {
 		usuario = new Usuario();
@@ -67,6 +71,9 @@ public class Login {
 			FacesMessage fm = new FacesMessage("Este usuario no está asociado a ningún cliente");
 			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
 			
+		} catch (EsAdministrador e) {
+			FacesMessage fm = new FacesMessage("El usuario es un administrador");
+			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
 		}
 		return null;
 	}
@@ -76,11 +83,19 @@ public class Login {
 		try {
 			acceso.loginAdministrador(usuario);
 			sesion.setUsuario(usuario);
-		} catch (UsuarioNoEncontrado | ContraseniaInvalida | NoAdministradorException e) {
+			return "mainAdmin.xhtml";
+		} catch (UsuarioNoEncontrado e) {
 			
-			FacesMessage fm = new FacesMessage("La cuenta asociada a este usuario está bloqueada");
+			FacesMessage fm = new FacesMessage("No se encuentra el usuario");
 			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
 			
+		} catch (ContraseniaInvalida e) {
+			FacesMessage fm = new FacesMessage("La contraseña introducida no es correcta");
+			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
+			
+		} catch (NoAdministradorException e) {
+			FacesMessage fm = new FacesMessage("El usuario no es un administrador");
+			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
 		}
 		
 		

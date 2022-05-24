@@ -38,7 +38,7 @@ public class Cliente implements Serializable{
 	private Usuario usuario;
 	
 	
-	@OneToMany(mappedBy="cliente")
+	@OneToMany(cascade = {CascadeType.MERGE},mappedBy="cliente")
 	private List<CuentaFintech> cuentas;
 	
 	public Cliente() {
