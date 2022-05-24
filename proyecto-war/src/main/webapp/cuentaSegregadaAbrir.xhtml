@@ -15,7 +15,7 @@
               <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonAltaCliente" action="#{cuentaSegregadaAbrir.cuentaSegregadaAbrir()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
-              <h:inputText id="iban" required="true" value="#{cuentaSegregadaAbrir.seg.iban}"/>
+              <h:inputText id="iban" required="true" value="#{cuentaSegregadaAbrir.seg.iban}" class="controls"/>
               <h:message id="ibanMessage" for="iban"/>
 
               <h:outputText value="SWIFT:"/>
