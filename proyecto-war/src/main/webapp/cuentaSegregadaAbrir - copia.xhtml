@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+       <title>Pagina web</title>
+</h:head>
+<h:body>
+       <h1><h:outputText id="abrirCuentaPooled" value="Abrir una cuenta pooled"/></h1>
+       <h:form id="cuentaPooledAbrir">
+              <h:outputText value:="Introduzca los datos"/>
+              <h:panelGrid columns="3"></h:panelGrid>
+              <h:commandButton id="cuentaPooledAbrirClick" value="BotonAltaCliente" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
+
+              <h:outputText value="IBAN:"/>
+              <h:inputText id="iban" required="true" value="#{cuentaPooledAbrir.seg.iban}"/>
+              <h:message id="ibanMessage" for="iban"/>
+
+              <h:outputText value="SWIFT:"/>
+              <h:inputSecret id="swift" required="false" value="#{cuentaPooledAbrir.seg.swift}" class="controls"/>
+              <h:message id="swiftMessage" for="swift"/>
+
+
+          </h:panelGrid>
+</h:body>
+</html>

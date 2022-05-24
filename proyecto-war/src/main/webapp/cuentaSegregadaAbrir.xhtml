@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+       <title>Pagina web</title>
+</h:head>
+<h:body>
+       <h1><h:outputText id="abrirCuentaSegregada" value="Abrir una cuenta segregada"/></h1>
+       <h:form id="cuentaSegregadaAbrir">
+              <h:outputText value:="Introduzca los datos"/>
+              <h:panelGrid columns="3"></h:panelGrid>
+              <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonAltaCliente" action="#{cuentaSegregadaAbrir.cuentaSegregadaAbrir()}" class="buttons"/>
+
+              <h:outputText value="IBAN:"/>
+              <h:inputText id="iban" required="true" value="#{cuentaSegregadaAbrir.seg.iban}"/>
+              <h:message id="ibanMessage" for="iban"/>
+
+              <h:outputText value="SWIFT:"/>
+              <h:inputSecret id="swift" required="false" value="#{cuentaSegregadaAbrir.seg.swift}" class="controls"/>
+              <h:message id="swiftMessage" for="swift"/>
+
+              <h:outputText value="comision:"/>
+              <h:inputText id="comision" required="false" value="#{cuentaSegregadaAbrir.seg.comision}" class="controls"/>
+              <h:message id="comisionMessage" for="comision"/>
+
+          </h:panelGrid>
+</h:body>
+</html>
