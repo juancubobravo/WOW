@@ -36,7 +36,7 @@ private WebDriver driver;
   private static Map<String,String> propiedadesExtra = new HashMap<>();
   
   @BeforeClass
-  public void setupClass() {
+  public static void setupClass() {
 	  String server="localhost";
 		try (InputStream is = ProyectoIT.class.getClassLoader().getResourceAsStream("pom.properties")) {
 			Properties pomProperties = new Properties();
