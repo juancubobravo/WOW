@@ -14,8 +14,8 @@
        <h1><h:outputText id="saludo" value="Dar de alta a un cliente individual"/></h1>
 
        <h:form id="individualAlta">
-              <h:outputText value:="Introduzca los datos"/>
-              <h:panelGrid columns="3"></h:panelGrid>
+              <h:outputText value="Introduzca los datos"/>
+              <h:panelGrid columns="3">
 
               <h:commandButton id="individualAltaClick" value="BotonAltaCliente" action="#{individualAlta.individualAlta()}" class="buttons"/>
 
@@ -63,6 +63,7 @@
         
 
           </h:panelGrid>
+          </h:form>S
 </h:body>
 
 </html>

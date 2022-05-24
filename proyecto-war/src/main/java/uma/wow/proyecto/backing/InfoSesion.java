@@ -21,8 +21,9 @@ public class InfoSesion implements Serializable{
 	public synchronized void setUsuario(Usuario usuario) {
 	        this.usuario = usuario;
 	}
-	public synchronized boolean isAdmin() {
-		return usuario.getTipo().equals("ADMIN");
+	public synchronized boolean getAdmin() {
+		boolean admin = usuario.getTipo().equals("ADMIN");
+		return admin;
 	}
 	
     public synchronized Usuario getUsuario() {

@@ -8,6 +8,7 @@ import javax.inject.Named;
 
 import uma.wow.proyecto.Usuario;
 import uma.wow.proyecto.ejb.AccesoEJB;
+import uma.wow.proyecto.ejb.GestionAcceso;
 import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
 import uma.wow.proyecto.ejb.exceptions.CuentaBloqueada;
@@ -21,8 +22,8 @@ import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 @RequestScoped
 public class Login {
 	
-
-	private AccesoEJB acceso;
+	@Inject
+	private GestionAcceso acceso;
 	
 	@Inject
 	private InfoSesion sesion;
@@ -47,6 +48,7 @@ public class Login {
 			acceso.loginCliente(usuario);
 			sesion.setUsuario(usuario);
 			return "mainUsuario.xhtml";
+			
 		} catch (UsuarioNoEncontrado e) {
 			FacesMessage fm = new FacesMessage("No se encuentra el usuario");
 			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
@@ -84,6 +86,7 @@ public class Login {
 			acceso.loginAdministrador(usuario);
 			sesion.setUsuario(usuario);
 			return "mainAdmin.xhtml";
+			
 		} catch (UsuarioNoEncontrado e) {
 			
 			FacesMessage fm = new FacesMessage("No se encuentra el usuario");
@@ -98,8 +101,8 @@ public class Login {
 			FacesContext.getCurrentInstance().addMessage("loginUser", fm);
 		}
 		
-		
 		return null;
+		
 	}
 
 

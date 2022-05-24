@@ -46,9 +46,10 @@ public class InicializaBBD {
 		
 		Usuario usuario = new Usuario ();
 		usuario.setNombreUsuario("Carlos");
-		usuario.setPassword("1234");
+		usuario.setPassword("gato");
 		usuario.setTipo("NORMAL");
-	/*
+		
+	
 		Individual individual = new Individual();
 		individual.setId("654987");
 		individual.setIdentificacion("8933533");
@@ -309,7 +310,7 @@ public class InicializaBBD {
 		
 		listaTrans.add(cuentaTrans);
 		individualTrans.setCuentas(listaTrans);
-		*/
+		
 		
 	}
 
