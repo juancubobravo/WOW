@@ -20,46 +20,60 @@
               <h:commandButton id="individualAltaClick" value="BotonAltaCliente" action="#{individualAlta.individualAlta()}" class="buttons"/>
 
               <h:outputText value="Usuario:"/>
-              <h:inputText id="usarioNombre" required="true" value="#{individualAlta.usuario.nombre"/>
+              <h:inputText id="usuarioNombre" required="true" value="#{individualAlta.usuario.nombre"/>
+              <h:message id="usuarioNombreMessage" for="usuarioNombre"/>
 
               <h:outputText value="Contrasenia:"/>
               <h:inputSecret id="contras" required="true" value="#{individualAlta.usuario.contras}" class="controls"/>
+              <h:message id="contrasMessage" for="contras"/>
 
               <h:outputText value="Nombre:"/>
               <h:inputText id="nombre" required="true" value="#{individualAlta.individual.nombre}" class="controls"/>
+              <h:message id="nombreMessage" for="nombre"/>
 
               <h:outputText value="Apellidos:"/>
               <h:inputText id="apellido" required="true" value="#{individualAlta.individual.apellido}" class="controls"/>
+              <h:message id="apellidoMessage" for="apellido"/>
 
               <h:outputText value="Fecha de nacimiento:"/>
               <h:inputText id="fechaNacimiento" required="true" value="#{individualAlta.individual.fechaNacimiento}" class="controls"/>
+              <h:message id="fechaNacimientoMessage" for="fechaNacimiento"/>
 
               <h:outputText value="Identificacion:"/>
               <h:inputText id="identificacion" required="true" value="#{individualAlta.individual.identificacion}" class="controls"/>
+              <h:message id="identificacionMessage" for="identificacion"/>
 
               <h:outputText value="Tipo de Usuario:"/>
               <h:inputText id="tipo" required="true" value="#{individualAlta.usuario.tipo}" class="controls"/>
+              <h:message id="tipoMessage" for="tipo"/>
 
               <h:outputText value="Tipo de Cliente:"/>
               <h:inputText id="tipoCliente" required="true" value="#{individualAlta.individual.tipoCliente}" class="controls"/>
+              <h:message id="tipoClienteMessage" for="tipoCliente"/>
 
               <h:outputText value="Estado:"/>
               <h:inputText id="estado" required="true" value="#{individualAlta.individual.estado}" class="controls"/>
+              <h:message id="estadoMessage" for="estado"/>
 
               <h:outputText value="Fecha de alta:"/>
               <h:inputText id="fechaAlta" required="true" value="#{individualAlta.individual.fechaAlta}" class="controls"/>
+              <h:message id="fechaAltaMessage" for="fechaAlta"/>
 
               <h:outputText value="Fecha de baja:"/>
               <h:inputText id="fechaBaja" required="false" value="#{individualAlta.individual.fechaBaja}" class="controls"/>
+              <h:message id="fechaBajaMessage" for="fechaBaja"/>
 
               <h:outputText value="Direccion:"/>
               <h:inputText id="direccion" required="true" value="#{individualAlta.individual.direccion}" class="controls"/>
+              <h:message id="direccionMessage" for="direccion"/>
 
               <h:outputText value="Ciudad:"/>
               <h:inputText id="ciudad" required="true" value="#{individualAlta.individual.ciudad}" class="controls"/>
+              <h:message id="ciudadMessage" for="ciudad"/>
 
               <h:outputText value="Codigo Postal:"/>
               <h:inputText id="codigoPostal" required="true" value="#{individualAlta.individual.codigoPostal}" class="controls"/>
+              <h:message id="codigoPostalMessage" for="codigoPostal"/>
         
 
           </h:panelGrid>
