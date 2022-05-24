@@ -13,23 +13,21 @@ import uma.wow.proyecto.Usuario;
 import uma.wow.proyecto.ejb.GestionCliente;
 import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ClienteYaExistente;
+import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
 import uma.wow.proyecto.ejb.exceptions.EJBException;
 import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
 import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 
 
-@Named(value = "individualAlta")
+@Named(value = "individualModificar")
 @SessionScoped
-public class IndividualAlta implements Serializable{
+public class IndividualModificar implements Serializable{
 	
 	@Inject
-	private InfoSesion sesion;
-	
+	private InfoSesion sesion;	
 	@Inject
 	private GestionCliente clienteEJB;	
-
 	private Usuario usuario;	
-
 	private Individual individual;
 
 	public Usuario getUsuario() {
@@ -48,33 +46,32 @@ public class IndividualAlta implements Serializable{
 		this.individual = individual;
 	}
 	
-	public IndividualAlta() {
+	public IndividualModificar() {
 		usuario = new Usuario();
 		individual = new Individual();
 	}
 
-	public String individualAlta() {
-		try {
-			
+	public String individualModificar() {
+		try {			
 			usuario = sesion.getUsuario();
-			clienteEJB.altaCliente(individual, usuario);
+			clienteEJB.modificaCliente(individual, usuario);
 			return "mainAdmin.xhtml";
 			
 		}catch (UsuarioNoEncontrado e) {
 			FacesMessage fm = new FacesMessage("Usuario no encontrado");
-			FacesContext.getCurrentInstance().addMessage("individualAlta", fm);
+			FacesContext.getCurrentInstance().addMessage("individualModificar", fm);
 		}catch (ClienteNoEncontrado e) {
 			FacesMessage fm = new FacesMessage("Cliente no encontrado");
-			FacesContext.getCurrentInstance().addMessage("individualAlta", fm);
-		}catch (ClienteYaExistente e) {	
-			FacesMessage fm = new FacesMessage("Cliente ya existente");
-			FacesContext.getCurrentInstance().addMessage("individualAlta", fm);
+			FacesContext.getCurrentInstance().addMessage("individualModificar", fm);
+		}catch (ContraseniaInvalida e) {	
+			FacesMessage fm = new FacesMessage("Contrasenia invalida");
+			FacesContext.getCurrentInstance().addMessage("individualModificar", fm);
 		}catch (NoAdministradorException e) {
 			FacesMessage fm = new FacesMessage("No tienes permiso");
-			FacesContext.getCurrentInstance().addMessage("individualAlta", fm);
+			FacesContext.getCurrentInstance().addMessage("individualModificar", fm);
 		}catch (EJBException e) {
 			FacesMessage fm = new FacesMessage("Excepcion no controlada");
-			FacesContext.getCurrentInstance().addMessage("individualAlta", fm);
+			FacesContext.getCurrentInstance().addMessage("individualModificar", fm);
 		}
 		
 		return null;
