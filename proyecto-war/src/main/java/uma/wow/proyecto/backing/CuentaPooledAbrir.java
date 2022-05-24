@@ -107,7 +107,8 @@ public class CuentaPooledAbrir {
 	
 	public String abreSegregada() throws NoAdministradorException, CuentaEncontrada, ContraseniaInvalida {
 		
-		if(sesion.isAdmin()) {
+		
+			usuario = sesion.getUsuario();
 			
 			try {
 				
@@ -167,9 +168,7 @@ public class CuentaPooledAbrir {
 			
 			return null;
 			
-		}else {
-			throw new NoAdministradorException();
-		}
+		
 	}
 
 }
