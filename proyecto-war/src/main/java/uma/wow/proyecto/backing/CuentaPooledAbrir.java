@@ -16,8 +16,10 @@ import javax.inject.Named;
 import uma.wow.proyecto.Cliente;
 import uma.wow.proyecto.DepositaEnPK;
 import uma.wow.proyecto.DepositadaEn;
+import uma.wow.proyecto.Empresa;
 import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.PooledAccount;
+import uma.wow.proyecto.Segregada;
 import uma.wow.proyecto.Usuario;
 import uma.wow.proyecto.ejb.GestionCliente;
 import uma.wow.proyecto.ejb.GestionCuenta;
@@ -25,6 +27,7 @@ import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
 import uma.wow.proyecto.ejb.exceptions.CuentaEncontrada;
 import uma.wow.proyecto.ejb.exceptions.CuentaNoEncontrada;
+import uma.wow.proyecto.ejb.exceptions.EJBException;
 import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
 import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 
@@ -41,28 +44,16 @@ public class CuentaPooledAbrir {
 	@Inject
 	private GestionCliente clienteEJB;
 	
-	private PooledAccount poolA;
+	private PooledAccount pol;
 	
 	private Usuario usuario;
-	
-	private String IBAN;
-	
-	private String SWIFT;
-	
-	private List<DepositadaEn> deposito;
-	
-	private String ID;
-	
-	private double saldo;
-	
-	private String IBAN_REF;
 
-	public String getIBAN_REF() {
-		return IBAN_REF;
+	public PooledAccount getPol() {
+		return pol;
 	}
 
-	public void setIBAN_REF(String iBAN_REF) {
-		IBAN_REF = iBAN_REF;
+	public void setPol(PooledAccount pol) {
+		this.pol = pol;
 	}
 
 	public Usuario getUsuario() {
@@ -73,97 +64,44 @@ public class CuentaPooledAbrir {
 		this.usuario = usuario;
 	}
 
-	public String getIBAN() {
-		return IBAN;
-	}
-
-	public void setIBAN(String iBAN) {
-		IBAN = iBAN;
-	}
-
-	public String getSWIFT() {
-		return SWIFT;
-	}
-
-	public void setSWIFT(String sWIFT) {
-		SWIFT = sWIFT;
-	}
-
-	public String getID() {
-		return ID;
-	}
-
-	public void setID(String iD) {
-		ID = iD;
-	}
-
-	public double getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
 	
-	public String abreSegregada() throws NoAdministradorException, CuentaEncontrada, ContraseniaInvalida {
-		
-		
-			usuario = sesion.getUsuario();
+	public String cuentaSegregadaAbrir(){
 			
 			try {
+				usuario = sesion.getUsuario();
 				
 				
-				Cliente cliente = clienteEJB.devolverIndividual(getID());
 				
-				poolA = new PooledAccount();
-				poolA.setIban(getIBAN());
-				poolA.setEstado("ACTIVA");
-				poolA.setFechaCierre(null);
-				poolA.setSwift(getSWIFT());
-				//Date fecha = new Date();
-				/*fecha.setHours(LocalDateTime.now().getHour());
-				fecha.setMinutes(LocalDateTime.now().getMinute());
-				fecha.setMonth(LocalDateTime.now().getMonthValue());
-				fecha.setYear(LocalDateTime.now().getYear());*/
-				poolA.setFechaApertura(Date.valueOf(LocalDate.now()));
-				poolA.setClasificacion("p");
-				
-				PooledAccount cuentaRef = cuentaEJB.devolverPooled(getIBAN());
-				
-				deposito = new ArrayList<>();
-				
-				DepositadaEn depositoEn = new DepositadaEn();
-				
-				DepositaEnPK depositoEnPK = new DepositaEnPK();
-				
-				depositoEnPK.setPooledAccountIban(getIBAN());
-				depositoEnPK.setCuentaReferenciaIban(getIBAN_REF());
-				
-				depositoEn.setId(depositoEnPK);
-				depositoEn.setSaldo(getSaldo());
-				
-				deposito.add(depositoEn);
-				
-				try {
+				if(usuario.getCliente().getTipoCliente()=="FISICA") {
 					
-					cuentaEJB.creaCuenta(poolA, (Individual) cliente, usuario);
+				 Individual	cliente = clienteEJB.devolverIndividual(usuario.getCliente().getId());
+					cuentaEJB.creaCuenta(getPol(), cliente, usuario);
+				}else {
 					
-				}catch (ClienteNoEncontrado e) {
-					
+					Empresa cliente = clienteEJB.devolverEmpresa(usuario.getCliente().getId());
+					cuentaEJB.creaCuenta(getPol(), cliente, usuario);
 				}
+	
 				return "mainAdmin.xhtml";
-				
-				//CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida
 				
 			}catch (ClienteNoEncontrado e) {
 				FacesMessage fm = new FacesMessage("El cliente no existe");
-				FacesContext.getCurrentInstance().addMessage("abrirSegregada:cliente", fm);
-			} catch (CuentaNoEncontrada e) {
-				FacesMessage fm = new FacesMessage("La cuenta de referencia no existe");
-				FacesContext.getCurrentInstance().addMessage("abrirSegregada:ibanReferencia", fm);
-			} catch (UsuarioNoEncontrado e) {
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
+			} catch (NoAdministradorException e) {
 				FacesMessage fm = new FacesMessage("El usuario no es administrativo");
-				FacesContext.getCurrentInstance().addMessage("abrirSegregada:boton", fm);
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
+			} catch (CuentaEncontrada e) {
+				FacesMessage fm = new FacesMessage("Cuenta encontrada");
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
+			} catch (UsuarioNoEncontrado e) {
+				FacesMessage fm = new FacesMessage("No se encuentra el usuario");
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
+			} catch (ContraseniaInvalida e) {
+				FacesMessage fm = new FacesMessage("Contraseina invalida");
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
+			}catch (EJBException e) {
+				FacesMessage fm = new FacesMessage("Excepcion no controlada");
+				FacesContext.getCurrentInstance().addMessage("cuentaPooledAbrir", fm);
 			}
 			
 			return null;
