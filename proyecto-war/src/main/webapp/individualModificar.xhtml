@@ -14,14 +14,6 @@
               <h:panelGrid columns="3">
               <h:commandButton id="individualModificarClick" value="BotonModificarCliente" action="#{individualModificar.individualModificar()}" class="buttons"/>
 
-              <h:outputText value="Usuario:"/>
-              <h:inputText id="usuarioNombre" required="true" value="#{individualModificar.usuario.nombre"/>
-              <h:message id="usuarioNombreMessage" for="usuarioNombre"/>
-
-              <h:outputText value="Contrasenia:"/>
-              <h:inputSecret id="contras" required="true" value="#{individualModificar.usuario.contras}" class="controls"/>
-              <h:message id="contrasMessage" for="contras"/>
-
               <h:outputText value="Nombre:"/>
               <h:inputText id="nombre" required="true" value="#{individualModificar.individual.nombre}" class="controls"/>
               <h:message id="nombreMessage" for="nombre"/>
@@ -50,9 +42,9 @@
               <h:inputText id="estado" required="true" value="#{individualModificar.individual.estado}" class="controls"/>
               <h:message id="estadoMessage" for="estado"/>
 
-              <h:outputText value="Fecha de Modificar:"/>
-              <h:inputText id="fechaModificar" required="true" value="#{individualModificar.individual.fechaModificar}" class="controls"/>
-              <h:message id="fechaModificarMessage" for="fechaModificar"/>
+              <h:outputText value="Fecha de alta:"/>
+              <h:inputText id="fechaAlta" required="true" value="#{individualAlta.individual.fechaAlta}" class="controls"/>
+              <h:message id="fechaAltaMessage" for="fechaAlta"/>
 
               <h:outputText value="Fecha de baja:"/>
               <h:inputText id="fechaBaja" required="false" value="#{individualModificar.individual.fechaBaja}" class="controls"/>

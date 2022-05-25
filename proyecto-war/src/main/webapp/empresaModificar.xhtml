@@ -15,12 +15,12 @@
 
        <h:form id="empresaModificar">
               <h:outputText value="Introduzca los datos"/>
-              <h:panelGrid columns="3"></h:panelGrid>
+              <h:panelGrid columns="3">
 
               <h:commandButton id="empresaModificarClick" value="BotonEmpresaModificarCliente" action="#{empresaModificar.empresaModificar()}" class="buttons"/>
 
               <h:outputText value="Razon social:"/>
-              <h:inputText id="razonSocial" required="true" value="#{empresaModificar.empresa.razonSocial}" class="controls"/>
+              <h:inputText id="razonSocial" required="true" value="#{empresaModificar.empresa.razon_Social}" class="controls"/>
               <h:message id="razonSocialMessage" for="razonSocial"/>
 
               <h:outputText value="Identificacion:"/>
@@ -36,9 +36,9 @@
               <h:inputText id="estado" required="true" value="#{empresaModificar.empresa.estado}" class="controls"/>
               <h:message id="estadoMessage" for="estado"/>
 
-              <h:outputText value="Fecha de MoempresaModificar:"/>
-              <h:inputText id="fechaMoempresaModificar" required="true" value="#{empresaModificar.empresa.fechaMoempresaModificar}" class="controls"/>
-              <h:message id="fechaMoempresaModificarMessage" for="fechaMoempresaModificar"/>
+              <h:outputText value="Fecha de Alta:"/>
+              <h:inputText id="fechaAlta" required="true" value="#{empresaModificar.empresa.fechaAlta}" class="controls"/>
+              <h:message id="fechaAltaMessage" for="fechaAlta"/>
 
               <h:outputText value="Fecha de baja:"/>
               <h:inputText id="fechaBaja" required="false" value="#{empresaModificar.empresa.fechaBaja}" class="controls"/>
@@ -58,6 +58,7 @@
         
 
           </h:panelGrid>
+       </h:form>
 </h:body>
 
 </html>

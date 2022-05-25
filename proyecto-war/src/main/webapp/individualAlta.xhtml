@@ -13,15 +13,7 @@
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
               <h:commandButton id="individualAltaClick" value="BotonAltaCliente" action="#{individualAlta.individualAlta()}" class="buttons"/>
-
-              <h:outputText value="Usuario:"/>
-              <h:inputText id="usuarioNombre" required="true" value="#{individualAlta.usuario.nombreUsuario"/>
-              <h:message id="usuarioNombreMessage" for="usuarioNombre"/>
-
-              <h:outputText value="Contrasenia:"/>
-              <h:inputSecret id="contras" required="true" value="#{individualAlta.usuario.password}" class="controls"/>
-              <h:message id="contrasMessage" for="contras"/>
-
+              
               <h:outputText value="Nombre:"/>
               <h:inputText id="nombre" required="true" value="#{individualAlta.individual.nombre}" class="controls"/>
               <h:message id="nombreMessage" for="nombre"/>
@@ -31,7 +23,7 @@
               <h:message id="apellidoMessage" for="apellido"/>
 
               <h:outputText value="Fecha de nacimiento:"/>
-              <h:inputText id="fechaNacimiento" required="false" value="#{individualAlta.individual.fecha_nacimiento}" class="controls"/>
+              <h:inputText id="fechaNacimiento" required="false" value="#{individualAlta.individual.fechaNacimiento}" class="controls"/>
               <h:message id="fechaNacimientoMessage" for="fechaNacimiento"/>
 
               <h:outputText value="Identificacion:"/>
