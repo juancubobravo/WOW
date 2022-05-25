@@ -10,8 +10,8 @@
 <h:body>
        <h1><h:outputText id="saludo" value="Modificar a un cliente individual"/></h1>
        <h:form id="individualModificar">
-              <h:outputText value:="Introduzca los datos"/>
-              <h:panelGrid columns="3"></h:panelGrid>
+              <h:outputText value="Introduzca los datos"/>
+              <h:panelGrid columns="3">
               <h:commandButton id="individualModificarClick" value="BotonModificarCliente" action="#{individualModificar.individualModificar()}" class="buttons"/>
 
               <h:outputText value="Usuario:"/>
@@ -72,5 +72,6 @@
 
 
           </h:panelGrid>
+       </h:form>
 </h:body>
 </html>

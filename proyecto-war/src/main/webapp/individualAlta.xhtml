@@ -10,16 +10,16 @@
 <h:body>
        <h1><h:outputText id="saludo" value="Dar de alta a un cliente individual"/></h1>
        <h:form id="individualAlta">
-              <h:outputText value:="Introduzca los datos"/>
-              <h:panelGrid columns="3"></h:panelGrid>
+              <h:outputText value="Introduzca los datos"/>
+              <h:panelGrid columns="3">
               <h:commandButton id="individualAltaClick" value="BotonAltaCliente" action="#{individualAlta.individualAlta()}" class="buttons"/>
 
               <h:outputText value="Usuario:"/>
-              <h:inputText id="usuarioNombre" required="true" value="#{individualAlta.usuario.nombre"/>
+              <h:inputText id="usuarioNombre" required="true" value="#{individualAlta.usuario.nombreUsuario"/>
               <h:message id="usuarioNombreMessage" for="usuarioNombre"/>
 
               <h:outputText value="Contrasenia:"/>
-              <h:inputSecret id="contras" required="true" value="#{individualAlta.usuario.contras}" class="controls"/>
+              <h:inputSecret id="contras" required="true" value="#{individualAlta.usuario.password}" class="controls"/>
               <h:message id="contrasMessage" for="contras"/>
 
               <h:outputText value="Nombre:"/>
@@ -31,7 +31,7 @@
               <h:message id="apellidoMessage" for="apellido"/>
 
               <h:outputText value="Fecha de nacimiento:"/>
-              <h:inputText id="fechaNacimiento" required="false" value="#{individualAlta.individual.fechaNacimiento}" class="controls"/>
+              <h:inputText id="fechaNacimiento" required="false" value="#{individualAlta.individual.fecha_nacimiento}" class="controls"/>
               <h:message id="fechaNacimientoMessage" for="fechaNacimiento"/>
 
               <h:outputText value="Identificacion:"/>
@@ -72,5 +72,6 @@
 
 
           </h:panelGrid>
+          </h:form>
 </h:body>
 </html>

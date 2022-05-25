@@ -24,6 +24,10 @@ import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 @SessionScoped
 public class EmpresaModificar implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private InfoSesion sesion;	
 	@Inject
