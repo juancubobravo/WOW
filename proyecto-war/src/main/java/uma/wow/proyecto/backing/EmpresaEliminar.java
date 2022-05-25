@@ -20,13 +20,10 @@ import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
 import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 
 
-@Named(value = "empresaModificar")
+@Named(value = "empresaEliminar")
 @SessionScoped
-public class EmpresaModificar implements Serializable{
-	
-	/**
-	 * 
-	 */
+public class EmpresaEliminar implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private InfoSesion sesion;	
@@ -52,12 +49,12 @@ public class EmpresaModificar implements Serializable{
 	}
 
 	
-	public EmpresaModificar() {
+	public EmpresaEliminar() {
 		usuario = new Usuario();
 		empresa = new Empresa();
 	}
 
-	public String empresaModificar() {
+	public String empresaEliminar() {
 		try {
 			
 			usuario = sesion.getUsuario();
@@ -66,19 +63,19 @@ public class EmpresaModificar implements Serializable{
 			
 		}catch (UsuarioNoEncontrado e) {
 			FacesMessage fm = new FacesMessage("Usuario no encontrado");
-			FacesContext.getCurrentInstance().addMessage("empresaModificar", fm);
+			FacesContext.getCurrentInstance().addMessage("empresaEliminar", fm);
 		}catch (ClienteNoEncontrado e) {
 			FacesMessage fm = new FacesMessage("Cliente no encontrado");
-			FacesContext.getCurrentInstance().addMessage("empresaModificar", fm);
+			FacesContext.getCurrentInstance().addMessage("empresaEliminar", fm);
 		}catch (ContraseniaInvalida e) {	
 			FacesMessage fm = new FacesMessage("Contrasenia invalida");
-			FacesContext.getCurrentInstance().addMessage("empresaModificar", fm);
+			FacesContext.getCurrentInstance().addMessage("empresaEliminar", fm);
 		}catch (NoAdministradorException e) {
 			FacesMessage fm = new FacesMessage("No tienes permiso");
-			FacesContext.getCurrentInstance().addMessage("empresaModificar", fm);
+			FacesContext.getCurrentInstance().addMessage("empresaEliminar", fm);
 		}catch (EJBException e) {
 			FacesMessage fm = new FacesMessage("Excepcion no controlada");
-			FacesContext.getCurrentInstance().addMessage("empresaModificar", fm);
+			FacesContext.getCurrentInstance().addMessage("empresaEliminar", fm);
 		}
 		
 		return null;
