@@ -12,14 +12,14 @@
        <h:form id="cuentaPooledAbrir">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3"></h:panelGrid>
-              <h:commandButton id="cuentaPooledAbrirClick" value="BotonAltaCliente" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
+              <h:commandButton id="cuentaPooledAbrirClick" value="BotonCuentaPooledAbrir" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
-              <h:inputText id="iban" required="true" value="#{cuentaPooledAbrir.seg.iban}" class="controls"/>
+              <h:inputText id="iban" required="true" value="#{cuentaPooledAbrir.pol.iban}" class="controls"/>
               <h:message id="ibanMessage" for="iban"/>
 
               <h:outputText value="SWIFT:"/>
-              <h:inputSecret id="swift" required="false" value="#{cuentaPooledAbrir.seg.swift}" class="controls"/>
+              <h:inputText id="swift" required="false" value="#{cuentaPooledAbrir.pol.swift}" class="controls"/>
               <h:message id="swiftMessage" for="swift"/>
 
 
