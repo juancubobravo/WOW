@@ -9,10 +9,10 @@
 </h:head>
 <h:body>
        <h1><h:outputText id="cuentaPooledCerrar" value="Cerrar una cuenta Pooled"/></h1>
-       <h:form id="cuentaPooledCerrar">
+       <h:form id="CuentaPooledCerrar">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="cuentaPooledAbrirClick" value="BotonAltaCliente" action="#{cuentaPooledCerrar.cuentaPooledCerrar()}" class="buttons"/>
+              <h:commandButton id="cuentaPooledAbrirClick" value="BotonCuentaPooledCerrar" action="#{cuentaPooledCerrar.cuentaPooledCerrar()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
               <h:inputText id="iban" required="true" value="#{cuentaPooledCerrar.seg.iban}" class="controls"/>

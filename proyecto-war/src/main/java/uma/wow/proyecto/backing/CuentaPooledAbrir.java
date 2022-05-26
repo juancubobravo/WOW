@@ -54,6 +54,7 @@ public class CuentaPooledAbrir {
 
 	public void setPol(PooledAccount pol) {
 		this.pol = pol;
+		
 	}
 
 	public Usuario getUsuario() {
