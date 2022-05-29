@@ -40,7 +40,7 @@ public class RF10Pr {
 		individualParaUsuario.setId("9999999");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
-		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualParaUsuario.setFechaAlta("2021-03-14");
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -85,7 +85,7 @@ public class RF10Pr {
 		individualParaUsuario.setId("9999999");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
-		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualParaUsuario.setFechaAlta("2021-03-14");
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -130,7 +130,7 @@ public class RF10Pr {
 		empresaParaUsuario.setId("55555555");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
-		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaAlta("2021-07-16");
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");

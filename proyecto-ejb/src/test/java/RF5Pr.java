@@ -46,7 +46,7 @@ public class RF5Pr {
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -94,7 +94,7 @@ public class RF5Pr {
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -142,7 +142,7 @@ public class RF5Pr {
 		empresa.setId("98756");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -187,7 +187,7 @@ public class RF5Pr {
 		empresa.setId("98558774526");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Calle Vavia");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29099");
@@ -232,7 +232,7 @@ public class RF5Pr {
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -279,7 +279,7 @@ public class RF5Pr {
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -326,7 +326,7 @@ public class RF5Pr {
 		empresa.setId("98756");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -370,7 +370,7 @@ public class RF5Pr {
 		empresa.setId("9852854756");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Calle Bolsa");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29099");
