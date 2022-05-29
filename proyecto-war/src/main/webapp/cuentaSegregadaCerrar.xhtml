@@ -15,7 +15,7 @@
               <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonCuentaSegregada" action="#{cuentaPooledCerrar.cuentaSegregadaCerrar()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
-              <h:inputText id="iban" required="true" value="#{cuentaSegregadaCerrar.seg.iban}" class="controls"/>
+              <h:inputText id="iban" required="true" value="#{cuentaSegregadaCerrar.iban}" class="controls"/>
               <h:message id="ibanMessage" for="iban"/>
 
               <h:commandButton id="boton" value="Cerrar Cuenta" action="#{cuentaSegregadaCerrar.cuentaSegregadaCerrar}"></h:commandButton>

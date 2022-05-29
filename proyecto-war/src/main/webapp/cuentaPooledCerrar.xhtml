@@ -15,7 +15,7 @@
               <h:commandButton id="cuentaPooledAbrirClick" value="BotonCuentaPooledCerrar" action="#{cuentaPooledCerrar.cuentaPooledCerrar()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
-              <h:inputText id="iban" required="true" value="#{cuentaPooledCerrar.seg.iban}" class="controls"/>
+              <h:inputText id="iban" required="true" value="#{cuentaPooledCerrar.iban}" class="controls"/>
               <h:message id="ibanMessage" for="iban"/>
 
               <h:commandButton id="boton" value="Cerrar Cuenta" action="#{cuentaPooledCerrar.cuentaPooledCerrar}"></h:commandButton>
