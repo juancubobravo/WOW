@@ -39,11 +39,9 @@ public class BaseDatos {
 	
 		Individual individual = new Individual();
 		individual.setId("654987");
-		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -62,11 +60,9 @@ public class BaseDatos {
 				
 		Empresa empresa = new Empresa();
 		empresa.setId("98756");
-		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -166,7 +162,6 @@ public class BaseDatos {
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setId("511155");
-		personaAutorizadaBaja.setIdentificacion("0771");
 		personaAutorizadaBaja.setNombre("Pepe");
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setFechaNacimiento(null);
@@ -188,11 +183,9 @@ public class BaseDatos {
 		
 		Individual individualParaUsuario = new Individual();
 		individualParaUsuario.setId("9999999");
-		individualParaUsuario.setIdentificacion("654987");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
 		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
-		individualParaUsuario.setFechaBaja(null);
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -212,11 +205,9 @@ public class BaseDatos {
 		
 		Empresa empresaParaUsuario = new Empresa();
 		empresaParaUsuario.setId("55555555");
-		empresaParaUsuario.setIdentificacion("789544");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
 		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresaParaUsuario.setFechaBaja(null);
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");
@@ -261,7 +252,6 @@ public class BaseDatos {
 		
 		PersonaAutorizada personaAutorizadaTrans = new PersonaAutorizada();
 		personaAutorizadaTrans.setId("2216521981155");
-		personaAutorizadaTrans.setIdentificacion("0771");
 		personaAutorizadaTrans.setNombre("Pepe");
 		personaAutorizadaTrans.setApellidos("Pelaez");
 		personaAutorizadaTrans.setFechaNacimiento(null);
@@ -273,11 +263,9 @@ public class BaseDatos {
 		
 		Individual individualTrans = new Individual();
 		individualTrans.setId("981841");
-		individualTrans.setIdentificacion("654987");
 		individualTrans.setTipoCliente("FISICA");
 		individualTrans.setEstado("ACTIVO");
 		individualTrans.setFechaAlta(Date.valueOf("2021-03-14"));
-		individualTrans.setFechaBaja(null);
 		individualTrans.setDireccion("Avenida Cos");
 		individualTrans.setCiudad("Malaga");
 		individualTrans.setCodigoPostal("2901");
