@@ -49,7 +49,6 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setId("511155");
-		personaAutorizadaBaja.setIdentificacion("0771");
 		personaAutorizadaBaja.setNombre("Pepe");
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setFechaNacimiento(null);
@@ -97,7 +96,6 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setId("51112");
-		personaAutorizadaBaja.setIdentificacion("0771");
 		personaAutorizadaBaja.setNombre("Pepe");
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setFechaNacimiento(null);

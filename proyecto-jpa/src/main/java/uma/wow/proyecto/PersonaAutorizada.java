@@ -9,10 +9,9 @@ import javax.persistence.*;
 @Entity
 public class PersonaAutorizada implements Serializable{
 	private static final long serialVersionUID = 1L;
-	@Id @GeneratedValue (strategy = GenerationType.AUTO)
+	@Id
 	private String idAutorizada;
-	@Column (unique = true, nullable = false)
-	private String identificacion;
+
 	@Column(nullable = false)
 	private String nombre;
 	@Column(nullable = false)
@@ -65,13 +64,6 @@ public class PersonaAutorizada implements Serializable{
 		this.idAutorizada = id;
 	}
 
-	public String getIdentificacion() {
-		return identificacion;
-	}
-
-	public void setIdentificacion(String identificacion) {
-		this.identificacion = identificacion;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -148,7 +140,7 @@ public class PersonaAutorizada implements Serializable{
 
 	@Override
 	public String toString() {
-		return "PersonaAutorizada [id=" + idAutorizada + ", identificacion=" + identificacion + ", nombre=" + nombre
+		return "PersonaAutorizada [id=" + idAutorizada + ", nombre=" + nombre
 				+ ", apellidos=" + apellidos + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento
 				+ ", estado=" + estado + ", fechaInicio=" + fechaInicio + ", fechaFin=" + fechaFin + "]";
 	}

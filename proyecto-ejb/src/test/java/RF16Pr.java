@@ -58,11 +58,9 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		
 		Individual individual = new Individual();
 		individual.setId("654987");
-		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -78,11 +76,9 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		
 		Empresa empresa = new Empresa();
 		empresa.setId("98756");
-		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -99,7 +95,6 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
 		personaAutorizada.setFechaFin(null);
 		personaAutorizada.setId("511155");
-		personaAutorizada.setIdentificacion("0771");
 		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
 		personaAutorizada.setUsuario(usuarioEmpresa);
 		
@@ -136,11 +131,9 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		
 		Individual individual = new Individual();
 		individual.setId("65165196157");
-		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Plato");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29085");
@@ -155,11 +148,10 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		usuarioEmpresa.setTipo("NORMAL");
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("98756");
+		empresa.setId("98756");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -176,7 +168,6 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
 		personaAutorizada.setFechaFin(null);
 		personaAutorizada.setId("511155");
-		personaAutorizada.setIdentificacion("0771");
 		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
 		personaAutorizada.setUsuario(usuarioEmpresa);
 		

@@ -49,11 +49,9 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		Empresa empresaParaUsuario = new Empresa();
 		empresaParaUsuario.setId("55555555");
-		empresaParaUsuario.setIdentificacion("789544");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
 		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresaParaUsuario.setFechaBaja(null);
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");
@@ -69,7 +67,6 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setId("511155");
-		personaAutorizadaBaja.setIdentificacion("0771");
 		personaAutorizadaBaja.setNombre("Pepe");
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setFechaNacimiento(null);
@@ -132,11 +129,9 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		Empresa empresaParaUsuario = new Empresa();
 		empresaParaUsuario.setId("55555555");
-		empresaParaUsuario.setIdentificacion("789544");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
 		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresaParaUsuario.setFechaBaja(null);
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");
@@ -152,7 +147,6 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		
 		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
 		personaAutorizadaBaja.setId("511155");
-		personaAutorizadaBaja.setIdentificacion("0771");
 		personaAutorizadaBaja.setNombre("Pepe");
 		personaAutorizadaBaja.setApellidos("Pelaez");
 		personaAutorizadaBaja.setFechaNacimiento(null);

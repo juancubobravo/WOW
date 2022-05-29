@@ -98,7 +98,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
         }
 
 
-            personaAutorizada.setIdentificacion(nuevosDatos.getIdentificacion());
+        
             personaAutorizada.setNombre(nuevosDatos.getNombre());
             personaAutorizada.setApellidos(nuevosDatos.getApellidos());
             personaAutorizada.setDireccion(nuevosDatos.getDireccion());

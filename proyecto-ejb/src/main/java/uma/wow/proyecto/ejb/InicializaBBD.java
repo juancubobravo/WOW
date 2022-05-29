@@ -324,7 +324,7 @@ public class InicializaBBD {
 		
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdentificacion("P3310693A");
+		empresa.setId("P3310693A");
 		empresa.setRazon_Social("Andamios Antonio");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
@@ -335,13 +335,12 @@ public class InicializaBBD {
 		empresa.setPais("España");
 		
 		Individual individual = new Individual();
-		individual.setIdentificacion("63937528N");
+		individual.setId("63937528N");
 		individual.setNombre("Paco");
 		individual.setApellido("Gómez");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -349,7 +348,7 @@ public class InicializaBBD {
 		individual.setFecha_nacimiento(null);
 		
 		PersonaAutorizada autorizada = new PersonaAutorizada();
-		autorizada.setIdentificacion("Y4001267V");
+		autorizada.setId("Y4001267V");
 		autorizada.setNombre("Pepe");
 		autorizada.setApellidos("Pelaez");
 		autorizada.setFechaNacimiento(null);

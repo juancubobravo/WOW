@@ -1,7 +1,7 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,10 +11,16 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
+	
+	/*
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	private String id;
-	@Column (unique=true, nullable = false)
+	*/
+	
+	@Id
+	//@Column (unique=true, nullable = false)
 	private String identificacion;
+	
 	@Column(nullable = false)
 	private String tipoCliente;
 	@Column(nullable = false)
@@ -52,7 +58,7 @@ public class Cliente implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+	/*
 	public String getId() {
 		return id;
 	}
@@ -60,12 +66,13 @@ public class Cliente implements Serializable{
 	public void setId(String id) {
 		this.id = id;
 	}
+	*/
 
-	public String getIdentificacion() {
+	public String getId() {
 		return identificacion;
 	}
 
-	public void setIdentificacion(String identificacion) {
+	public void setId(String identificacion) {
 		this.identificacion = identificacion;
 	}
 
@@ -92,6 +99,10 @@ public class Cliente implements Serializable{
 	public void setFechaAlta(java.util.Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
+	
+	public void setFechaAlta(String fecha) {
+		this.fechaAlta = Date.valueOf(fecha);
+	}
 
 	public java.util.Date getFechaBaja() {
 		return fechaBaja;
@@ -99,6 +110,10 @@ public class Cliente implements Serializable{
 
 	public void setFechaBaja(java.util.Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
+	}
+	
+	public void setFechaBaja(String fecha) {
+		this.fechaBaja = Date.valueOf(fecha);
 	}
 
 	public String getDireccion() {
@@ -144,7 +159,7 @@ public class Cliente implements Serializable{
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(identificacion);
 	}
 
 	@Override
@@ -156,12 +171,12 @@ public class Cliente implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(identificacion , other.identificacion);
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [id=" + id + ", identificacion=" + identificacion + ", tipoCliente=" + tipoCliente + ", estado="
+		return "Cliente [identificacion=" + identificacion + ", tipoCliente=" + tipoCliente + ", estado="
 				+ estado + ", fechaAlta=" + fechaAlta + ", fechaBaja=" + fechaBaja + ", direccion=" + direccion
 				+ ", ciudad=" + ciudad + ", codigoPostal=" + codigoPostal + ", pais=" + pais + ", cuentas=" + cuentas
 				+ "]";

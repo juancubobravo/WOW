@@ -147,11 +147,11 @@ public class InformeEJB implements GestionInforme {
 			
 			for (CuentaFintech c : cuentas) {
 
-				Empresa clienteEmpresa = em.find(Empresa.class, c.getCliente().getIdentificacion());
+				Empresa clienteEmpresa = em.find(Empresa.class, c.getCliente().getId());
 
 				if (clienteEmpresa == null) {
 
-					Individual clienteIndividual = em.find(Individual.class, c.getCliente().getIdentificacion());
+					Individual clienteIndividual = em.find(Individual.class, c.getCliente().getId());
 
 					String fecha_nacimiento;
 
@@ -166,7 +166,7 @@ public class InformeEJB implements GestionInforme {
 					csvPrinter.printRecord(c.getIban(), clienteIndividual.getApellido(), clienteIndividual.getNombre(),
 							clienteIndividual.getDireccion(), clienteIndividual.getCiudad(),
 							clienteIndividual.getCodigoPostal(), clienteIndividual.getPais(),
-							clienteIndividual.getIdentificacion(), fecha_nacimiento);
+							clienteIndividual.getId(), fecha_nacimiento);
 				} else {
 
 					for (Autorizacion a : clienteEmpresa.getAutori()) {
@@ -186,7 +186,7 @@ public class InformeEJB implements GestionInforme {
 							csvPrinter.printRecord(c.getIban(), a.getIdAutorizada().getApellidos(),
 									a.getIdAutorizada().getNombre(), a.getIdAutorizada().getDireccion(),
 									clienteEmpresa.getCiudad(), clienteEmpresa.getCodigoPostal(),
-									clienteEmpresa.getPais(), clienteEmpresa.getIdentificacion(), fecha_nacimiento);
+									clienteEmpresa.getPais(), clienteEmpresa.getId(), fecha_nacimiento);
 						}
 					}
 				}
@@ -224,11 +224,11 @@ public class InformeEJB implements GestionInforme {
 					"Firs_Name", "Street", "City", "Post_Code", "Country", "Identification_Number", "Date_Of_Birth"));
 			for (CuentaFintech c : cuentas) {
 
-					Empresa clienteEmpresa = em.find(Empresa.class, c.getCliente().getIdentificacion());
+					Empresa clienteEmpresa = em.find(Empresa.class, c.getCliente().getId());
 
 					if (clienteEmpresa == null) {
 
-						Individual clienteIndividual = em.find(Individual.class, c.getCliente().getIdentificacion());
+						Individual clienteIndividual = em.find(Individual.class, c.getCliente().getId());
 
 						String fecha_nacimiento;
 
@@ -243,7 +243,7 @@ public class InformeEJB implements GestionInforme {
 						csvPrinter.printRecord(c.getIban(), clienteIndividual.getApellido(),
 								clienteIndividual.getNombre(), clienteIndividual.getDireccion(),
 								clienteIndividual.getCiudad(), clienteIndividual.getCodigoPostal(),
-								clienteIndividual.getPais(), clienteIndividual.getIdentificacion(), fecha_nacimiento);
+								clienteIndividual.getPais(), clienteIndividual.getId(), fecha_nacimiento);
 
 					} else {
 
@@ -264,7 +264,7 @@ public class InformeEJB implements GestionInforme {
 								csvPrinter.printRecord(c.getIban(), a.getIdAutorizada().getApellidos(),
 										a.getIdAutorizada().getNombre(), a.getIdAutorizada().getDireccion(),
 										clienteEmpresa.getCiudad(), clienteEmpresa.getCodigoPostal(),
-										clienteEmpresa.getPais(), clienteEmpresa.getIdentificacion(), fecha_nacimiento);
+										clienteEmpresa.getPais(), clienteEmpresa.getId(), fecha_nacimiento);
 							}
 						}
 					}

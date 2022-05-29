@@ -59,7 +59,7 @@ public class ClienteEJB implements GestionCliente{
         }
 
     
-            oldCliente.setIdentificacion(cliente.getIdentificacion());
+            
             oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
             oldCliente.setEstado(cliente.getEstado());
             oldCliente.setFechaAlta(cliente.getFechaAlta());
@@ -86,8 +86,8 @@ public class ClienteEJB implements GestionCliente{
         }
 
     
-            oldCliente.setIdentificacion(cliente.getIdentificacion());
-            oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
+            
+            oldCliente.setTipoCliente(cliente.getTipoCliente()); 
             oldCliente.setEstado(cliente.getEstado());
             oldCliente.setFechaAlta(cliente.getFechaAlta());
             oldCliente.setFechaBaja(cliente.getFechaBaja());

@@ -42,11 +42,9 @@ public class RF4Pr {
 		
 		Individual individual = new Individual();
 		individual.setId("654987");
-		individual.setIdentificacion("8933533");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -89,11 +87,9 @@ public class RF4Pr {
 		
 		Empresa empresa = new Empresa();
 		empresa.setId("98756");
-		empresa.setIdentificacion("45575233");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -126,11 +122,9 @@ public class RF4Pr {
 		
 		Empresa empresa = new Empresa();
 		empresa.setId("63554");
-		empresa.setIdentificacion("aaa");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle Alemania");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29059");
@@ -164,11 +158,9 @@ public class RF4Pr {
 		
 		Individual individual = new Individual();
 		individual.setId("452757");
-		individual.setIdentificacion("yyy");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Puerta");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29071");

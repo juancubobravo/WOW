@@ -46,11 +46,9 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 		Empresa empresa = new Empresa();
 		empresa.setId("98756");
-		empresa.setIdentificacion("6556f");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
 		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresa.setFechaBaja(null);
 		empresa.setDireccion("Calle Malaga");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -91,11 +89,9 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 		Individual individual = new Individual();
 		individual.setId("654987");
-		individual.setIdentificacion("1111");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29007");
@@ -138,11 +134,9 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		
 		Individual individual = new Individual();
 		individual.setId("454987");
-		individual.setIdentificacion("5555");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
 		individual.setFechaAlta(Date.valueOf("2021-03-14"));
-		individual.setFechaBaja(null);
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Barcelona");
 		individual.setCodigoPostal("29001");

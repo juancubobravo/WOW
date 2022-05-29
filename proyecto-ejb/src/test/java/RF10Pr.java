@@ -38,11 +38,9 @@ public class RF10Pr {
 		
 		Individual individualParaUsuario = new Individual();
 		individualParaUsuario.setId("9999999");
-		individualParaUsuario.setIdentificacion("654987");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
 		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
-		individualParaUsuario.setFechaBaja(null);
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -85,11 +83,9 @@ public class RF10Pr {
 		
 		Individual individualParaUsuario = new Individual();
 		individualParaUsuario.setId("9999999");
-		individualParaUsuario.setIdentificacion("654987");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
 		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
-		individualParaUsuario.setFechaBaja(null);
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -132,11 +128,9 @@ public class RF10Pr {
 		
 		Empresa empresaParaUsuario = new Empresa();
 		empresaParaUsuario.setId("55555555");
-		empresaParaUsuario.setIdentificacion("789544");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
 		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
-		empresaParaUsuario.setFechaBaja(null);
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");
