@@ -1,6 +1,8 @@
 package uma.wow.proyecto.ejb;
 import uma.wow.proyecto.ejb.exceptions.*;
 import uma.wow.proyecto.*;
+
+import java.sql.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -64,6 +66,8 @@ public class TransaccionEJB implements GestionTransaccion{
         		if(dinero <= saldoOrigen.getSaldo()) {
         			saldoOrigen.setSaldo(saldoOrigen.getSaldo()-dinero);
         			saldoDestino.setSaldo(saldoDestino.getSaldo()+dinero);
+        			Transaccion transaccion = new Transaccion();
+
         		} else {
         			throw new SaldoInsuficiente();
         		}

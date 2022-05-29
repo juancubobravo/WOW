@@ -24,10 +24,15 @@ import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
 @SessionScoped
 public class IndividualEliminar implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private InfoSesion sesion;	
 	@Inject
 	private GestionCliente clienteEJB;	
+	
 	private Individual individual;
 	private Usuario usuario;
 

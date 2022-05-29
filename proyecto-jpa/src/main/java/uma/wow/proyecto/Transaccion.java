@@ -133,6 +133,38 @@ public class Transaccion implements Serializable {
 		this.internacional = internacional;
 	}
 
+	public Cuenta getIban() {
+		return iban;
+	}
+
+	public Cuenta getIban1() {
+		return iban1;
+	}
+
+	public Divisa getDivisa() {
+		return divisa;
+	}
+
+	public Divisa getDivisa1() {
+		return divisa1;
+	}
+
+	public void setIban(Cuenta iban) {
+		this.iban = iban;
+	}
+
+	public void setIban1(Cuenta iban1) {
+		this.iban1 = iban1;
+	}
+
+	public void setDivisa(Divisa divisa) {
+		this.divisa = divisa;
+	}
+
+	public void setDivisa1(Divisa divisa1) {
+		this.divisa1 = divisa1;
+	}
+
 	
 
 	

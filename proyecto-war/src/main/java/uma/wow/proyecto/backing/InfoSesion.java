@@ -22,7 +22,7 @@ public class InfoSesion implements Serializable{
 	        this.usuario = usuario;
 	}
 	public synchronized boolean getAdmin() {
-		boolean admin = usuario.getTipo().equals("ADMIN");
+		boolean admin = getUsuario().getTipo().equals("ADMIN");
 		return admin;
 	}
 	
