@@ -1,7 +1,7 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 
@@ -15,7 +15,7 @@ public class Individual extends Cliente implements Serializable  {
 	@Column(nullable = false)
 	private String apellido;
 	@Column (nullable=true)
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
 		
@@ -35,15 +35,14 @@ public class Individual extends Cliente implements Serializable  {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public Date getFechaNacimiento() {
+	public Object getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFecha_nacimiento(java.util.Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFecha_nacimiento(String fechaNacimiento) {
+		if(fechaNacimiento!=null) {
+			this.fechaNacimiento = Date.valueOf(fechaNacimiento);
+		}
 	}
-	
-	
-	
 	
 	@Override
 	public int hashCode() {

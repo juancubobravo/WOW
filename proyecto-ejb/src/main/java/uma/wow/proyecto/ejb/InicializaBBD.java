@@ -328,7 +328,7 @@ public class InicializaBBD {
 		empresa.setRazon_Social("Andamios Antonio");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Alameda de Colón");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("25300");
@@ -340,7 +340,7 @@ public class InicializaBBD {
 		individual.setApellido("Gómez");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");

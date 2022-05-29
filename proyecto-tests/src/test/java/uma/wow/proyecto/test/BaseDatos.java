@@ -55,7 +55,7 @@ public class BaseDatos {
 		individual.setApellido("Gómez");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -87,6 +87,7 @@ public class BaseDatos {
 		
 		autorizada.setAutori(lista);
 				
+<<<<<<< HEAD
 		Divisa euro = new Divisa();
 		euro.setAbreviatura("euro");
 		euro.setNombre("euro");
@@ -100,6 +101,18 @@ public class BaseDatos {
 		dolar.setCambioEuro(0.95);
 		dolar.setSimbolo("$");
 		em.merge(dolar);
+=======
+		Empresa empresa = new Empresa();
+		empresa.setId("98756");
+		empresa.setTipoCliente("JURIDICO");
+		empresa.setEstado("ACTIVO");
+		empresa.setFechaAlta("2021-07-16");
+		empresa.setDireccion("Calle España");
+		empresa.setCiudad("Malaga");
+		empresa.setCodigoPostal("29009");
+		empresa.setPais("España");
+		empresa.setRazon_Social("Ayudas");
+>>>>>>> 835e63e34ce71ad5b90e86a9710885b5c5283741
 		
 		Divisa libra = new Divisa();
 		libra.setAbreviatura("libra");
@@ -181,6 +194,7 @@ public class BaseDatos {
 		em.merge(cuentaref5);
 		
 		
+<<<<<<< HEAD
 		CuentaReferencia cuentaref6 = new CuentaReferencia();
 		cuentaref6.setIban("GB79BARC20040134265953");
 		cuentaref6.setSwift("2345");
@@ -190,6 +204,87 @@ public class BaseDatos {
 		cuentaref6.setFechaApertura(Date.valueOf("2022-04-25"));
 		cuentaref6.setEstado("ABIERTA");
 		cuentaref6.setAbreviatura(libra);
+=======
+		em.persist(cuentaVacia2);
+		em.persist(dep);
+		em.persist(pooledVacia);
+		
+		Segregada segregada = new Segregada();
+		segregada.setIban("1888134538888");
+		segregada.setSwift("4582");
+		segregada.setClasificacion("SEGREGADA");
+		segregada.setCliente(individual);
+		segregada.setEstado("ABIERTA");
+		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaCierre(null);
+		segregada.setCuentaReferencia(cuentaLlena);
+		
+		em.persist(segregada);
+		
+		Usuario usuarioPerAut = new Usuario ();
+		usuarioPerAut.setNombreUsuario("JoseManuel");
+		usuarioPerAut.setPassword("1234");
+		usuarioPerAut.setTipo("NORMAL");
+		
+		PersonaAutorizada personaAutorizadaBaja = new PersonaAutorizada();
+		personaAutorizadaBaja.setId("511155");
+		personaAutorizadaBaja.setNombre("Pepe");
+		personaAutorizadaBaja.setApellidos("Pelaez");
+		personaAutorizadaBaja.setFechaNacimiento(null);
+		personaAutorizadaBaja.setEstado("ACTIVO");
+		personaAutorizadaBaja.setDireccion("Avda S");		
+		personaAutorizadaBaja.setFechaInicio(null);
+		personaAutorizadaBaja.setFechaFin(null);
+		personaAutorizadaBaja.setAutori(null);		
+		personaAutorizadaBaja.setUsuario(usuarioPerAut);
+		usuarioPerAut.setPersonaAutorizada(personaAutorizadaBaja);
+		
+		em.persist(usuarioPerAut);
+		em.persist(personaAutorizadaBaja);
+		
+		Usuario usuarioIndividual = new Usuario ();
+		usuarioIndividual.setNombreUsuario("Peter");
+		usuarioIndividual.setPassword("1234");
+		usuarioIndividual.setTipo("NORMAL");
+		
+		Individual individualParaUsuario = new Individual();
+		individualParaUsuario.setId("9999999");
+		individualParaUsuario.setTipoCliente("FISICA");
+		individualParaUsuario.setEstado("ACTIVO");
+		individualParaUsuario.setFechaAlta("2021-03-14");
+		individualParaUsuario.setDireccion("Avenida Cos");
+		individualParaUsuario.setCiudad("Malaga");
+		individualParaUsuario.setCodigoPostal("2901");
+		individualParaUsuario.setPais("España");
+		individualParaUsuario.setNombre("Jamal");
+		individualParaUsuario.setApellido("Peterh");
+		individualParaUsuario.setFecha_nacimiento(null);
+		
+		usuarioIndividual.setCliente(individualParaUsuario);
+		em.persist(usuarioIndividual);
+		em.persist(individualParaUsuario);
+		
+		Usuario usuarioEmpresa = new Usuario ();
+		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
+		usuarioEmpresa.setPassword("vivalacomida");
+		usuarioEmpresa.setTipo("NORMAL");
+		
+		Empresa empresaParaUsuario = new Empresa();
+		empresaParaUsuario.setId("55555555");
+		empresaParaUsuario.setTipoCliente("JURIDICO");
+		empresaParaUsuario.setEstado("ACTIVO");
+		empresaParaUsuario.setFechaAlta("2021-07-16");
+		empresaParaUsuario.setDireccion("Calle Pamplona");
+		empresaParaUsuario.setCiudad("Madrid");
+		empresaParaUsuario.setCodigoPostal("27009");
+		empresaParaUsuario.setPais("España");
+		empresaParaUsuario.setRazon_Social("Comida");
+		empresaParaUsuario.setUsuario(usuarioEmpresa);
+		usuarioEmpresa.setCliente(empresaParaUsuario);
+				
+		em.persist(usuarioEmpresa);
+		em.persist(empresaParaUsuario);
+>>>>>>> 835e63e34ce71ad5b90e86a9710885b5c5283741
 		
 		em.merge(cuentaref6);
 		
@@ -223,7 +318,58 @@ public class BaseDatos {
 		dep2_pk.setPooledAccountIban("ES8400817251647192321264");
 		depositaEn2.setId(dep2_pk);
 		
+<<<<<<< HEAD
 		em.merge(depositaEn2);
+=======
+		List<DepositadaEn> listaa = new ArrayList<DepositadaEn>();
+		listaa.add(dep1);
+		pooled.setDepositaEn(listaa);
+		
+		em.persist(pooled);
+		em.persist(dep1);
+		
+		//************************************************
+		Usuario userTrans = new Usuario ();
+		userTrans.setNombreUsuario("Leopoldo");
+		userTrans.setPassword("1124");
+		userTrans.setTipo("NORMAL");
+		
+		PersonaAutorizada personaAutorizadaTrans = new PersonaAutorizada();
+		personaAutorizadaTrans.setId("2216521981155");
+		personaAutorizadaTrans.setNombre("Pepe");
+		personaAutorizadaTrans.setApellidos("Pelaez");
+		personaAutorizadaTrans.setFechaNacimiento(null);
+		personaAutorizadaTrans.setEstado("ACTIVO");
+		personaAutorizadaTrans.setDireccion("Avda S");		
+		personaAutorizadaTrans.setFechaInicio(null);
+		personaAutorizadaTrans.setFechaFin(null);
+		personaAutorizadaTrans.setAutori(null);
+		
+		Individual individualTrans = new Individual();
+		individualTrans.setId("981841");
+		individualTrans.setTipoCliente("FISICA");
+		individualTrans.setEstado("ACTIVO");
+		individualTrans.setFechaAlta("2021-03-14");
+		individualTrans.setDireccion("Avenida Cos");
+		individualTrans.setCiudad("Malaga");
+		individualTrans.setCodigoPostal("2901");
+		individualTrans.setPais("España");
+		individualTrans.setNombre("Jamal");
+		individualTrans.setApellido("Peterh");
+		individualTrans.setFecha_nacimiento(null);
+		
+		List<CuentaFintech> listaTrans = new ArrayList<CuentaFintech>();
+		CuentaFintech cuentaTrans = new CuentaFintech();
+		cuentaTrans.setIban("795588");
+		cuentaTrans.setEstado(null);
+		cuentaTrans.setSwift("482");
+		cuentaTrans.setFechaApertura(Date.valueOf("2021-03-14"));
+		cuentaTrans.setFechaCierre(null);
+		cuentaTrans.setClasificacion(null);
+		
+		listaTrans.add(cuentaTrans);
+		individualTrans.setCuentas(listaTrans);
+>>>>>>> 835e63e34ce71ad5b90e86a9710885b5c5283741
 		
 		
 		DepositadaEn depositaEn3 = new DepositadaEn();

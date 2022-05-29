@@ -22,8 +22,8 @@
               <h:inputText id="apellido" required="true" value="#{individualAlta.individual.apellido}" class="controls"/>
               <h:message id="apellidoMessage" for="apellido"/>
 
-              <h:outputText value="Fecha de nacimiento:"/>
-              <h:inputText id="fechaNacimiento" required="false" value="#{individualAlta.individual.fechaNacimiento}" class="controls"/>
+              <h:outputText value="Fecha de nacimiento(yyyy-mm-dd):"/>
+              <h:inputText id="fechaNacimiento" required="true" value="#{individualAlta.individual.fechaNacimiento}"/>
               <h:message id="fechaNacimientoMessage" for="fechaNacimiento"/>
 
               <h:outputText value="Identificacion:"/>
@@ -42,11 +42,11 @@
               <h:inputText id="estado" required="true" value="#{individualAlta.individual.estado}" class="controls"/>
               <h:message id="estadoMessage" for="estado"/>
 
-              <h:outputText value="Fecha de alta:"/>
+              <h:outputText value="Fecha de alta(yyyy-mm-dd):"/>
               <h:inputText id="fechaAlta" required="true" value="#{individualAlta.individual.fechaAlta}" class="controls"/>
               <h:message id="fechaAltaMessage" for="fechaAlta"/>
 
-              <h:outputText value="Fecha de baja:"/>
+              <h:outputText value="Fecha de baja(yyyy-mm-dd):"/>
               <h:inputText id="fechaBaja" required="false" value="#{individualAlta.individual.fechaBaja}" class="controls"/>
               <h:message id="fechaBajaMessage" for="fechaBaja"/>
 

@@ -39,7 +39,7 @@ public class BaseDatos {
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -60,7 +60,7 @@ public class BaseDatos {
 		empresa.setId("98756");
 		empresa.setTipoCliente("JURIDICO");
 		empresa.setEstado("ACTIVO");
-		empresa.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresa.setFechaAlta("2021-07-16");
 		empresa.setDireccion("Calle España");
 		empresa.setCiudad("Malaga");
 		empresa.setCodigoPostal("29009");
@@ -95,6 +95,7 @@ public class BaseDatos {
 		segregadaVacia.setFechaApertura(Date.valueOf("2020-05-27"));
 		segregadaVacia.setFechaCierre(null);
 		segregadaVacia.setCuentaReferencia(cuentaVacia);
+		//segregadaVacia.setComision(null);
 		
 		em.persist(cuentaVacia);
 		em.persist(segregadaVacia);
@@ -183,7 +184,7 @@ public class BaseDatos {
 		individualParaUsuario.setId("9999999");
 		individualParaUsuario.setTipoCliente("FISICA");
 		individualParaUsuario.setEstado("ACTIVO");
-		individualParaUsuario.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualParaUsuario.setFechaAlta("2021-03-14");
 		individualParaUsuario.setDireccion("Avenida Cos");
 		individualParaUsuario.setCiudad("Malaga");
 		individualParaUsuario.setCodigoPostal("2901");
@@ -205,7 +206,7 @@ public class BaseDatos {
 		empresaParaUsuario.setId("55555555");
 		empresaParaUsuario.setTipoCliente("JURIDICO");
 		empresaParaUsuario.setEstado("ACTIVO");
-		empresaParaUsuario.setFechaAlta(Date.valueOf("2021-07-16"));
+		empresaParaUsuario.setFechaAlta("2021-07-16");
 		empresaParaUsuario.setDireccion("Calle Pamplona");
 		empresaParaUsuario.setCiudad("Madrid");
 		empresaParaUsuario.setCodigoPostal("27009");
@@ -263,7 +264,7 @@ public class BaseDatos {
 		individualTrans.setId("981841");
 		individualTrans.setTipoCliente("FISICA");
 		individualTrans.setEstado("ACTIVO");
-		individualTrans.setFechaAlta(Date.valueOf("2021-03-14"));
+		individualTrans.setFechaAlta("2021-03-14");
 		individualTrans.setDireccion("Avenida Cos");
 		individualTrans.setCiudad("Malaga");
 		individualTrans.setCodigoPostal("2901");

@@ -50,7 +50,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");
@@ -146,7 +146,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		individual.setId("654987");
 		individual.setTipoCliente("FISICA");
 		individual.setEstado("ACTIVO");
-		individual.setFechaAlta(Date.valueOf("2021-03-14"));
+		individual.setFechaAlta("2021-03-14");
 		individual.setDireccion("Avenida Correcaminos");
 		individual.setCiudad("Malaga");
 		individual.setCodigoPostal("29001");

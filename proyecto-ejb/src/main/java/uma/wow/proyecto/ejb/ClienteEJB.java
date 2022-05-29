@@ -62,8 +62,8 @@ public class ClienteEJB implements GestionCliente{
             
             oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
             oldCliente.setEstado(cliente.getEstado());
-            oldCliente.setFechaAlta(cliente.getFechaAlta());
-            oldCliente.setFechaBaja(cliente.getFechaBaja());
+            oldCliente.setFechaAlta((String) cliente.getFechaAlta());
+            oldCliente.setFechaBaja((String) cliente.getFechaBaja());
             oldCliente.setDireccion(cliente.getDireccion());
             oldCliente.setCiudad(cliente.getCiudad());
             oldCliente.setCodigoPostal(cliente.getCodigoPostal());
@@ -89,8 +89,8 @@ public class ClienteEJB implements GestionCliente{
             
             oldCliente.setTipoCliente(cliente.getTipoCliente()); 
             oldCliente.setEstado(cliente.getEstado());
-            oldCliente.setFechaAlta(cliente.getFechaAlta());
-            oldCliente.setFechaBaja(cliente.getFechaBaja());
+            oldCliente.setFechaAlta((String) cliente.getFechaAlta());
+            oldCliente.setFechaBaja((String) cliente.getFechaBaja());
             oldCliente.setDireccion(cliente.getDireccion());
             oldCliente.setCiudad(cliente.getCiudad());
             oldCliente.setCodigoPostal(cliente.getCodigoPostal());
@@ -99,7 +99,7 @@ public class ClienteEJB implements GestionCliente{
             oldCliente.setUsuario(cliente.getUsuario());
             oldCliente.setNombre(cliente.getNombre());
             oldCliente.setApellido(cliente.getApellido());
-            oldCliente.setFecha_nacimiento(cliente.getFechaNacimiento());
+            oldCliente.setFecha_nacimiento((String) cliente.getFechaNacimiento());
 		
 	}
 

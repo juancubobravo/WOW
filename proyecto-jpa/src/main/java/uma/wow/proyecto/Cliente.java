@@ -25,12 +25,12 @@ public class Cliente implements Serializable{
 	private String tipoCliente;
 	@Column(nullable = false)
 	private String estado;
-	@Temporal (TemporalType.DATE)
+	//@Temporal (TemporalType.DATE)
 	@Column(nullable = false)
-	private java.util.Date fechaAlta;
+	private Date fechaAlta;
 	@Column (nullable=true)
-	@Temporal(TemporalType.DATE)
-	private java.util.Date fechaBaja;
+	//@Temporal(TemporalType.DATE)
+	private Date fechaBaja;
 	@Column(nullable = false)
 	private String direccion;
 	@Column(nullable = false)
@@ -92,25 +92,22 @@ public class Cliente implements Serializable{
 		this.estado = estado;
 	}
 
-	public java.util.Date getFechaAlta() {
+	public Object getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(java.util.Date fechaAlta) {
-		this.fechaAlta = fechaAlta;
+	public void setFechaAlta(String fechaAlta) {
+		
+		if(fechaAlta!=null) {
+			this.fechaAlta = Date.valueOf(fechaAlta);
+		}
 	}
 	
-	public void setFechaAlta(String fecha) {
-		this.fechaAlta = Date.valueOf(fecha);
-	}
 
-	public java.util.Date getFechaBaja() {
+	public Object getFechaBaja() {
 		return fechaBaja;
 	}
 
-	public void setFechaBaja(java.util.Date fechaBaja) {
-		this.fechaBaja = fechaBaja;
-	}
 	
 	public void setFechaBaja(String fecha) {
 		this.fechaBaja = Date.valueOf(fecha);
