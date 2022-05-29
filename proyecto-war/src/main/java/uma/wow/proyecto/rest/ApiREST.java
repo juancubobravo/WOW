@@ -95,7 +95,7 @@ public class ApiREST {
 					}
 					
 					individuales.setProducts(productos);
-					individuales.setActiveCostumer(i.getEstado().equals("activa"));
+					individuales.setActiveCostumer(i.getEstado().equals("ACTIVA"));
 					individuales.setDateOfBirth(i.getFechaNacimiento().toString());
 					NombreCliente name = new NombreCliente();
 					name.setFirstName(i.getNombre());
@@ -126,7 +126,7 @@ public class ApiREST {
 						
 					}
 					individuales.setProducts(productos);
-					individuales.setActiveCostumer(i.getEstado().equals("activa"));
+					individuales.setActiveCostumer(i.getEstado().equals("ACTIVA"));
 					individuales.setDateOfBirth(i.getFechaNacimiento().toString());
 					NombreCliente name = new NombreCliente();
 					name.setFirstName(i.getNombre());
@@ -192,10 +192,10 @@ public class ApiREST {
 			AccountHolder ah;
 		
 			Cliente cl = s.getCliente();
-			if(cl.getTipoCliente().equals("N")) {
+			if(cl.getTipoCliente().equals("FISICA")) {
 				ah = new AccountHolderIndividual();
-				ah.setAccounttype("Fisica");
-				ah.setActiveCostumer(s.getEstado().equals("activa"));
+				ah.setAccounttype("FISICA");
+				ah.setActiveCostumer(s.getEstado().equals("ACTIVA"));
 				Individual ind = (Individual) cliente.devolverIndividual(cl.getId());
 				NombreCliente nc = new NombreCliente();
 				nc.setFirstName(ind.getNombre());
@@ -206,7 +206,7 @@ public class ApiREST {
 			}else {
 				ah = new AccountHolderEmpresa();
 				ah.setAccounttype("Empresa");
-				ah.setActiveCostumer(s.getEstado().equals("activa"));
+				ah.setActiveCostumer(s.getEstado().equals("ACTIVA"));
 				Empresa emp = (Empresa) cliente.devolverEmpresa(cl.getId());
 				
 				
