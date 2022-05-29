@@ -24,7 +24,7 @@ import uma.wow.proyecto.*;
 import uma.wow.proyecto.ejb.exceptions.*;
 
 
-
+@Stateless
 public class InformeEJB implements GestionInforme {
 
 	
