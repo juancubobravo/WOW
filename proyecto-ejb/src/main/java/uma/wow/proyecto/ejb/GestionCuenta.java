@@ -1,5 +1,8 @@
 package uma.wow.proyecto.ejb;
 import uma.wow.proyecto.ejb.exceptions.*;
+
+import java.util.List;
+
 import uma.wow.proyecto.*;
 
 
@@ -13,5 +16,7 @@ public interface GestionCuenta {
 	public void cierraCuenta(PooledAccount c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException;
 	public PooledAccount devolverPooled(String identificacion) throws CuentaNoEncontrada;
 	public Segregada devolverSegregada(String identificacion) throws CuentaNoEncontrada;
+	public List<Segregada> devolverSegregadasDeIndividual(String id) throws ClienteNoEncontrado;
+	public List<Segregada> devolverSegregadasDeAutorizado(String id) throws PersonaAutorizadaNoEncontrada;
 
 }

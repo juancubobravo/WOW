@@ -7,7 +7,10 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import java.sql.ClientInfoStatus;
+import java.util.ArrayList;
 import java.util.List;
 
 @Stateless
@@ -160,6 +163,71 @@ public class CuentaEJB implements GestionCuenta {
         }
         return pooled;
     }
-
-
+    
+    @Override
+	public List<Segregada> devolverSegregadasDeIndividual(String id) throws ClienteNoEncontrado{
+		Individual individual = em.find(Individual.class, id);
+		
+			if(individual == null) {
+				throw new ClienteNoEncontrado();
+			}	
+			
+		Query q = em.createQuery("SELECT c FROM Segregada c");
+		List<Segregada> cuentas = q.getResultList();
+		List<Segregada> lista = new ArrayList<>();
+		
+		for(Segregada c : cuentas) {
+			if(c.getCliente().getId().equals(id)) {
+				lista.add(c);
+			}
+		}
+		
+		return lista;
+	}
+    
+    @Override
+	public List<Segregada> devolverSegregadasDeAutorizado(String id) throws PersonaAutorizadaNoEncontrada{
+		
+		
+		PersonaAutorizada cliente = em.find(PersonaAutorizada.class, id);
+		
+			if(cliente == null) {
+				throw new PersonaAutorizadaNoEncontrada();
+			}
+			
+			
+		Query q = em.createQuery("SELECT c FROM Segregada c");
+		Query q2 = em.createQuery("SELECT c FROM Autorizacion c where c.personaAutorizada.identificacion = :id");
+		q2.setParameter("id", id);
+		
+		List<Autorizacion> auto = q2.getResultList();
+		List<Segregada> cuentas = q.getResultList();
+		List<Segregada> lista = new ArrayList<>();
+		
+		for(Segregada seg : cuentas) {
+			
+			Cliente clienteseg = seg.getCliente();
+			
+			if(clienteseg.getTipoCliente().equals("JURIDICA")) {
+				Empresa empresa = em.find(Empresa.class,clienteseg.getId());
+				
+				boolean esta = false;
+				for(Autorizacion aut : auto) {
+					if(aut.getEmpresa().getId().equals(empresa.getId())) {
+						esta = true;
+					}
+					
+				}
+				
+				if(esta) {
+					lista.add(seg);
+				}
+			}
+			
+			
+		}
+		
+		return lista;
+	}
+    
 }
