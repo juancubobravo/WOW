@@ -18,6 +18,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import es.uma.informatica.sii.anotaciones.Requisitos;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.Keys;
@@ -61,11 +64,31 @@ private WebDriver driver;
   public void tearDown() {
     driver.quit();
   }
+  
+  @Requisitos({"RF1, RF10"})
   @Test
-  public void inicio() {
-    driver.get(baseURL);
-    driver.manage().window().setSize(new Dimension(1340, 784));
-    driver.findElement(By.cssSelector("h1")).click();
-    assertThat(driver.findElement(By.id("saludo")).getText(), is("Hola mundo"));
+  public void loginClienteYAdmin() {
+	    driver.get(baseURL);
+	    driver.manage().window().setSize(new Dimension(1051, 806));
+	    driver.findElement(By.id("login:user")).click();
+	    driver.findElement(By.id("login:user")).sendKeys("juan");
+	    driver.findElement(By.id("login:pass")).click();
+	    driver.findElement(By.id("login:pass")).sendKeys("juan");
+	    driver.findElement(By.id("login:botonLogin")).click();
+	    driver.findElement(By.id("saludo")).click();
+	    assertThat(driver.findElement(By.id("saludo")).getText(), is("Aquí podrás usar tu aplicación"));
+	    driver.findElement(By.cssSelector("body")).click();
+	    driver.findElement(By.id("cerrarSes")).click();
+	    driver.findElement(By.linkText("salir")).click();
+	    driver.findElement(By.linkText("aquí")).click();
+	    driver.findElement(By.id("login:user")).click();
+	    driver.findElement(By.id("login:user")).sendKeys("ponciano");
+	    driver.findElement(By.id("login:pass")).click();
+	    driver.findElement(By.id("login:pass")).sendKeys("ponciano");
+	    driver.findElement(By.id("login:botonLogin")).click();
+	    driver.findElement(By.cssSelector("html")).click();
+	    assertThat(driver.findElement(By.id("saludo")).getText(), is("Aquí podrás administrar tu aplicación"));
+	    driver.findElement(By.id("cerrarSes")).click();
+	    driver.findElement(By.linkText("salir")).click();
   }
 }
