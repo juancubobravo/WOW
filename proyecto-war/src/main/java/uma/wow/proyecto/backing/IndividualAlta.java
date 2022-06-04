@@ -34,8 +34,24 @@ public class IndividualAlta implements Serializable{
 	private GestionCliente clienteEJB;	
 
 	private Usuario usuario;	
+	
+	private Usuario usuarioNuevo;
 
 	private Individual individual;
+	
+	public IndividualAlta() {
+		usuario = new Usuario();
+		individual = new Individual();
+		usuarioNuevo = new Usuario();
+	}
+
+	public Usuario getUsuarioNuevo() {
+		return usuarioNuevo;
+	}
+
+	public void setUsuarioNuevo(Usuario usuarioNuevo) {
+		this.usuarioNuevo = usuarioNuevo;
+	}
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -53,16 +69,19 @@ public class IndividualAlta implements Serializable{
 		this.individual = individual;
 	}
 	
-	public IndividualAlta() {
-		usuario = new Usuario();
-		individual = new Individual();
-	}
+	
 
 	public String individualAlta() {
 		try {
 			
 			usuario = sesion.getUsuario();
+			
 			clienteEJB.altaCliente(individual, usuario);
+			//usuarioNuevo.setCliente(individual);
+			
+			FacesMessage fm = new FacesMessage("El cliente ha sido dado de alta exitosamente");
+			FacesContext.getCurrentInstance().addMessage("IndividualAlta:individualAltaClick", fm);
+			
 			return "mainAdmin.xhtml";
 			
 		}catch (UsuarioNoEncontrado e) {
