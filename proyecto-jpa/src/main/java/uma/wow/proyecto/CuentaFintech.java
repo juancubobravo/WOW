@@ -1,7 +1,7 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 
 import javax.persistence.*;
@@ -17,12 +17,12 @@ public class CuentaFintech extends Cuenta implements Serializable {
 	private String estado;
 	
 	
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(nullable = false)
 	private  Date fechaApertura;
 	
 	@Column (nullable = true)
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	private Date fechaCierre;
 	@Column (nullable = true)
 	private String clasificacion;
@@ -48,23 +48,29 @@ public class CuentaFintech extends Cuenta implements Serializable {
 	}
 
 
-	public Date getFechaApertura() {
+	public Object getFechaApertura() {
 		return fechaApertura;
 	}
 
 
-	public void setFechaApertura(Date fechaApertura) {
-		this.fechaApertura = fechaApertura;
+	public void setFechaApertura(String fechaApertura) {
+		if(fechaApertura!=null) {
+			this.fechaApertura = Date.valueOf(fechaApertura);
+		}
+		
 	}
 
 
-	public Date getFechaCierre() {
+	public Object getFechaCierre() {
 		return fechaCierre;
 	}
 
 
-	public void setFechaCierre(Date fechaCierre) {
-		this.fechaCierre = fechaCierre;
+	public void setFechaCierre(String fechaCierre) {
+		if(fechaCierre!=null) {
+			this.fechaCierre = Date.valueOf(fechaCierre);
+		}
+		
 	}
 
 

@@ -7,15 +7,13 @@ import java.sql.Date;
 import javax.persistence.*;
 
 @Entity
-//@NamedQuery(name="Individual.findAll", query="SELECT i FROM Individual i")
 public class Individual extends Cliente implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	@Column(nullable = false)
 	private String nombre;
 	@Column(nullable = false)
 	private String apellido;
-	//@Column (nullable=true)
-	//@Temporal(TemporalType.DATE)
+	@Column (nullable=true)
 	private Date fechaNacimiento;
 	
 		
@@ -39,7 +37,10 @@ public class Individual extends Cliente implements Serializable  {
 		return fechaNacimiento;
 	}
 	public void setFechaNacimiento(String fechaNacimiento) {
+		if(fechaNacimiento!=null) {
 			this.fechaNacimiento = Date.valueOf(fechaNacimiento);
+		}
+			
 		
 	}
 	

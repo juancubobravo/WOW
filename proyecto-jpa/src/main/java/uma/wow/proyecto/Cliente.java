@@ -29,7 +29,6 @@ public class Cliente implements Serializable{
 	@Column(nullable = false)
 	private Date fechaAlta;
 	@Column (nullable=true)
-	//@Temporal(TemporalType.DATE)
 	private Date fechaBaja;
 	@Column(nullable = false)
 	private String direccion;
@@ -108,7 +107,10 @@ public class Cliente implements Serializable{
 
 	
 	public void setFechaBaja(String fecha) {
-		this.fechaBaja = Date.valueOf(fecha);
+		if(fecha!=null) {
+			this.fechaBaja = Date.valueOf(fecha);
+		}
+		
 	}
 
 	public String getDireccion() {
