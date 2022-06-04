@@ -12,14 +12,14 @@
        <h:form id="CuentaSegregadaCerrar">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonCuentaSegregada" action="#{cuentaPooledCerrar.cuentaSegregadaCerrar()}" class="buttons"/>
+              <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonCuentaSegregada" action="#{cuentaSegregadaCerrar.cuentaSegregadaCerrar()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
               <h:inputText id="iban" required="true" value="#{cuentaSegregadaCerrar.iban}" class="controls"/>
               <h:message id="ibanMessage" for="iban"/>
 
               <h:commandButton id="boton" value="Cerrar Cuenta" action="#{cuentaSegregadaCerrar.cuentaSegregadaCerrar}"></h:commandButton>
-              <h:message id = "usuario" for="boton"></h:message>
+              <h:message id = "usuario" for="boton"/>
               
           </h:panelGrid>
        </h:form>

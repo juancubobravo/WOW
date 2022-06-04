@@ -1,11 +1,6 @@
 package uma.wow.proyecto.backing;
 
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.ArrayList;
-
-import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -13,20 +8,18 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import uma.wow.proyecto.Cliente;
-import uma.wow.proyecto.DepositaEnPK;
-import uma.wow.proyecto.DepositadaEn;
+
 import uma.wow.proyecto.Empresa;
 import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.PooledAccount;
-import uma.wow.proyecto.Segregada;
+
 import uma.wow.proyecto.Usuario;
 import uma.wow.proyecto.ejb.GestionCliente;
 import uma.wow.proyecto.ejb.GestionCuenta;
 import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
 import uma.wow.proyecto.ejb.exceptions.CuentaEncontrada;
-import uma.wow.proyecto.ejb.exceptions.CuentaNoEncontrada;
+
 import uma.wow.proyecto.ejb.exceptions.EJBException;
 import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
 import uma.wow.proyecto.ejb.exceptions.UsuarioNoEncontrado;
@@ -71,12 +64,19 @@ public class CuentaPooledAbrir {
 			try {
 				usuario = sesion.getUsuario();
 				
-				
+				 pol.setIban("53523535242");
+				 pol.setSwift("2345");
+				 pol.setEstado("ABIERTA");
+				 pol.setFechaApertura("2022-06-04");
+				 pol.setFechaCierre(null);
+				 pol.setClasificacion("POOLED");
+				 pol.setCliente(usuario.getCliente());
 				
 				if(usuario.getCliente().getTipoCliente()=="FISICA") {
 					
 				 Individual	cliente = clienteEJB.devolverIndividual(usuario.getCliente().getId());
-					cuentaEJB.creaCuenta(getPol(), cliente, usuario);
+				 
+				cuentaEJB.creaCuenta(getPol(), cliente, usuario);
 				}else {
 					
 					Empresa cliente = clienteEJB.devolverEmpresa(usuario.getCliente().getId());

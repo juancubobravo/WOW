@@ -46,11 +46,11 @@ public class CuentaPooledCerrar {
 			usuario = sesion.getUsuario();
 			PooledAccount pol = cuentaEJB.devolverPooled(getIban());
 			
+			cuentaEJB.cierraCuenta(pol, usuario);
+			//pol.setEstado("BAJA");
+			
 			FacesMessage fm = new FacesMessage("Cuenta Pooled cerrada con exito");
 			FacesContext.getCurrentInstance().addMessage("CuentaPooledCerrar:cuentaPooledCerrarClick", fm);
-			
-			
-			cuentaEJB.cierraCuenta(pol, usuario);
 			
 		} catch (CuentaNoEncontrada e) {
 			FacesMessage fm = new FacesMessage("Cuenta no encontrada");
