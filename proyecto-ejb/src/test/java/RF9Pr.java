@@ -74,7 +74,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		segregadaVacia.setClasificacion("SEGREGADA");
 		segregadaVacia.setCliente(individual);
 		segregadaVacia.setEstado("ABIERTA");
-		segregadaVacia.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregadaVacia.setFechaApertura("2020-05-27");
 		segregadaVacia.setFechaCierre(null);
 		segregadaVacia.setCuentaReferencia(cuentaVacia);
 		
@@ -95,7 +95,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		pooledVacia.setCliente(individual);
 		pooledVacia.setDepositaEn(null);
 		pooledVacia.setEstado("ABIERTA");
-		pooledVacia.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooledVacia.setFechaApertura("2020-09-12");
 		pooledVacia.setFechaCierre(null);
 		
 		
@@ -167,7 +167,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		pooled.setCliente(individual);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaApertura("2020-09-12");
 		pooled.setFechaCierre(null);
 		
 		
@@ -186,7 +186,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		segregada.setCuentaReferencia(cuentaLlena);
 		

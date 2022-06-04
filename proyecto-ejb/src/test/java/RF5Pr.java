@@ -62,7 +62,7 @@ public class RF5Pr {
 		pooled.setCliente(individual);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaApertura("2020-02-12");
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -110,7 +110,7 @@ public class RF5Pr {
 		pooled.setCliente(individual);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaApertura("2020-09-12");
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -156,7 +156,7 @@ public class RF5Pr {
 		pooled.setCliente(empresa);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaApertura("2020-02-12");
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -201,7 +201,7 @@ public class RF5Pr {
 		pooled.setCliente(empresa);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-02-12"));
+		pooled.setFechaApertura("2020-02-12");
 		pooled.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -247,7 +247,7 @@ public class RF5Pr {
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -294,7 +294,7 @@ public class RF5Pr {
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -339,7 +339,7 @@ public class RF5Pr {
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(empresa);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();
@@ -383,7 +383,7 @@ public class RF5Pr {
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(empresa);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		
 		Usuario administrador = new Usuario();

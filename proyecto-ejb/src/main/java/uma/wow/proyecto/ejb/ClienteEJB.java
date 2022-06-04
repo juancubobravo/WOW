@@ -1,5 +1,7 @@
 package uma.wow.proyecto.ejb;
 import uma.wow.proyecto.ejb.exceptions.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -27,10 +29,20 @@ public class ClienteEJB implements GestionCliente{
 
         Empresa busc = em.find(Empresa.class, cliente.getId());
 
+        Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+        
+        if(admin.getPersonaAutorizada()!=null) {
+        	throw new NoAdministradorException();
+        }
+        
         if(busc != null){
             throw new ClienteYaExistente();
         }
-
+        
+        busc.setFechaAlta(LocalDate.now().toString());
+        busc.setEstado("ACTIVA");
+        busc.setTipoCliente("JURIDICO");
+        
         em.persist(cliente);
     }
     
@@ -40,10 +52,20 @@ public class ClienteEJB implements GestionCliente{
 
         Individual busc = em.find(Individual.class, cliente.getId());
 
+        Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+        
+        if(admin.getPersonaAutorizada()!=null) {
+        	throw new NoAdministradorException();
+        }
+        
         if(busc != null){
             throw new ClienteYaExistente();
         }
-
+        
+        busc.setFechaAlta(LocalDate.now().toString());
+        busc.setEstado("ACTIVA");
+        busc.setTipoCliente("FISICA");
+        
         em.persist(cliente);
     }
 
@@ -52,26 +74,29 @@ public class ClienteEJB implements GestionCliente{
     @Override
     public void modificaCliente(Empresa cliente,Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
     
+    	
+    	Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(admin == null) {
+    		throw new NoAdministradorException();
+    	}
+    	
         Empresa oldCliente = em.find(Empresa.class, cliente.getId());
 
         if(oldCliente == null){
             throw new ClienteNoEncontrado();
         }
 
-    
+        cliente.setEstado(oldCliente.getEstado());
+        cliente.setFechaAlta(oldCliente.getFechaAlta().toString());
+        cliente.setTipoCliente(oldCliente.getTipoCliente());
+      
+        if( oldCliente.getFechaBaja()!=null) {
+            	 oldCliente.setFechaBaja((String) cliente.getFechaBaja());
+                 
+          }
             
-            oldCliente.setTipoCliente(cliente.getTipoCliente()); // ACABAR (QUE PASA SI SE CAMBIA DE EMPRESA A INDIVIDUAL)
-            oldCliente.setEstado(cliente.getEstado());
-            oldCliente.setFechaAlta((String) cliente.getFechaAlta());
-            oldCliente.setFechaBaja((String) cliente.getFechaBaja());
-            oldCliente.setDireccion(cliente.getDireccion());
-            oldCliente.setCiudad(cliente.getCiudad());
-            oldCliente.setCodigoPostal(cliente.getCodigoPostal());
-            oldCliente.setPais(cliente.getPais());
-            oldCliente.setCuentas(cliente.getCuentas());
-            oldCliente.setUsuario(cliente.getUsuario());
-            oldCliente.setRazon_Social(cliente.getRazon_Social());
-           
+        em.merge(cliente);
         
     }
     
@@ -79,37 +104,49 @@ public class ClienteEJB implements GestionCliente{
 	@Override
 	public void modificaCliente(Individual cliente, Usuario usuario) throws ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     	
+		
+        Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(admin == null) {
+    		throw new NoAdministradorException();
+    	}
+		
+		
         Individual oldCliente = em.find(Individual.class, cliente.getId());
 
         if(oldCliente == null){
             throw new ClienteNoEncontrado();
         }
 
-    
+        cliente.setEstado(oldCliente.getEstado());
+        cliente.setFechaAlta(oldCliente.getFechaAlta().toString());
+        cliente.setTipoCliente(oldCliente.getTipoCliente());
+       
+            if(cliente.getFechaBaja()!=null) {
+            	cliente.setFechaBaja((String) cliente.getFechaBaja());
+            }
             
-            oldCliente.setTipoCliente(cliente.getTipoCliente()); 
-            oldCliente.setEstado(cliente.getEstado());
-            oldCliente.setFechaAlta((String) cliente.getFechaAlta());
-            oldCliente.setFechaBaja((String) cliente.getFechaBaja());
-            oldCliente.setDireccion(cliente.getDireccion());
-            oldCliente.setCiudad(cliente.getCiudad());
-            oldCliente.setCodigoPostal(cliente.getCodigoPostal());
-            oldCliente.setPais(cliente.getPais());
-            oldCliente.setCuentas(cliente.getCuentas());
-            oldCliente.setUsuario(cliente.getUsuario());
-            oldCliente.setNombre(cliente.getNombre());
-            oldCliente.setApellido(cliente.getApellido());
-            oldCliente.setFechaNacimiento((String) cliente.getFechaNacimiento());
-		
+            em.merge(cliente);
 	}
 
     // R4
     @Override
-    public void bajaCliente(Individual c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
+    public void bajaCliente(Individual c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException, CuentaDeBaja{
+    	
+    	
+    	  Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+      	
+      	if(admin == null) {
+      		throw new NoAdministradorException();
+      	}
     	
         Individual cliente = em.find(Individual.class, c.getId());
         if(cliente == null){
             throw new ClienteNoEncontrado();
+        }
+        
+        if(c.getEstado().equals("BAJA")) {
+        	throw new CuentaDeBaja();
         }
 
         List<CuentaFintech> listCuentas = cliente.getCuentas();
@@ -128,10 +165,7 @@ public class ClienteEJB implements GestionCliente{
                  throw new CuentasActivas();
              }
         }
-        
-       
-
-        cliente.setEstado("BAJA");
+        c.setEstado("BAJA");
 
     }
     
@@ -139,6 +173,12 @@ public class ClienteEJB implements GestionCliente{
     @Override
     public void bajaCliente(Empresa c, Usuario usuario) throws ClienteNoEncontrado, CuentasActivas, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
     
+    	Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
+        	
+        if(admin == null) {
+        		throw new NoAdministradorException();
+        }
+    	
         Empresa cliente = em.find(Empresa.class, c.getId());
         if(cliente == null){
             throw new ClienteNoEncontrado();
@@ -161,7 +201,7 @@ public class ClienteEJB implements GestionCliente{
             }
        }
 
-        cliente.setEstado("BAJA");
+        c.setEstado("BAJA");
 
     }
     

@@ -46,6 +46,7 @@ public class BaseDatos {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
+		individual.setFechaBaja(null);
 		individual.setFechaNacimiento(null);
 		individual.setUsuario(usuario);
 		List<CuentaFintech> lista = new ArrayList<CuentaFintech>();
@@ -92,7 +93,7 @@ public class BaseDatos {
 		segregadaVacia.setClasificacion("SEGREGADA");
 		segregadaVacia.setCliente(individual);
 		segregadaVacia.setEstado("ABIERTA");
-		segregadaVacia.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregadaVacia.setFechaApertura("2020-05-27");
 		segregadaVacia.setFechaCierre(null);
 		segregadaVacia.setCuentaReferencia(cuentaVacia);
 		//segregadaVacia.setComision(null);
@@ -120,7 +121,7 @@ public class BaseDatos {
 		pooledVacia.setCliente(individual);
 		pooledVacia.setDepositaEn(null);
 		pooledVacia.setEstado("ABIERTA");
-		pooledVacia.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooledVacia.setFechaApertura("2020-09-12");
 		pooledVacia.setFechaCierre(null);
 		
 		
@@ -148,7 +149,7 @@ public class BaseDatos {
 		segregada.setClasificacion("SEGREGADA");
 		segregada.setCliente(individual);
 		segregada.setEstado("ABIERTA");
-		segregada.setFechaApertura(Date.valueOf("2020-05-27"));
+		segregada.setFechaApertura("2020-05-27");
 		segregada.setFechaCierre(null);
 		segregada.setCuentaReferencia(cuentaLlena);
 		
@@ -226,7 +227,7 @@ public class BaseDatos {
 		pooled.setCliente(empresaParaUsuario);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaApertura("2020-09-12");
 		pooled.setFechaCierre(null);
 		
 		
@@ -278,7 +279,7 @@ public class BaseDatos {
 		cuentaTrans.setIban("795588");
 		cuentaTrans.setEstado(null);
 		cuentaTrans.setSwift("482");
-		cuentaTrans.setFechaApertura(Date.valueOf("2021-03-14"));
+		cuentaTrans.setFechaApertura("2021-03-14");
 		cuentaTrans.setFechaCierre(null);
 		cuentaTrans.setClasificacion(null);
 		

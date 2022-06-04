@@ -484,7 +484,7 @@ public class InicializaBBD {
 		pooled.setClasificacion("POOLED");
 		pooled.setEstado("ABIERTA");
 		pooled.setSwift("2346");
-		pooled.setFechaApertura(Date.valueOf("2021-05-22"));
+		pooled.setFechaApertura("2021-05-22");
 		
 		DepositadaEn depositaEn1 = new DepositadaEn();
 
@@ -539,7 +539,7 @@ public class InicializaBBD {
 		segregada1.setCuentaReferencia(cuentaref2);
 		segregada1.setClasificacion("SEGREGADA");
 		segregada1.setSwift("2347");
-		segregada1.setFechaApertura(Date.valueOf("2022-04-25"));
+		segregada1.setFechaApertura("2022-04-25");
 		
 		em.merge(segregada1);
 		
@@ -550,7 +550,7 @@ public class InicializaBBD {
 		segregada2.setCuentaReferencia(cuentaref3);
 		segregada2.setClasificacion("SEGREGADA");
 		segregada2.setSwift("2347");
-		segregada2.setFechaApertura(Date.valueOf("2022-04-25"));
+		segregada2.setFechaApertura("2022-04-25");
 		
 		em.merge(segregada2);
 		
@@ -560,8 +560,8 @@ public class InicializaBBD {
 		segregada3.setEstado("BAJA");
 		segregada3.setClasificacion("SEGREGADA");
 		segregada3.setSwift("2347");
-		segregada3.setFechaApertura(Date.valueOf("2021-04-25"));
-		segregada3.setFechaCierre(Date.valueOf("2021-09-01"));
+		segregada3.setFechaApertura("2021-04-25");
+		segregada3.setFechaCierre("2021-09-01");
 		
 		em.merge(segregada3);
 		

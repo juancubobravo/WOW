@@ -86,7 +86,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		pooled.setCliente(empresaParaUsuario);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaApertura("2020-09-12");
 		pooled.setFechaCierre(null);
 		
 		
@@ -166,7 +166,7 @@ private static final Logger LOG = Logger.getLogger(RF6Pr.class.getCanonicalName(
 		pooled.setCliente(empresaParaUsuario);
 		pooled.setDepositaEn(null);
 		pooled.setEstado("ABIERTA");
-		pooled.setFechaApertura(Date.valueOf("2020-09-12"));
+		pooled.setFechaApertura("2020-09-12");
 		pooled.setFechaCierre(null);
 		
 		

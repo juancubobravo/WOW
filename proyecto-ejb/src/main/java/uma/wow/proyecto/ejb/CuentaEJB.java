@@ -106,6 +106,7 @@ public class CuentaEJB implements GestionCuenta {
             cliente.setCuentas(listCuenta);
             em.persist(cuentaNueva);
         }
+        
     }
     
     
