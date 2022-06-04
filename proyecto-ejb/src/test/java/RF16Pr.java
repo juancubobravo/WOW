@@ -92,7 +92,7 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		personaAutorizada.setAutori(null);
 		personaAutorizada.setDireccion("Avda S");
 		personaAutorizada.setEstado("ACTIVO");
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
+		personaAutorizada.setFechaInicio("2020-03-24");
 		personaAutorizada.setFechaFin(null);
 		personaAutorizada.setId("511155");
 		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
@@ -165,7 +165,7 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		personaAutorizada.setAutori(null);
 		personaAutorizada.setDireccion("Avda S");
 		personaAutorizada.setEstado(null);
-		personaAutorizada.setFechaInicio(Date.valueOf("2020-03-24"));
+		personaAutorizada.setFechaInicio("2020-03-24");
 		personaAutorizada.setFechaFin(null);
 		personaAutorizada.setId("511155");
 		personaAutorizada.setNombre(usuarioEmpresa.getNombreUsuario());
