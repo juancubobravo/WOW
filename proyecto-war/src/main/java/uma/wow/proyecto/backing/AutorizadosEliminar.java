@@ -57,6 +57,11 @@ public class AutorizadosEliminar {
 			
 			usuario = sesion.getUsuario();
 			autorizadaEJB.borraPersonaAutorizada(getPersonaAut(), getUsuario());
+			
+			FacesMessage fm = new FacesMessage("Persona autorizada eliminada con exito");
+			FacesContext.getCurrentInstance().addMessage("AutorizadosEliminar:autorizadosEliminarClick", fm);
+			
+			
 			return "mainAdmin.xhtml";
 		
 		}catch(PersonaAutorizadaNoEncontrada e) {

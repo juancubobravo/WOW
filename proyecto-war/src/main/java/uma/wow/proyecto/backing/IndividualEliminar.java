@@ -62,6 +62,10 @@ public class IndividualEliminar implements Serializable{
 		try {	
 			usuario = sesion.getUsuario();
 			clienteEJB.bajaCliente(individual, usuario);
+			
+			FacesMessage fm = new FacesMessage("El cliente ha sido eliminado con éxito");
+			FacesContext.getCurrentInstance().addMessage("IndividualEliminar:individualEliminarClick", fm);
+			
 			return "mainAdmin.xhtml";
 			
 		}catch (UsuarioNoEncontrado e) {

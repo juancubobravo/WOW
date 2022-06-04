@@ -77,7 +77,6 @@ public class IndividualAlta implements Serializable{
 			usuario = sesion.getUsuario();
 			
 			clienteEJB.altaCliente(individual, usuario);
-			//usuarioNuevo.setCliente(individual);
 			
 			FacesMessage fm = new FacesMessage("El cliente ha sido dado de alta exitosamente");
 			FacesContext.getCurrentInstance().addMessage("IndividualAlta:individualAltaClick", fm);
