@@ -2,19 +2,19 @@ package uma.wow.proyecto;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 
 import javax.persistence.*;
 
 @Entity
+//@NamedQuery(name="Individual.findAll", query="SELECT i FROM Individual i")
 public class Individual extends Cliente implements Serializable  {
 	private static final long serialVersionUID = 1L;
 	@Column(nullable = false)
 	private String nombre;
 	@Column(nullable = false)
 	private String apellido;
-	@Column (nullable=true)
+	//@Column (nullable=true)
 	//@Temporal(TemporalType.DATE)
 	private Date fechaNacimiento;
 	
@@ -38,10 +38,9 @@ public class Individual extends Cliente implements Serializable  {
 	public Object getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFecha_nacimiento(String fechaNacimiento) {
-		if(fechaNacimiento!=null) {
+	public void setFechaNacimiento(String fechaNacimiento) {
 			this.fechaNacimiento = Date.valueOf(fechaNacimiento);
-		}
+		
 	}
 	
 	@Override

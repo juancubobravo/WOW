@@ -97,10 +97,8 @@ public class Cliente implements Serializable{
 	}
 
 	public void setFechaAlta(String fechaAlta) {
-		
-		if(fechaAlta!=null) {
 			this.fechaAlta = Date.valueOf(fechaAlta);
-		}
+		
 	}
 	
 
