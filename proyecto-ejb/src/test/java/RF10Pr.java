@@ -47,7 +47,7 @@ public class RF10Pr {
 		individualParaUsuario.setPais("España");
 		individualParaUsuario.setNombre("Jamal");
 		individualParaUsuario.setApellido("Peterh");
-		individualParaUsuario.setFecha_nacimiento(null);
+		individualParaUsuario.setFechaNacimiento(null);
 		individualParaUsuario.setUsuario(usuarioIndividual);
 		usuarioIndividual.setCliente(individualParaUsuario);
 		
@@ -92,7 +92,7 @@ public class RF10Pr {
 		individualParaUsuario.setPais("España");
 		individualParaUsuario.setNombre("Jamal");
 		individualParaUsuario.setApellido("Peterh");
-		individualParaUsuario.setFecha_nacimiento(null);
+		individualParaUsuario.setFechaNacimiento(null);
 		individualParaUsuario.setUsuario(usuarioIndividual);
 		usuarioIndividual.setCliente(individualParaUsuario);
 		

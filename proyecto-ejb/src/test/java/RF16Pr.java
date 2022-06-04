@@ -67,7 +67,7 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		Usuario usuarioEmpresa = new Usuario ();
 		usuarioEmpresa.setNombreUsuario("Carniceria Paco");
@@ -140,7 +140,7 @@ private static final Logger LOG = Logger.getLogger(RF16Pr.class.getCanonicalName
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		Usuario usuarioEmpresa = new Usuario ();
 		usuarioEmpresa.setNombreUsuario("Carniceria Paco");

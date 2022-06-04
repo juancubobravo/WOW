@@ -53,7 +53,7 @@ public class RF5Pr {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1422224555528");
@@ -101,7 +101,7 @@ public class RF5Pr {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		PooledAccount pooled = new PooledAccount();
 		pooled.setIban("1453134534528");
@@ -239,7 +239,7 @@ public class RF5Pr {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		Segregada segregada = new Segregada();
 		segregada.setIban("134538888");
@@ -286,7 +286,7 @@ public class RF5Pr {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		Segregada segregada = new Segregada();
 		segregada.setIban("1538888");

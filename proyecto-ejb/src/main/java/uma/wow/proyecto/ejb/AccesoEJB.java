@@ -6,6 +6,7 @@ import uma.wow.proyecto.Individual;
 import uma.wow.proyecto.PersonaAutorizada;
 import uma.wow.proyecto.Usuario;
 
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -104,6 +105,7 @@ public class AccesoEJB implements GestionAcceso{
 
 
     }
+
 	
 	
 	

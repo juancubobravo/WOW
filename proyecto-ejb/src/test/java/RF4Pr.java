@@ -51,7 +51,7 @@ public class RF4Pr {
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		individual.setUsuario(usuario);
 		List<CuentaFintech> lista = new ArrayList<CuentaFintech>();
 		individual.setCuentas(lista);		
@@ -167,7 +167,7 @@ public class RF4Pr {
 		individual.setPais("España");
 		individual.setNombre("Arturo");
 		individual.setApellido("Martinez");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		Usuario administrador = new Usuario();
 		administrador.setNombreUsuario("Alvaro");

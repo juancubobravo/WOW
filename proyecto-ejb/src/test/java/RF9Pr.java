@@ -57,7 +57,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		CuentaReferencia cuentaVacia = new CuentaReferencia();
 		cuentaVacia.setIban("538888");
@@ -153,7 +153,7 @@ private static final Logger LOG = Logger.getLogger(RF9Pr.class.getCanonicalName(
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		CuentaReferencia cuentaLlena = new CuentaReferencia();
 		cuentaLlena.setIban("9999");

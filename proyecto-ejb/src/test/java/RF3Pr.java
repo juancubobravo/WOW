@@ -98,7 +98,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		try {
 			
@@ -143,7 +143,7 @@ private static final Logger LOG = Logger.getLogger(RF2Pr.class.getCanonicalName(
 		individual.setPais("España");
 		individual.setNombre("Jammal");
 		individual.setApellido("Hasbullah");
-		individual.setFecha_nacimiento(null);
+		individual.setFechaNacimiento(null);
 		
 		try {
 			
