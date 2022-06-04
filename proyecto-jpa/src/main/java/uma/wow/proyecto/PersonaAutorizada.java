@@ -1,7 +1,7 @@
 package uma.wow.proyecto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -89,12 +89,12 @@ public class PersonaAutorizada implements Serializable{
 		this.direccion = direccion;
 	}
 
-	public Date getFechaNacimiento() {
+	public Object getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = Date.valueOf(fechaNacimiento);
 	}
 
 	public String getEstado() {
@@ -105,20 +105,20 @@ public class PersonaAutorizada implements Serializable{
 		this.estado = estado;
 	}
 
-	public Date getFechaInicio() {
+	public Object getFechaInicio() {
 		return fechaInicio;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	public void setFechaInicio(String fechaInicio) {
+		this.fechaInicio = Date.valueOf(fechaInicio);
 	}
 
-	public Date getFechaFin() {
+	public Object getFechaFin() {
 		return fechaFin;
 	}
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	public void setFechaFin(String fechaFin) {
+		this.fechaFin = Date.valueOf(fechaFin);
 	}
 
 	@Override
