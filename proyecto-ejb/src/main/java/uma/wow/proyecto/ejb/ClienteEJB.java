@@ -31,6 +31,10 @@ public class ClienteEJB implements GestionCliente{
 
         Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
         
+        if(admin == null) {
+        	throw new UsuarioNoEncontrado();
+        }
+        
         if(admin.getPersonaAutorizada()!=null) {
         	throw new NoAdministradorException();
         }
@@ -39,9 +43,9 @@ public class ClienteEJB implements GestionCliente{
             throw new ClienteYaExistente();
         }
         
-        busc.setFechaAlta(LocalDate.now().toString());
-        busc.setEstado("ACTIVA");
-        busc.setTipoCliente("JURIDICO");
+        cliente.setFechaAlta(LocalDate.now().toString());
+        cliente.setEstado("ACTIVA");
+        cliente.setTipoCliente("JURIDICO");
         
         em.persist(cliente);
     }
@@ -54,6 +58,10 @@ public class ClienteEJB implements GestionCliente{
 
         Usuario admin = em.find(Usuario.class, usuario.getNombreUsuario());
         
+        if(admin == null) {
+        	throw new UsuarioNoEncontrado();
+        }
+        
         if(admin.getPersonaAutorizada()!=null) {
         	throw new NoAdministradorException();
         }
@@ -62,9 +70,9 @@ public class ClienteEJB implements GestionCliente{
             throw new ClienteYaExistente();
         }
         
-        busc.setFechaAlta(LocalDate.now().toString());
-        busc.setEstado("ACTIVA");
-        busc.setTipoCliente("FISICA");
+        cliente.setFechaAlta(LocalDate.now().toString());
+        cliente.setEstado("ACTIVA");
+        cliente.setTipoCliente("FISICA");
         
         em.persist(cliente);
     }
@@ -92,7 +100,7 @@ public class ClienteEJB implements GestionCliente{
         cliente.setTipoCliente(oldCliente.getTipoCliente());
       
         if( oldCliente.getFechaBaja()!=null) {
-            	 oldCliente.setFechaBaja((String) cliente.getFechaBaja());
+            	 oldCliente.setFechaBaja(cliente.getFechaBaja().toString());
                  
           }
             
@@ -123,7 +131,7 @@ public class ClienteEJB implements GestionCliente{
         cliente.setTipoCliente(oldCliente.getTipoCliente());
        
             if(cliente.getFechaBaja()!=null) {
-            	cliente.setFechaBaja((String) cliente.getFechaBaja());
+            	cliente.setFechaBaja(oldCliente.getFechaBaja().toString());
             }
             
             em.merge(cliente);

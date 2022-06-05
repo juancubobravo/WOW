@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import java.sql.ClientInfoStatus;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,13 @@ public class CuentaEJB implements GestionCuenta {
     //@Override
     public void creaCuenta(PooledAccount cuentaNueva, Empresa c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
 
+    	
+    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(user==null || user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
         PooledAccount cuenta = em.find(PooledAccount.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -46,6 +54,12 @@ public class CuentaEJB implements GestionCuenta {
     //@Override
     public void creaCuenta(Segregada cuentaNueva, Empresa c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
 
+    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(user==null || !user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
         Segregada cuenta = em.find(Segregada.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -68,6 +82,12 @@ public class CuentaEJB implements GestionCuenta {
     @Override
     public void creaCuenta(PooledAccount cuentaNueva, Individual c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
    
+    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(user==null || !user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
         PooledAccount cuenta = em.find(PooledAccount.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -90,6 +110,13 @@ public class CuentaEJB implements GestionCuenta {
     //@Override
     public void creaCuenta(Segregada cuentaNueva, Individual c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
+    	
+    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
+    	
+    	if(user==null || !user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
         Segregada cuenta = em.find(Segregada.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -116,6 +143,13 @@ public class CuentaEJB implements GestionCuenta {
     @Override
     public void cierraCuenta(Segregada c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
+    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
+    	
+    	if(user==null || !user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
+    	
         Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
@@ -124,12 +158,20 @@ public class CuentaEJB implements GestionCuenta {
         if(cuenta.getCuentaReferencia().getSaldo() > 0){
             throw new SaldoException();
         }
-
+        cuenta.setFechaCierre(LocalDate.now().toString());
         cuenta.setEstado("BAJA");
-    }
+        em.merge(cuenta);
+        }
     
     public void cierraCuenta(PooledAccount c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
   
+    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
+    	
+    	if(user==null || !user.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
+    	
         PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
@@ -143,8 +185,9 @@ public class CuentaEJB implements GestionCuenta {
 			}
 		}
         
-
+		cuenta.setFechaCierre(LocalDate.now().toString());
         cuenta.setEstado("BAJA");
+        em.merge(cuenta);
     }
 
     @Override

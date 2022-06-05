@@ -6,6 +6,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +26,12 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void anyadirPersonaAutorizada(PooledAccount c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
+    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
+    	
+    	if(admin == null) {
+    		throw new NoAdministradorException();
+    	}
+    	
     	PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
@@ -58,6 +66,12 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void anyadirPersonaAutorizada(Segregada c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
   
+    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
+    	
+    	if(admin == null) {
+    		throw new NoAdministradorException();
+    	}
+    	
     	Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
@@ -92,35 +106,47 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void modificaPersonaAutorizada(PersonaAutorizada nuevosDatos, Usuario user) throws PersonaAutorizadaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
+    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
+    	
+    	if(admin == null) {
+    		throw new NoAdministradorException();
+    	}
+    	
+    	
     	PersonaAutorizada personaAutorizada = em.find(PersonaAutorizada.class, nuevosDatos.getId());
         if(personaAutorizada == null){
             throw new PersonaAutorizadaNoEncontrada();
         }
 
-
-        
-            personaAutorizada.setNombre(nuevosDatos.getNombre());
-            personaAutorizada.setApellidos(nuevosDatos.getApellidos());
-            personaAutorizada.setDireccion(nuevosDatos.getDireccion());
-            personaAutorizada.setFechaNacimiento((String) nuevosDatos.getFechaNacimiento());
-            personaAutorizada.setEstado(nuevosDatos.getEstado());
-            personaAutorizada.setFechaInicio((String) nuevosDatos.getFechaInicio());
-            personaAutorizada.setFechaFin((String) nuevosDatos.getFechaFin());
-            personaAutorizada.setAutori(nuevosDatos.getAutori());
-            personaAutorizada.setUsuario(nuevosDatos.getUsuario());
-
+        if (personaAutorizada.getFechaFin()!=null) {
+        	nuevosDatos.setFechaFin(personaAutorizada.getFechaFin().toString());
+        }
+           nuevosDatos.setApellidos(personaAutorizada.getApellidos());
+           nuevosDatos.setNombre(personaAutorizada.getNombre());
+           nuevosDatos.setUsuario(personaAutorizada.getUsuario());
+           nuevosDatos.setDireccion(personaAutorizada.getDireccion());
+           nuevosDatos.setEstado(personaAutorizada.getEstado());
+           nuevosDatos.setFechaInicio(personaAutorizada.getFechaInicio().toString());
+           
+           em.merge(nuevosDatos);
+           
     }
-
-
 
     // R8
     @Override
     public void borraPersonaAutorizada(PersonaAutorizada pers, Usuario user) throws PersonaAutorizadaNoEncontrada,UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
+    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
+    	
+    	if(admin == null || !admin.getTipo().equals("ADMIN")) {
+    		throw new NoAdministradorException();
+    	}
+    	
     	PersonaAutorizada persona = em.find(PersonaAutorizada.class, pers.getId());
     	if(persona == null) {
     		throw new PersonaAutorizadaNoEncontrada();
     	}
+    	persona.setFechaFin(LocalDate.now().toString());
     	persona.setEstado("BAJA");
 
     }
