@@ -121,6 +121,7 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
         if (personaAutorizada.getFechaFin()!=null) {
         	nuevosDatos.setFechaFin(personaAutorizada.getFechaFin().toString());
         }
+           nuevosDatos.setId(personaAutorizada.getId());
            nuevosDatos.setApellidos(personaAutorizada.getApellidos());
            nuevosDatos.setNombre(personaAutorizada.getNombre());
            nuevosDatos.setUsuario(personaAutorizada.getUsuario());
