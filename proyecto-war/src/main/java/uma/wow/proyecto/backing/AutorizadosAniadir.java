@@ -86,7 +86,7 @@ public class AutorizadosAniadir {
 		try {
 			
 			usuario = sesion.getUsuario();
-			autorizadaEJB.anyadirPersonaAutorizada(pol, personaAut, usuario, usuario.getTipo());
+			autorizadaEJB.anyadirPersonaAutorizada(pol, personaAut, usuario, usuario.getCliente().getTipoCliente());
 			
 			FacesMessage fm = new FacesMessage("Persona autorizada añadida con exito");
 			FacesContext.getCurrentInstance().addMessage("AutorizadosAniadir:autorizadosAniadirClick", fm);

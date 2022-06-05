@@ -486,6 +486,16 @@ public class InicializaBBD {
 		pooled.setSwift("2346");
 		pooled.setFechaApertura("2021-05-22");
 		
+		PooledAccount pooledempresa = new PooledAccount();
+		pooled.setIban("ES45685864");
+		pooled.setCliente(empresa);
+		pooled.setClasificacion("POOLED");
+		pooled.setEstado("ABIERTA");
+		pooled.setSwift("2346");
+		pooled.setFechaApertura("2021-05-22");
+		
+		em.merge(pooledempresa);
+		
 		DepositadaEn depositaEn1 = new DepositadaEn();
 
 		depositaEn1.setSaldo(100.0);

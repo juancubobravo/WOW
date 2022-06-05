@@ -26,6 +26,10 @@
               <h:inputText id="apellidos" required="true" value="#{autorizadosAniadir.personaAut.apellidos}" class="controls"/>
               <h:message id="apellidosMessage" for="apellidos"/>
 
+              <h:outputText value="Cuenta a añadir:"/>
+              <h:inputText id="cuenta" required="true" value="#{autorizadosAniadir.pol.iban}" class="controls"/>
+              <h:message id="cuentaMessage" for="cuenta"/>
+
               <h:outputText value="Direccion:"/>
               <h:inputText id="direccion" required="true" value="#{autorizadosAniadir.personaAut.direccion}" class="controls"/>
               <h:message id="direccionMessage" for="direccion"/>
