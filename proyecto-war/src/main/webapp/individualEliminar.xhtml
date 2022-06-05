@@ -12,13 +12,14 @@
        <h:form id="individualEliminar">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="individualEliminarClick" value="Aceptar" action="#{individualEliminar.individualEliminar()}" class="buttons"/>
+              
 
 
               <h:outputText value="Identificacion:"/>
               <h:inputText id="id" required="true" value="#{individualEliminar.individual.id}"/>
               <h:message id="idMessage" for="id"/>
               
+              <h:commandButton id="individualEliminarClick" value="Aceptar" action="#{individualEliminar.individualEliminar()}" class="buttons"/>
 
           </h:panelGrid>
           </h:form>

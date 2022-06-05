@@ -12,7 +12,7 @@
        <h:form id="CuentaPooledAbrir">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="cuentaPooledAbrirClick" value="BotonCuentaPooledAbrir" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
+             
 
               <h:outputText value="IBAN:"/>
               <h:inputText id="iban" required="true" value="#{cuentaPooledAbrir.pol.iban}" class="controls"/>
@@ -37,6 +37,9 @@
               <h:outputText value="Clasificacion:"/>
               <h:inputText id="clasificacion" required="false" value="#{cuentaPooledAbrir.pol.clasificacion}" class="controls"/>
               <h:message id="clasificacionMessage" for="clasificacion"/>
+
+              <h:commandButton id="cuentaPooledAbrirClick" value="Aceptar" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
+
          </h:panelGrid>  
        </h:form>
 

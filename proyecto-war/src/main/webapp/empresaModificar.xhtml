@@ -17,8 +17,6 @@
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
 
-              <h:commandButton id="empresaModificarClick" value="BotonEmpresaModificarCliente" action="#{empresaModificar.empresaModificar()}" class="buttons"/>
-
               <h:outputText value="Razon social:"/>
               <h:inputText id="razonSocial" required="true" value="#{empresaModificar.empresa.razon_Social}" class="controls"/>
               <h:message id="razonSocialMessage" for="razonSocial"/>
@@ -59,7 +57,8 @@
               <h:outputText value="Codigo Postal:"/>
               <h:inputText id="codigoPostal" required="true" value="#{empresaModificar.empresa.codigoPostal}" class="controls"/>
               <h:message id="codigoPostalMessage" for="codigoPostal"/>
-        
+
+              <h:commandButton id="empresaModificarClick" value="Aceptar" action="#{empresaModificar.empresaModificar()}" class="buttons"/>
 
           </h:panelGrid>
        </h:form>

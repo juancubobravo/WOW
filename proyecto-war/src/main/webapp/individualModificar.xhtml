@@ -12,7 +12,7 @@
        <h:form id="individualModificar">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="individualModificarClick" value="BotonModificarCliente" action="#{individualModificar.individualModificar()}" class="buttons"/>
+             
 
               <h:outputText value="Nombre:"/>
               <h:inputText id="nombre" required="true" value="#{individualModificar.individual.nombre}" class="controls"/>
@@ -65,6 +65,8 @@
               <h:outputText value="Codigo Postal:"/>
               <h:inputText id="codigoPostal" required="true" value="#{individualModificar.individual.codigoPostal}" class="controls"/>
               <h:message id="codigoPostalMessage" for="codigoPostal"/>
+
+              <h:commandButton id="individualModificarClick" value="Aceptar" action="#{individualModificar.individualModificar()}" class="buttons"/>
 
 
           </h:panelGrid>

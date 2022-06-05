@@ -12,7 +12,7 @@
        <h:form id="AutorizadosAniadir">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="autorizadosAniadirClick" value="BotonAutorizadoAniadir" action="#{autorizadosAniadir.autorizadosAniadir()}" class="buttons"/>
+              
 
               <h:outputText value="ID:"/>
               <h:inputText id="idAutorizada" required="true" value="#{autorizadosAniadir.personaAut.id}" class="controls"/>
@@ -46,6 +46,7 @@
               <h:inputText id="fechaFin" required="false" value="#{autorizadosAniadir.personaAut.fechaFin}" class="controls"/>
               <h:message id="fechaFinMessage" for="fechaFin"/>
 
+              <h:commandButton id="autorizadosAniadirClick" value="Aceptar" action="#{autorizadosAniadir.autorizadosAniadir()}" class="buttons"/>
 
           </h:panelGrid>
        </h:form>

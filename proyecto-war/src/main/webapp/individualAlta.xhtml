@@ -12,7 +12,7 @@
        <h:form id="individualAlta">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="individualAltaClick" value="BotonAltaCliente" action="#{individualAlta.individualAlta()}" class="buttons"/>
+              
               
               <h:outputText value="Nombre:"/>
               <h:inputText id="nombre" required="true" value="#{individualAlta.individual.nombre}" class="controls"/>
@@ -66,6 +66,7 @@
               <h:inputText id="codigoPostal" required="true" value="#{individualAlta.individual.codigoPostal}" class="controls"/>
               <h:message id="codigoPostalMessage" for="codigoPostal"/>
 
+              <h:commandButton id="individualAltaClick" value="Aceptar" action="#{individualAlta.individualAlta()}" class="buttons"/>
 
           </h:panelGrid>
           </h:form>

@@ -12,12 +12,13 @@
        <h:form id="AutorizadosEliminar">
               <h:outputText value="Introduzca la identificacion"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="autorizadosEliminarClick" value="BotonAutorizadoEliminar" action="#{autorizadosEliminar.autorizadosEliminar()}" class="buttons"/>
+              
 
               <h:outputText value="ID:"/>
               <h:inputText id="idAutorizada" required="true" value="#{autorizadosEliminar.personaAut.id}" class="controls"/>
               <h:message id="idAutorizadaMessage" for="idAutorizada"/>
 
+              <h:commandButton id="autorizadosEliminarClick" value="Aceptar" action="#{autorizadosEliminar.autorizadosEliminar()}" class="buttons"/>
 
           </h:panelGrid>
        </h:form>

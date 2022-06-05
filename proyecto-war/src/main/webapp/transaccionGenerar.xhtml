@@ -12,7 +12,7 @@
        <h:form id="transaccionGenera">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              <h:commandButton id="transaccionGenerarClick" value="BotonAutorizadoAniadir" action="#{transaccionGenerar.transaccionGenerar()}" class="buttons"/>
+             
 
               <h:outputText value="Cuenta origen:"/>
               <h:inputText id="iban1" required="true" value="#{transaccionGenerar.iban1}" class="controls"/>
@@ -26,7 +26,7 @@
               <h:inputText id="dinero" required="true" value="#{transaccionGenerar.dinero}" class="controls"/>
               <h:message id="dineroMessage" for="dinero"/>
 
-              
+              <h:commandButton id="transaccionGenerarClick" value="Aceptar" action="#{transaccionGenerar.transaccionGenerar()}" class="buttons"/>
 
 
           </h:panelGrid>
