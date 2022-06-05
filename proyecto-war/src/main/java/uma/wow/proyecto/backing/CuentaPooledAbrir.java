@@ -40,6 +40,11 @@ public class CuentaPooledAbrir {
 	private PooledAccount pol;
 	
 	private Usuario usuario;
+	
+	public CuentaPooledAbrir() {
+		pol = new PooledAccount();
+		usuario = new Usuario();
+	}
 
 	public PooledAccount getPol() {
 		return pol;
@@ -59,18 +64,10 @@ public class CuentaPooledAbrir {
 	}
 
 	
-	public String cuentaSegregadaAbrir(){
+	public String cuentaPooledAbrir(){
 			
 			try {
 				usuario = sesion.getUsuario();
-				
-				 pol.setIban("53523535242");
-				 pol.setSwift("2345");
-				 pol.setEstado("ABIERTA");
-				 pol.setFechaApertura("2022-06-04");
-				 pol.setFechaCierre(null);
-				 pol.setClasificacion("POOLED");
-				 pol.setCliente(usuario.getCliente());
 				
 				if(usuario.getCliente().getTipoCliente()=="FISICA") {
 					
@@ -85,7 +82,6 @@ public class CuentaPooledAbrir {
 				
 				FacesMessage fm = new FacesMessage("Cuenta Pooled creada con exito");
 				FacesContext.getCurrentInstance().addMessage("CuentaPooledAbrir:cuentaPooledAbrirClick", fm);
-				
 	
 				return "mainAdmin.xhtml";
 				

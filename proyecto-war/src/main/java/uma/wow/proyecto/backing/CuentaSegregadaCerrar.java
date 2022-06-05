@@ -29,6 +29,10 @@ public class CuentaSegregadaCerrar {
 	private Usuario usuario;
 	
 	private String iban ;
+	
+	public CuentaSegregadaCerrar() {
+		usuario = new Usuario();
+	}
 
 	public String getIban() {
 		return iban;

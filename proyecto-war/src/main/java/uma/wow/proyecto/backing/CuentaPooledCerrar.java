@@ -30,6 +30,11 @@ public class CuentaPooledCerrar {
 	private Usuario usuario;
 	
 	private String iban ;
+	
+	public CuentaPooledCerrar() {
+		usuario =new Usuario();
+		
+	}
 
 	public String getIban() {
 		return iban;

@@ -48,6 +48,10 @@ public class CuentaSegregadaAbrir {
 	
 	private Usuario usuario;
 	
+	public CuentaSegregadaAbrir() {
+		seg = new Segregada();
+		usuario = new Usuario();
+	}
 
 	public Segregada getSeg() {
 		return seg;
@@ -70,9 +74,8 @@ public class CuentaSegregadaAbrir {
 			
 			try {
 				usuario = sesion.getUsuario();
-				
-				
-				if(usuario.getCliente().getTipoCliente()=="FISICA") {
+			
+				if(usuario.getCliente().getTipoCliente().equals("FISICA")) {
 					
 				Individual cliente = clienteEJB.devolverIndividual(usuario.getCliente().getId());
 					cuentaEJB.creaCuenta(getSeg(), cliente, usuario);
