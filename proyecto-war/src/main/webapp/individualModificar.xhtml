@@ -43,7 +43,7 @@
               <h:message id="estadoMessage" for="estado"/>
 
               <h:outputText value="Fecha de alta:"/>
-              <h:inputText id="fechaAlta" required="true" value="#{individualAlta.individual.fechaAlta}" class="controls"/>
+              <h:inputText id="fechaAlta" required="true" value="#{individualModificar.individual.fechaAlta}" class="controls"/>
               <h:message id="fechaAltaMessage" for="fechaAlta"/>
 
               <h:outputText value="Fecha de baja:"/>
@@ -57,6 +57,10 @@
               <h:outputText value="Ciudad:"/>
               <h:inputText id="ciudad" required="true" value="#{individualModificar.individual.ciudad}" class="controls"/>
               <h:message id="ciudadMessage" for="ciudad"/>
+
+              <h:outputText value="Pais:"/>
+              <h:inputText id="pais" required="true" value="#{individualModificar.individual.pais}" class="controls"/>
+              <h:message id="paisMessage" for="pais"/>
 
               <h:outputText value="Codigo Postal:"/>
               <h:inputText id="codigoPostal" required="true" value="#{individualModificar.individual.codigoPostal}" class="controls"/>
