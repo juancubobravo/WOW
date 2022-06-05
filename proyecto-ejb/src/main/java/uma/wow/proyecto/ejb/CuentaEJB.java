@@ -24,13 +24,6 @@ public class CuentaEJB implements GestionCuenta {
     // R5
     //@Override
     public void creaCuenta(PooledAccount cuentaNueva, Empresa c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
-
-    	
-    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
-    	
-    	if(user==null || user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
     	
         PooledAccount cuenta = em.find(PooledAccount.class, cuentaNueva.getIban());
 
@@ -54,12 +47,6 @@ public class CuentaEJB implements GestionCuenta {
     //@Override
     public void creaCuenta(Segregada cuentaNueva, Empresa c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
 
-    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
-    	
-    	if(user==null || !user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
-    	
         Segregada cuenta = em.find(Segregada.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -82,12 +69,6 @@ public class CuentaEJB implements GestionCuenta {
     @Override
     public void creaCuenta(PooledAccount cuentaNueva, Individual c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
    
-    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
-    	
-    	if(user==null || !user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
-    	
         PooledAccount cuenta = em.find(PooledAccount.class, cuentaNueva.getIban());
 
         if(cuenta != null){
@@ -109,15 +90,7 @@ public class CuentaEJB implements GestionCuenta {
     // R5
     //@Override
     public void creaCuenta(Segregada cuentaNueva, Individual c, Usuario usuario) throws CuentaEncontrada, ClienteNoEncontrado, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
-    
-    	
-    	Usuario user = em.find(Usuario.class, usuario.getNombreUsuario());
-    	
-    	if(user==null || !user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
-    	
-        Segregada cuenta = em.find(Segregada.class, cuentaNueva.getIban());
+    	Segregada cuenta = em.find(Segregada.class, cuentaNueva.getIban());
 
         if(cuenta != null){
             throw new CuentaEncontrada();
@@ -142,15 +115,7 @@ public class CuentaEJB implements GestionCuenta {
     
     @Override
     public void cierraCuenta(Segregada c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
-    
-    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
-    	
-    	if(user==null || !user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
-    	
-    	
-        Segregada cuenta = em.find(Segregada.class, c.getIban());
+    	Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
         }
@@ -164,15 +129,8 @@ public class CuentaEJB implements GestionCuenta {
         }
     
     public void cierraCuenta(PooledAccount c, Usuario admin) throws SaldoException, CuentaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
-  
-    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
     	
-    	if(user==null || !user.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
-    	
-    	
-        PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
+    	PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
         if(cuenta == null){
             throw new CuentaNoEncontrada();
         }
