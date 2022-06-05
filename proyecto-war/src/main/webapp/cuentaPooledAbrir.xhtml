@@ -11,7 +11,7 @@
        <h1><h:outputText id="cuentaPooledAbrir" value="Abrir una cuenta pooled"/></h1>
        <h:form id="CuentaPooledAbrir">
               <h:outputText value="Introduzca los datos"/>
-              <h:panelGrid columns="3"></h:panelGrid>
+              <h:panelGrid columns="3">
               <h:commandButton id="cuentaPooledAbrirClick" value="BotonCuentaPooledAbrir" action="#{cuentaPooledAbrir.cuentaPooledAbrir()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
@@ -37,7 +37,7 @@
               <h:outputText value="Clasificacion:"/>
               <h:inputText id="clasificacion" required="false" value="#{cuentaPooledAbrir.pol.clasificacion}" class="controls"/>
               <h:message id="clasificacionMessage" for="clasificacion"/>
-
+         </h:panelGrid>  
        </h:form>
 
        <p>Para volver al inicio, pinche <h:link outcome="mainAdmin.xhtml">aquí</h:link></p>
