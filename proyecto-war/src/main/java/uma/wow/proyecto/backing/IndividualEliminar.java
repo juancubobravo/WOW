@@ -14,6 +14,7 @@ import uma.wow.proyecto.ejb.GestionCliente;
 import uma.wow.proyecto.ejb.exceptions.ClienteNoEncontrado;
 import uma.wow.proyecto.ejb.exceptions.ClienteYaExistente;
 import uma.wow.proyecto.ejb.exceptions.ContraseniaInvalida;
+import uma.wow.proyecto.ejb.exceptions.CuentaDeBaja;
 import uma.wow.proyecto.ejb.exceptions.CuentasActivas;
 import uma.wow.proyecto.ejb.exceptions.EJBException;
 import uma.wow.proyecto.ejb.exceptions.NoAdministradorException;
@@ -58,7 +59,7 @@ public class IndividualEliminar implements Serializable{
 		usuario = new Usuario();
 	}
 
-	public String individualEliminar() {
+	public String individualEliminar(){
 		try {	
 			usuario = sesion.getUsuario();
 			clienteEJB.bajaCliente(individual, usuario);
@@ -83,8 +84,8 @@ public class IndividualEliminar implements Serializable{
 		}catch (CuentasActivas e) {
 			FacesMessage fm = new FacesMessage("El cliente tiene cuentas activas");
 			FacesContext.getCurrentInstance().addMessage("individualEliminar", fm);
-		}catch (EJBException e) {
-			FacesMessage fm = new FacesMessage("Excepcion no controlada");
+		}catch (CuentaDeBaja e) {
+			FacesMessage fm = new FacesMessage("La cuenta ya esta de baja");
 			FacesContext.getCurrentInstance().addMessage("individualEliminar", fm);
 		}
 		

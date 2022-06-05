@@ -39,7 +39,8 @@ public class CuentaEJB implements GestionCuenta {
             List<CuentaFintech> listCuenta = cliente.getCuentas();
             listCuenta.add(cuentaNueva);
             cliente.setCuentas(listCuenta);
-            em.persist(cuentaNueva);
+            em.persist(cuenta);
+            em.persist(cliente);
         }
     }
     
@@ -61,7 +62,8 @@ public class CuentaEJB implements GestionCuenta {
             List<CuentaFintech> listCuenta = cliente.getCuentas();
             listCuenta.add(cuentaNueva);
             cliente.setCuentas(listCuenta);
-            em.persist(cuentaNueva);
+            em.persist(cuenta);
+            em.persist(cliente);
         }
     }
     
@@ -83,7 +85,8 @@ public class CuentaEJB implements GestionCuenta {
             List<CuentaFintech> listCuenta = cliente.getCuentas();
             listCuenta.add(cuentaNueva);
             cliente.setCuentas(listCuenta);
-            em.persist(cuentaNueva);
+            em.persist(cuenta);
+            em.persist(cliente);
         }
     }
     
@@ -104,7 +107,8 @@ public class CuentaEJB implements GestionCuenta {
             List<CuentaFintech> listCuenta = cliente.getCuentas();
             listCuenta.add(cuentaNueva);
             cliente.setCuentas(listCuenta);
-            em.persist(cuentaNueva);
+            em.persist(cuenta);
+            em.persist(cliente);
         }
         
     }

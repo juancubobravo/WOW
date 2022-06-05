@@ -107,18 +107,18 @@ public class ClienteEJB implements GestionCliente{
             throw new ClienteNoEncontrado();
         }
         
-        if(c.getEstado().equals("BAJA")) {
+        if(cliente.getEstado().equals("BAJA")) {
         	throw new CuentaDeBaja();
         }
 
-        List<CuentaFintech> listCuentas = cliente.getCuentas();
+        List<CuentaFintech> listCuentas = c.getCuentas();
 
         boolean cuenta_activa = false;
 
         if(listCuentas!=null) {
         	
         	 for (CuentaFintech cuenta: listCuentas) {
-                 if(cuenta.getEstado().equals("ACTIVO")){
+                 if(cuenta.getEstado().equals("ABIERTA")){
                      cuenta_activa = true;
                  }
              }
@@ -127,8 +127,8 @@ public class ClienteEJB implements GestionCliente{
                  throw new CuentasActivas();
              }
         }
-        c.setEstado("BAJA");
-
+        cliente.setEstado("BAJA");
+        em.merge(cliente);
     }
     
     // R4
@@ -140,14 +140,14 @@ public class ClienteEJB implements GestionCliente{
             throw new ClienteNoEncontrado();
         }
 
-        List<CuentaFintech> listCuentas = cliente.getCuentas();
+        List<CuentaFintech> listCuentas = c.getCuentas();
 
         boolean cuenta_activa = false;
 
         if(listCuentas!=null) {
         	
        	 for (CuentaFintech cuenta: listCuentas) {
-                if(cuenta.getEstado().equals("ACTIVO")){
+                if(cuenta.getEstado().equals("ABIERTA")){
                     cuenta_activa = true;
                 }
             }
@@ -157,8 +157,9 @@ public class ClienteEJB implements GestionCliente{
             }
        }
 
-        c.setEstado("BAJA");
-
+        cliente.setEstado("BAJA");
+        em.merge(cliente);
+        
     }
     
     @Override
