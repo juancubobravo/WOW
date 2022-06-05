@@ -35,22 +35,11 @@ public class IndividualAlta implements Serializable{
 
 	private Usuario usuario;	
 	
-	private Usuario usuarioNuevo;
-
 	private Individual individual;
 	
 	public IndividualAlta() {
 		usuario = new Usuario();
 		individual = new Individual();
-		usuarioNuevo = new Usuario();
-	}
-
-	public Usuario getUsuarioNuevo() {
-		return usuarioNuevo;
-	}
-
-	public void setUsuarioNuevo(Usuario usuarioNuevo) {
-		this.usuarioNuevo = usuarioNuevo;
 	}
 
 	public Usuario getUsuario() {
