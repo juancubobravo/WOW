@@ -26,11 +26,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void anyadirPersonaAutorizada(PooledAccount c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
-    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
-    	
-    	if(admin == null) {
-    		throw new NoAdministradorException();
-    	}
     	
     	PooledAccount cuenta = em.find(PooledAccount.class, c.getIban());
         if(cuenta == null){
@@ -66,11 +61,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void anyadirPersonaAutorizada(Segregada c, PersonaAutorizada pers, Usuario user, String tipo) throws ClienteNoEncontrado, CuentaNoEncontrada, NoEsEmpresaException, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
   
-    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
-    	
-    	if(admin == null) {
-    		throw new NoAdministradorException();
-    	}
     	
     	Segregada cuenta = em.find(Segregada.class, c.getIban());
         if(cuenta == null){
@@ -105,12 +95,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     //R7
     @Override
     public void modificaPersonaAutorizada(PersonaAutorizada nuevosDatos, Usuario user) throws PersonaAutorizadaNoEncontrada, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
-    
-    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
-    	
-    	if(admin == null) {
-    		throw new NoAdministradorException();
-    	}
     	
     	
     	PersonaAutorizada personaAutorizada = em.find(PersonaAutorizada.class, nuevosDatos.getId());
@@ -137,11 +121,6 @@ public class PersonaAutorizadaEJB implements GestionPersonaAutorizada{
     @Override
     public void borraPersonaAutorizada(PersonaAutorizada pers, Usuario user) throws PersonaAutorizadaNoEncontrada,UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException {
     
-    	Usuario admin = em.find(Usuario.class, user.getNombreUsuario());
-    	
-    	if(admin == null || !admin.getTipo().equals("ADMIN")) {
-    		throw new NoAdministradorException();
-    	}
     	
     	PersonaAutorizada persona = em.find(PersonaAutorizada.class, pers.getId());
     	if(persona == null) {
