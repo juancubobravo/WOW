@@ -12,7 +12,7 @@
        <h:form id="CuentaSegregadaAbrir">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-             
+              <h:commandButton id="cuentaSegregadaAbrirClick" value="BotonAltaCliente" action="#{cuentaSegregadaAbrir.cuentaSegregadaAbrir()}" class="buttons"/>
 
               <h:outputText value="IBAN:"/>
               <h:inputText id="iban" required="true" value="#{cuentaSegregadaAbrir.seg.iban}" class="controls"/>
@@ -42,8 +42,6 @@
               <h:outputText value="comision:"/>
               <h:inputText id="comision" required="false" value="#{cuentaSegregadaAbrir.seg.comision}" class="controls"/>
               <h:message id="comisionMessage" for="comision"/>
-
-              <h:commandButton id="cuentaSegregadaAbrirClick" value="Aceptar" action="#{cuentaSegregadaAbrir.cuentaSegregadaAbrir()}" class="buttons"/>
 
           </h:panelGrid>
        </h:form>

@@ -40,11 +40,6 @@ public class CuentaPooledAbrir {
 	private PooledAccount pol;
 	
 	private Usuario usuario;
-	
-	public CuentaPooledAbrir() {
-		pol = new PooledAccount();
-		usuario = new Usuario();
-	}
 
 	public PooledAccount getPol() {
 		return pol;
@@ -80,9 +75,6 @@ public class CuentaPooledAbrir {
 					cuentaEJB.creaCuenta(getPol(), cliente, usuario);
 				}
 				
-				FacesMessage fm = new FacesMessage("Cuenta Pooled creada con exito");
-				FacesContext.getCurrentInstance().addMessage("CuentaPooledAbrir:cuentaPooledAbrirClick", fm);
-	
 				return "mainAdmin.xhtml";
 				
 			}catch (ClienteNoEncontrado e) {

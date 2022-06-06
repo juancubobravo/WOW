@@ -57,6 +57,8 @@ public class CuentaPooledCerrar {
 			FacesMessage fm = new FacesMessage("Cuenta Pooled cerrada con exito");
 			FacesContext.getCurrentInstance().addMessage("CuentaPooledCerrar:cuentaPooledCerrarClick", fm);
 			
+			return "mainAdmin.xhtml";
+			
 		} catch (CuentaNoEncontrada e) {
 			FacesMessage fm = new FacesMessage("Cuenta no encontrada");
 			FacesContext.getCurrentInstance().addMessage("CuentaPooledCerrar", fm);

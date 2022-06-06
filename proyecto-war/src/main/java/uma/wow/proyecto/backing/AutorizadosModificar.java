@@ -61,12 +61,7 @@ public class AutorizadosModificar {
 		try {
 			
 			usuario = sesion.getUsuario();
-			autorizadaEJB.modificaPersonaAutorizada(getPersonaAut(), getUsuario());
-			
-			FacesMessage fm = new FacesMessage("Persona autorizada modificada con exito");
-			FacesContext.getCurrentInstance().addMessage("AutorizadosModificar:autorizadosModificarClick", fm);
-			
-			
+			autorizadaEJB.modificaPersonaAutorizada(getPersonaAut(), getUsuario());		
 			return "mainAdmin.xhtml";
 			
 		}catch(PersonaAutorizadaNoEncontrada e) {

@@ -12,7 +12,7 @@
        <h:form id="AutorizadosModificar">
               <h:outputText value="Introduzca los datos"/>
               <h:panelGrid columns="3">
-              
+              <h:commandButton id="autorizadosModificarClick" value="BotonModificarAniadir" action="#{autorizadosModificar.autorizadosModificar()}" class="buttons"/>
 
               <h:outputText value="ID:"/>
               <h:inputText id="idAutorizada" required="true" value="#{autorizadosModificar.personaAut.id}" class="controls"/>
@@ -30,7 +30,7 @@
               <h:inputText id="direccion" required="true" value="#{autorizadosModificar.personaAut.direccion}" class="controls"/>
               <h:message id="direccionMessage" for="direccion"/>
 
-             <h:outputText value="Fecha Nacimiento:"/>
+              <h:outputText value="Fecha Nacimiento:"/>
               <h:inputText id="fechaNacimiento" required="false" value="#{autorizadosModificar.personaAut.fechaNacimiento}" class="controls"/>
               <h:message id="fechaNacimientoMessage" for="fechaNacimiento"/>
 
@@ -45,8 +45,7 @@
               <h:outputText value="Fecha Fin:"/>
               <h:inputText id="fechaFin" required="false" value="#{autorizadosModificar.personaAut.fechaFin}" class="controls"/>
               <h:message id="fechaFinMessage" for="fechaFin"/>
-              
-              <h:commandButton id="autorizadosModificarClick" value="Aceptar" action="#{autorizadosModificar.autorizadosModificar()}" class="buttons"/>
+
 
           </h:panelGrid>
        </h:form>
