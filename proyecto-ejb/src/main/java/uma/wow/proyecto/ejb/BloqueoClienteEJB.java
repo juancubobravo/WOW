@@ -22,13 +22,6 @@ public class BloqueoClienteEJB implements GestionBloqueoCliente{
     public void bloqueoPersonaFisica(Individual c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
         
 
-        Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
-    	
-    	if(user == null) {
-    		throw new NoAdministradorException();
-    	}
-    	
-    	
     	Individual cliente = em.find(Individual.class, c.getId());
     	if(cliente == null) {
     		throw new ClienteNoEncontrado();
@@ -43,11 +36,6 @@ public class BloqueoClienteEJB implements GestionBloqueoCliente{
     @Override
     public void bloqueoAutorizado(PersonaAutorizada c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
         
-    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
-    	
-    	if(user == null) {
-    		throw new NoAdministradorException();
-    	}
     	
     	PersonaAutorizada cliente = em.find(PersonaAutorizada.class, c.getId());
     	if(cliente == null) {
@@ -63,12 +51,6 @@ public class BloqueoClienteEJB implements GestionBloqueoCliente{
     @Override
     public void bloqueoEmpresa(Empresa c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
         
-    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
-    	
-    	if(user == null) {
-    		throw new NoAdministradorException();
-    	}
-    	
     
     	Empresa cliente = em.find(Empresa.class, c.getId());
     	if(cliente == null) {
@@ -97,12 +79,6 @@ public class BloqueoClienteEJB implements GestionBloqueoCliente{
     @Override
     public void desbloqueoPersonaFisica(Individual c,Usuario admin) throws ClienteNoEncontrado, CuentaDeBaja, UsuarioNoEncontrado, ContraseniaInvalida, NoAdministradorException{
         
-    	
-    	Usuario user = em.find(Usuario.class, admin.getNombreUsuario());
-    	
-    	if(user == null) {
-    		throw new NoAdministradorException();
-    	}
     	
     	Individual cliente = em.find(Individual.class, c.getId());
     	if(cliente == null) {
